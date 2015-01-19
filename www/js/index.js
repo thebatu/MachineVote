@@ -17,10 +17,9 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-        var body = document.getElementById("body");
-        body.click(function(event){
-                    document.getElementById('body').contentWindow.document.location.href="vote.html";
-
+        $(".app").click(function(){
+            window.location.replace("./vote.html");
+            alert($(this));
         });
     },
     // Update DOM on a Received Event
