@@ -42,11 +42,11 @@
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
-    <icon src="www/img/logo.png" />
-    <icon gap:platform="android" gap:qualifier="ldpi" src="www/img/logo.png" />
-    <icon gap:platform="android" gap:qualifier="mdpi" src="www/img/logo.png" />
-    <icon gap:platform="android" gap:qualifier="hdpi" src="www/img/logo.png" />
-    <icon gap:platform="android" gap:qualifier="xhdpi" src="www/img/logo.png" />
+    <icon src="www/icon.png" />
+    <icon gap:platform="android" gap:qualifier="ldpi" src="www/icon.png" />
+    <icon gap:platform="android" gap:qualifier="mdpi" src="www/icon.png" />
+    <icon gap:platform="android" gap:qualifier="hdpi" src="www/icon.png" />
+    <icon gap:platform="android" gap:qualifier="xhdpi" src="www/icon.png" />
     <icon gap:platform="blackberry" src="www/res/icon/blackberry/icon-80.png" />
     <icon gap:platform="blackberry" gap:state="hover" src="www/res/icon/blackberry/icon-80.png" />
     <icon gap:platform="ios" height="57" src="www/res/icon/ios/icon-57.png" width="57" />
