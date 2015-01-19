@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.phonegap.boitavot" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <preference name="loglevel" value="DEBUG" />
     <name>BoitAvot'</name>
     <description>
         Faire voter sa classe par bulletin secret
@@ -13,7 +14,7 @@
     <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="true" />
-    <preference name="BackgroundColor" value="0xff8b00"/>
+    <preference name="BackgroundColor" value="0xff8b00" />
     <preference name="prerendered-icon" value="true" />
     <preference name="stay-in-webview" value="false" />
     <preference name="ios-statusbarstyle" value="black-opaque" />
