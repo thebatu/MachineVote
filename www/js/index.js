@@ -17,10 +17,7 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-        $(".app").click(function(){
-            window.location.replace("./vote.html");
-            alert($(this));
-        });
+
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
