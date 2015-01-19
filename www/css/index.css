@@ -113,3 +113,10 @@ h1 {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+
+.content{
+    /*display: inline-block;*/
+    position:relative;
+    margin:auto;
+    width:300px;
+}
