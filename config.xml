@@ -4,8 +4,8 @@
     <description>
         Faire voter sa classe par bulletin secret
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="boitavot@gmail.com" href="http://www.iut.u-bordeaux1.fr/info/">
+        Boitavot' Team
     </author>
     <content src="index.html" />
     <preference name="permissions" value="none" />
@@ -13,7 +13,7 @@
     <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="true" />
-    <preference name="BackgroundColor" value="0xffff8b00"/>
+    <preference name="BackgroundColor" value="0xff8b00"/>
     <preference name="prerendered-icon" value="true" />
     <preference name="stay-in-webview" value="false" />
     <preference name="ios-statusbarstyle" value="black-opaque" />
