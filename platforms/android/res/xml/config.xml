@@ -11,7 +11,7 @@
     <author email="boitavot@gmail.com" href="http://www.iut.u-bordeaux1.fr/info/">
         Boitavot' Team
     </author>
-    <content src="vote.html" />
+    <content src="index.html" />
     <preference name="permissions" value="none" />
     <preference name="orientation" value="landscape" />
     <preference name="target-device" value="universal" />
