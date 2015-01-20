@@ -20,5 +20,9 @@ $(function(){
 		nouvelle.show();
 	}
 
-
+	
+	$(".choixSujet").on("click", function(event){
+		$(".choixSujet").removeClass("selected");
+		$(event.target).addClass("selected");
+	});
 });
