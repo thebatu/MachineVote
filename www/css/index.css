@@ -135,17 +135,20 @@ button{
     margin-bottom: 25px;
     margin-right: 10px;
 }
+
 .choixSujet{
     background-color: #ff284a; /* rose */
-
+border : 3px #ff284a ridge;
 }
 .demarre_vote {
     background-color: #ff284a;
-    
-
+	
 }
 
-
+.selected {
+	border : 3px #519802 groove;
+	background-color:#519802;
+}
 
 .valider{
     background-color: #519802; /* vert */
