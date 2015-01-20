@@ -6,14 +6,7 @@ $(function(){
 		$(".app.tap").hide();
 		$("#nombreSujets").show();
 	});
-<<<<<<< HEAD
-	
-	$(".choixSujet").on("click", function(event){
-		$(".choixSujet").removeClass("selected");
-		$(event.target).addClass("selected");
-	});
-=======
-
+	/* Liste des boutons récurrents */
 	var validation = $(".valider"); 
 
 	// Gestion du clic sur les boutons de choix de chemin //
@@ -28,5 +21,8 @@ $(function(){
 	}
 
 	
->>>>>>> 0da57bead3a74db410eeb9ca68215a52493ba73a
+	$(".choixSujet").on("click", function(event){
+		$(".choixSujet").removeClass("selected");
+		$(event.target).addClass("selected");
+	});
 });
