@@ -19,7 +19,7 @@
     },
     "installed_plugins": {
         "com.mesmotronic.plugins.fullscreen": {
-            "PACKAGE_NAME": "com.phonegap.boitavot"
+            "PACKAGE_NAME": "com.mesmotronic.fullscreen.test"
         }
     },
     "dependent_plugins": {}
