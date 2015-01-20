@@ -6,13 +6,6 @@ $(function(){
 		$(".app.tap").hide();
 		$("#nombreSujets").show();
 	});
-<<<<<<< HEAD
-	
-	$(".choixSujet").on("click", function(event){
-		$(".choixSujet").removeClass("selected");
-		$(event.target).addClass("selected");
-	});
-=======
 
 	var validation = $(".valider"); 
 
@@ -28,5 +21,4 @@ $(function(){
 	}
 
 	
->>>>>>> 0da57bead3a74db410eeb9ca68215a52493ba73a
 });
