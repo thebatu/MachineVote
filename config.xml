@@ -7,7 +7,8 @@
     <author email="boitavot@gmail.com" href="http://www.iut.u-bordeaux1.fr/info/">
         Boitavot' Team
     </author>
-    <content src="index.html" />
+	<content src="index.html" />
+    <content src="vote.html" />
     <preference name="permissions" value="none" />
     <preference name="orientation" value="landscape" />
     <preference name="target-device" value="universal" />
@@ -35,13 +36,13 @@
     <gap:plugin name="org.apache.cordova.dialogs" />
     <gap:plugin name="org.apache.cordova.file" />
     <gap:plugin name="org.apache.cordova.file-transfer" />
-    <gap:plugin name="org.apache.cordova.geolocation" />
+    <!--<gap:plugin name="org.apache.cordova.geolocation" /> -->
     <gap:plugin name="org.apache.cordova.globalization" />
     <gap:plugin name="org.apache.cordova.inappbrowser" />
     <gap:plugin name="org.apache.cordova.media" />
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
-    <gap:plugin name="org.apache.cordova.vibration" />
+    <!-- <gap:plugin name="org.apache.cordova.vibration" /> -->
     <icon src="www/icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/icon.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="www/icon.png" />
