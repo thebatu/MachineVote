@@ -11,4 +11,4 @@ $(function(){
 		$(".choixSujet").removeClass("selected");
 		$(event.target).addClass("selected");
 	});
-});
+});	
