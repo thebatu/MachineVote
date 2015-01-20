@@ -66,7 +66,7 @@ body {
         padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
         margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
                                       /* offset horizontal: half of image width and text area width */
-    }
+    /
 }
 
 h1 {
@@ -115,8 +115,31 @@ h1 {
 }
 
 .content{
-    /*display: inline-block;*/
-    position:relative;
-    margin:auto;
-    width:300px;
+    position:absolute;             /* position in the center of the screen */
+    left:50%;
+    top:50%;
+    text-align:center;
+    margin:-115px 0px 0px -150px;
+}
+
+h2{
+    font-size: 30px;
+}
+button{
+    font-size: 24px;
+    background: none repeat scroll 0 0 transparent;
+    border:medium none;
+    color:white;
+    border-radius: 20%;
+    padding: 4px 10px 4px 10px;
+    margin-bottom: 25px;
+    margin-right: 10px;
+}
+.choixSujet{
+    background-color: #ff284a; /* rose */
+}
+.valider{
+    background-color: #519802; /* vert */
+}
+.retour{ /* pas de fond */
 }

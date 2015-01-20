@@ -4,7 +4,6 @@
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>BoitAvot'</title>
@@ -17,7 +16,26 @@
                 <p class="event received">Chargement terminé</p>
             </div>
         </div>
+
+        <div id="nombreSujets" class="content">
+                <h2>Nombre de sujets</h2>
+                <div id="boutons">
+                <button class="choixSujet">2</button>
+                <button class="choixSujet">3</button>
+                <button class="choixSujet">4</button>
+                <button class="choixSujet">5</button>
+                <button class="choixSujet">6</button>
+                </div>
+
+                <button class="retour">Retour</button>
+                <button class="valider">Valider</button>
+
+            </div>
+
+        <script type="text/javascript" src="jquery.mobile-1.4.5.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();
