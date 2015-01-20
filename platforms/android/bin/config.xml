@@ -1,9 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.phonegap.boitavot" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <preference name="loglevel" value="DEBUG" />
-    <feature name="AndroidFullScreen">
-        <param name="android-package" value="com.mesmotronic.plugins.FullScreenPlugin" />
-    </feature>
     <name>BoitAvot'</name>
     <description>
         Faire voter sa classe par bulletin secret
@@ -17,7 +13,7 @@
     <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="true" />
-    <preference name="BackgroundColor" value="0xff8b00" />
+    <preference name="BackgroundColor" value="0xff8b00"/>
     <preference name="prerendered-icon" value="true" />
     <preference name="stay-in-webview" value="false" />
     <preference name="ios-statusbarstyle" value="black-opaque" />
@@ -39,11 +35,13 @@
     <gap:plugin name="org.apache.cordova.dialogs" />
     <gap:plugin name="org.apache.cordova.file" />
     <gap:plugin name="org.apache.cordova.file-transfer" />
+    <!--<gap:plugin name="org.apache.cordova.geolocation" /> -->
     <gap:plugin name="org.apache.cordova.globalization" />
     <gap:plugin name="org.apache.cordova.inappbrowser" />
     <gap:plugin name="org.apache.cordova.media" />
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
+    <!-- <gap:plugin name="org.apache.cordova.vibration" /> -->
     <icon src="www/icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/icon.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="www/icon.png" />

@@ -9,28 +9,27 @@
         <title>BoitAvot'</title>
     </head>
     <body>
-        <div class="app">
+        <div id="ecranLogo" class="app">
             <h1>BoitAvot'</h1>
             <div id="deviceready" class="blink">
                 <p class="event listening">Chargement ...</p>
                 <p class="event received">Chargement terminé</p>
             </div>
         </div>
+		<div id="nombreSujets" class="content">
+			<h2>Nombre de sujets</h2>
+			<div id="boutons">
+			<button class="choixSujet">2</button>
+			<button class="choixSujet">3</button>
+			<button class="choixSujet">4</button>
+			<button class="choixSujet">5</button>
+			<button class="choixSujet">6</button>
+			</div>
 
-        <div id="nombreSujets" class="content">
-                <h2>Nombre de sujets</h2>
-                <div id="boutons">
-                <button class="choixSujet">2</button>
-                <button class="choixSujet">3</button>
-                <button class="choixSujet">4</button>
-                <button class="choixSujet">5</button>
-                <button class="choixSujet">6</button>
-                </div>
+			<button class="retour">Retour</button>
+			<button class="valider" go="ecranLogo">Valider</button>
 
-                <button class="retour">Retour</button>
-                <button class="valider">Valider</button>
-
-            </div>
+		</div>
 
         <script type="text/javascript" src="jquery.mobile-1.4.5.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
