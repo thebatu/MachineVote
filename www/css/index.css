@@ -144,7 +144,6 @@ button{
 .couleurSujet{
 	width : 50px;
 	height: 50px;
-	background-color: black;
 	border-radius : 15px;
 	margin : 0 15px 15px 0;	
 }
@@ -153,6 +152,21 @@ button{
 	border : 3px #519802 groove;
 	background-color:#519802;
 }
+
+.demarre_vote {
+    background-color: #ff284a;
+}
+
+.ecran_de_vote{
+    border : 3px #519802 groove;
+    background-color:#519802;
+}
+
+.bigButton {
+    background-color: #ff284a;
+    padding : 5%;
+}
+
 
 .valider{
     background-color: #519802; /* vert */
