@@ -1,21 +1,4 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
+
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
@@ -39,8 +22,8 @@ body {
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:12px;
     height:100%;
-    margin:0px;
-    padding:0px;
+    /*margin:0px;
+    padding:0px;*/
     text-transform:uppercase;
     width:100%;
 }
@@ -116,17 +99,18 @@ h1 {
 
 .content{
     position:absolute;             /* position in the center of the screen */
-    left:50%;
-    top:50%;
+    /*left:50%;*/
+    /*top:50%;*/
     text-align:center;
-    margin:-115px 0px 0px -150px;
+    /*margin:-115px 0px 0px -150px;*/
+    font-size: 5em;
 }
 
 h2{
     font-size: 30px;
 }
 button{
-    font-size: 24px;
+    font-size: 1em;
     background: none repeat scroll 0 0 transparent;
     border:medium none;
     color:white;
@@ -144,15 +128,48 @@ button{
 .couleurSujet{
 	width : 50px;
 	height: 50px;
-	background-color: black;
 	border-radius : 15px;
 	margin : 0 15px 15px 0;	
 }
+
+.choixResult{/* écran de présentation de choix des résultats */
+    margin : 0 15px 15px 0; 
+}
+    .croixRouge{ 
+        color:red;
+    }
+    .croixBleu, span+.croixBleu{
+        color:blue;
+    }
+    #canvasChoix1{
+        text-align: left;
+    }
+    #canvasChoix2{
+        text-align: right;
+    }
+        #canvasChoix2 span{
+            margin-left: 20px;
+        }
 
 .selected {
 	border : 3px #519802 groove;
 	background-color:#519802;
 }
+
+.demarre_vote {
+    background-color: #ff284a;
+}
+
+.ecran_de_vote{
+    border : 3px #519802 groove;
+    background-color:#519802;
+}
+
+.bigButton {
+    background-color: #ff284a;
+    padding : 5%;
+}
+
 
 .valider{
     background-color: #519802; /* vert */

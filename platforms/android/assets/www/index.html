@@ -3,20 +3,23 @@
     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
-		<meta name="viewport" content="width=device-width">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
         <meta name="msapplication-tap-highlight" content="no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
         <title>BoitAvot'</title>
     </head>
     <body>
-        <div id="ecranLogo" class="app">
+        <div id="ecranLogo">
+            <div class="app">
             <h1>BoitAvot'</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Chargement ...</p>
-                <p class="event received">Chargement terminé</p>
+                <div id="deviceready" class="blink">
+                    <p class="event listening">Chargement ...</p>
+                    <p class="event received">Chargement terminé</p>
+                </div>
             </div>
         </div>
+
 		<div id="nombreSujets" class="content">
 			<h2>Nombre de sujets</h2>
 			<div id="boutons">
@@ -27,13 +30,31 @@
 				<button class="choixSujet" value='6'>6</button>
 			</div>
 
-			<button class="retour">Retour</button>
-			<button class="valider" go="ecranLogo">Valider</button>
-
+			<button class="navigation retour" go="ecranLogo">Retour</button>
+			<button class="navigation valider" go="couleursSujets">Valider</button>
 		</div>
 
-        <script type="text/javascript" src="jquery.mobile-1.4.5.min.js"></script>
-        <script type="text/javascript" src="cordova.js"></script>
+        <div id="couleursSujets" class="content">
+            <h2>Couleurs des sujets</h2>
+            <div id="sujets">
+
+            </div>
+            <button class="navigation" go="nombreSujets">Retour</button>
+            <button class="navigation valider" go="demarre_vote">Valider</button>
+        </div>
+
+        <div id="demarre_vote" class="content">
+            <button class='navigation bigButton' go="vote">Démarrer le vote</button>
+            <button class="navigation" go="couleursSujets">Retour</button>
+        </div>
+
+        <div id="vote" class="content">
+            <div id="bulletins">
+
+            </div>
+            <button class="navigation valider">Valider</button>
+        </div>
+
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
