@@ -30,7 +30,7 @@ $(function(){
 			initNombreSujet(nbrSujet);
 		} else if(key == "vote") {
 			for(var i = 0; i < nbrSujet ; i++){
-				$('#bulletins').append("<button class='bulletin' style='background-color:"+couleursVote[i]+"'>"+$('.intitule_vote').attr(name)+"</button>");
+				$('#bulletins').append("<button class='bulletin' style='background-color:"+couleursVote[i]+"'>"+$('#sujet').attr(name)+"</button>");
 			}
 		}
 	}
