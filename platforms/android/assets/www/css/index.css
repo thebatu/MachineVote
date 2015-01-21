@@ -1,62 +1,18 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
-* {
-    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+body{
+	background-color:#ff8b00;
+	text-transform:uppercase;
+	font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
 }
 
-body {
-    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
-    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
-    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#ff8b00;
-    background-image:linear-gradient(top, #ff8b00 0%, #ff8b00 51%);
-    background-image:-webkit-linear-gradient(top, #ff8b00 0%, #ff8b00 51%);
-    background-image:-ms-linear-gradient(top, #ff8b00 0%, #ff8b00 51%);
-    background-image:-webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        color-stop(0, #ff8b00),
-        color-stop(0.51, #ff8b00)
-    );
-    background-attachment:fixed;
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-    font-size:12px;
-    height:100%;
-    margin:0px;
-    padding:0px;
-    text-transform:uppercase;
-    width:100%;
-}
-
-/* Portrait layout (default) */
+/*** Ecran Logo ***/
 .app {
     background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
-    position:absolute;             /* position in the center of the screen */
-    left:50%;
-    top:50%;
-    height:50px;                   /* text area height */
-    width:225px;                   /* text area width */
-    text-align:center;
-    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
-                                   /* offset horizontal: half of text area width */
+    font-size: 300%;
+	width: 50%;
+	padding: 10%;
+	position: absolute;
+	bottom:30%;           
+    left:32%;                         
 }
 
 /* Landscape layout (with min-width) */
@@ -70,7 +26,7 @@ body {
 }
 
 h1 {
-    font-size:24px;
+    font-size:240%;
     font-weight:normal;
     margin:0px;
     overflow:visible;
@@ -82,9 +38,10 @@ h1 {
     border-radius:4px;
     -webkit-border-radius:4px;
     color:#FFFFFF;
-    font-size:12px;
+    font-size:80%;
     margin:0px 30px;
     padding:2px 0px;
+    text-align: center;
 }
 
 .event.listening {
@@ -113,49 +70,166 @@ h1 {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+/*** FIN Ecran Logo ***/
 
 .content{
-    position:absolute;             /* position in the center of the screen */
-    left:50%;
-    top:50%;
-    text-align:center;
-    margin:-115px 0px 0px -150px;
+	font-size: 400%;
+	width: 80%;
+	padding: 10%;
 }
-
 h2{
-    font-size: 30px;
+    font-size: 100%;
+    font-weight: bold;
+    text-align: center;
 }
 button{
-    font-size: 24px;
+    font-size: 1em;
     background: none repeat scroll 0 0 transparent;
     border:medium none;
     color:white;
     border-radius: 20%;
-    padding: 4px 10px 4px 10px;
-    margin-bottom: 25px;
-    margin-right: 10px;
 }
+
+/*** SELECTION DU NOMBRE DE SUJETS ***/
+
 
 .choixSujet{
     background-color: #ff284a; /* rose */
 	border : 3px #ff284a ridge;
+	padding: 2% 4% 2% 4%;
 }
 
-.couleurSujet{
-	width : 50px;
-	height: 50px;
-	background-color: black;
-	border-radius : 15px;
-	margin : 0 15px 15px 0;	
+#boutons{
+	margin-top: 10%;
+	margin-left: 20%;
 }
+/*** FIN SELECTION DU NOMBRE DE SUJETS ***/
+/*** CHOIX DES SUJETS COULEURS ET TITRES ***/
+#sujets{
+    margin-top: 10%;
+}
+#sujets input{
+    font-size: 100%;
+    height: 60px;
+    padding:3px;
+    border:1px solid #F5C5C5;
+    border-radius:5px;
+    width:20%;
+    box-shadow:1px 1px 2px #C0C0C0 inset;
+    margin-right: 10px;
+}
+#sujets canvas{
+    margin-top: 4px;
+}
+.couleurSujet{
+    width : 60px;
+    height: 60px;
+    background-color: black;
+    border-radius : 15px;
+    margin : 15px 15px 0 15px; 
+}
+/*** FIN CHOIX DES SUJETS COULEURS ET TITRES ***/
+
+/*** SELECTION DE PRESENTATION DE RESULTATS***/
+.choixResult{
+}
+    .voteRouge{ 
+        background-color:red;
+    }
+
+    .voteBleu{
+		background-color: blue;
+	}
+
+	.croixBleu+span{
+        color:blue;
+    }
+
+    .croixRouge+span{
+        color:red;
+    }
+
+    #canvasChoix1{
+        text-align: left;
+        display:none;
+    }
+    #canvasChoix2{
+        text-align: left;
+        display:table;
+        display: none;
+    }
+	    #canvasChoix2 span{
+        	display:table-cell;
+        	padding-left: 20px;
+	    }
+	#ligne1compt{
+		display:table-row;
+	}
+	#canvas1compt{
+		display: table-cell;
+	}
+   
+    #ligne2compt{
+		display:table-row;
+	}
+	.vote{
+	 	height: 72px;
+	 	width: 5%;
+	 	border-radius: 45%;
+	}
+	.voteCase{
+	 	width: 65px;
+	 	height: 65px;
+	 	border-radius: 50%;
+	}
+	#canvasChoix3{
+
+	}
+		#canvasChoix3 table{
+			margin-top: 20px;
+		 	border-collapse:collapse;
+		 	text-align: center;
+		}
+		#canvasChoix3 tr{
+			width: auto;
+			height: 75px;
+		}
+		#canvasChoix3 td {
+		 	border:1px solid black;
+		 	width:75px;
+		 	padding-top: 4px;
+		}
+/*** FIN SELECTION DE PRESENTATION DE RESULTATS***/
 
 .selected {
-	border : 3px #519802 groove;
-	background-color:#519802;
+    border : 3px #519802 groove;
+    background-color:#519802;
 }
 
 .valider{
+    position: absolute;
+    right:10%;
+    bottom: 10%;
     background-color: #519802; /* vert */
+    padding: 10px;
 }
-.retour{ /* pas de fond */
+.retour{
+    position: absolute;
+    left:10%;
+    bottom: 10%;
+    padding: 10px;
+}
+
+.demarre_vote {
+    background-color: #ff284a;
+}
+
+.ecran_de_vote{
+    border : 3px #519802 groove;
+    background-color:#519802;
+}
+
+.bigButton {
+    background-color: #ff284a;
+    padding : 5%;
 }
