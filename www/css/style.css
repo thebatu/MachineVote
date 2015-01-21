@@ -89,6 +89,25 @@ button{
     color:white;
     border-radius: 20%;
 }
+
+.selected {
+	border : 3px #519802 groove;
+	background-color:#519802;
+}
+
+.valider{
+	position: absolute;
+	right:10%;
+	bottom: 10%;
+    background-color: #519802; /* vert */
+    padding: 10px;
+}
+.retour{
+	position: absolute;
+	left:10%;
+	bottom: 10%;
+    padding: 10px;
+}
 /*** SELECTION DU NOMBRE DE SUJETS ***/
 
 
@@ -182,21 +201,4 @@ button{
 		 	padding-top: 4px;
 		}
 /*** FIN SELECTION DE PRESENTATION DE RESULTATS***/
-.selected {
-	border : 3px #519802 groove;
-	background-color:#519802;
-}
 
-.valider{
-	position: absolute;
-	right:10%;
-	bottom: 10%;
-    background-color: #519802; /* vert */
-    padding: 10px;
-}
-.retour{
-	position: absolute;
-	left:10%;
-	bottom: 10%;
-    padding: 10px;
-}
