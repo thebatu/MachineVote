@@ -219,3 +219,17 @@ button{
     bottom: 10%;
     padding: 10px;
 }
+
+.demarre_vote {
+    background-color: #ff284a;
+}
+
+.ecran_de_vote{
+    border : 3px #519802 groove;
+    background-color:#519802;
+}
+
+.bigButton {
+    background-color: #ff284a;
+    padding : 5%;
+}
