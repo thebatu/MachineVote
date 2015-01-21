@@ -155,3 +155,8 @@ border : 3px #ff284a ridge;
 }
 .retour{ /* pas de fond */
 }
+
+.ecran_de_vote{
+    border : 3px #519802 groove;
+    background-color:#519802;
+}
