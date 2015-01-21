@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, target-densitydpi=medium-dpi, user-scalable=0">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
         <meta name="msapplication-tap-highlight" content="no" />
         <link rel="stylesheet" type="text/css" href="css/reset.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -19,6 +19,7 @@
                 </div>
             </div>
         </div>
+
 		<div id="nombreSujets" class="content">
 			<h2>Nombre de sujets</h2>
 			<div id="boutons">
@@ -32,18 +33,28 @@
 			<button class="navigation retour" go="ecranLogo">Retour</button>
 			<button class="navigation valider" go="couleursSujets">Valider</button>
 		</div>
+
         <div id="couleursSujets" class="content">
             <h2>Couleurs des sujets</h2>
             <div id="sujets">
 
-            </div>
-
-            <button class="navigation retour" go="nombreSujets">Retour</button>
-            <button class="navigation valider" go="vote">Valider</button>
+        </div>
+            <button class="navigation" go="nombreSujets">Retour</button>
+            <button class="navigation valider" go="demarre_vote">Valider</button>
         </div>
 
-        <script type="text/javascript" src="jquery.mobile-1.4.5.min.js"></script>
-        <script type="text/javascript" src="cordova.js"></script>
+        <div id="demarre_vote" class="content">
+            <button class='navigation bigButton' go="vote">Démarrer le vote</button>
+            <button class="navigation" go="couleursSujets">Retour</button>
+        </div>
+
+        <div id="vote" class="content">
+            <div id="bulletins">
+
+            </div>
+            <button class="navigation valider">Valider</button>
+        </div>
+
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
