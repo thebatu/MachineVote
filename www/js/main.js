@@ -4,7 +4,7 @@ $(function(){
 
 	$("#ecranLogo").on( "click", function(event){
 		$("#ecranLogo").hide();
-		$("#nombreSujets").show();
+		gotoSection("nombreSujets");
 	});
 
 	/* Liste des boutons récurrents */
@@ -17,11 +17,34 @@ $(function(){
 	});
 
 	function gotoSection(key) {
-		var nouvelle = $("#"+key);
-		nouvelle.show();
+		gererAction(getAction(key));
+		$("#"+key).show();
+
+		if(key == "couleursSujets"){
+			var nbrSujet = $('.selected').attr('value');
+			initNombreSujet(nbrSujet);
+		}
+			
 	}
 
-	
+	function getAction(key) {
+		return $("#" + key + " action").attr("name");
+	}
+
+	function gererAction(actionName) {
+		switch (actionName) {
+			case "vider_couleursSujets" :
+				$("#sujets").empty();
+				break;
+		}
+	}
+
+	function initNombreSujet(nbr){
+		for(var i=1; i<=nbr; i++){
+			$('#sujets').append("<canvas class='couleurSujet' ></canvas><input type='text' />");
+		}
+	}
+
 	$(".choixSujet").on("click", function(event){
 		$(".choixSujet").removeClass("selected");
 		$(event.target).addClass("selected");
