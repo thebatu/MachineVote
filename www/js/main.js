@@ -1,16 +1,17 @@
 $(function(){
 	$("#nombreSujets").hide();
+	$("#couleursSujets").hide();
 
-	$(".app").on( "click", function(event){
-		$( event.target ).addClass( "tap" );
-		$(".app.tap").hide();
+	$("#ecranLogo").on( "click", function(event){
+		$("#ecranLogo").hide();
 		$("#nombreSujets").show();
 	});
+
 	/* Liste des boutons récurrents */
-	var validation = $(".valider"); 
+	var button = $(".content .navigation"); 
 
 	// Gestion du clic sur les boutons de choix de chemin //
-	validation.click( function() {
+	button.click( function() {
 		$(this).closest("div").hide();
 		gotoSection($(this).attr("go"));
 	});

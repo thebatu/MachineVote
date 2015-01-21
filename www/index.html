@@ -28,10 +28,28 @@
 				<button class="choixSujet" value='6'>6</button>
 			</div>
 
-			<button class="retour">Retour</button>
-			<button class="valider" go="ecranLogo">Valider</button>
-
+			<button class="navigation" go="ecranLogo">Retour</button>
+			<button class="navigation valider" go="couleursSujets">Valider</button>
 		</div>
+        <div id="couleursSujets" class="content">
+            <h2>Couleurs des sujets</h2>
+            <div id="sujets">
+                <table>
+                    <tr>
+                        <td><canvas class="couleurSujet" ></canvas><input type="text" /></td>
+                        <td><canvas class="couleurSujet" ></canvas><input type="text" /></td>
+                        <td><canvas class="couleurSujet" ></canvas><input type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><canvas class="couleurSujet" ></canvas><input type="text" /></td>
+                        <td><canvas class="couleurSujet" ></canvas><input type="text" /></td>
+                        <td><canvas class="couleurSujet" ></canvas><input type="text" /></td>
+                    </tr>
+                </table>
+            </div>
+            <button class="navigation" go="nombreSujets">Retour</button>
+            <button class="navigation valider">Valider</button>
+        </div>
 
         <script type="text/javascript" src="jquery.mobile-1.4.5.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
