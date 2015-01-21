@@ -1,6 +1,7 @@
 $(function(){
 	$("#nombreSujets").hide();
 	$("#couleursSujets").hide();
+	var nbrVotant = 5;
 
 	$("#ecranLogo").on( "click", function(event){
 		$("#ecranLogo").hide();
