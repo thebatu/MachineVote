@@ -135,9 +135,25 @@ button{
     margin-bottom: 25px;
     margin-right: 10px;
 }
+
 .choixSujet{
     background-color: #ff284a; /* rose */
+	border : 3px #ff284a ridge;
 }
+
+.couleurSujet{
+	width : 50px;
+	height: 50px;
+	background-color: black;
+	border-radius : 15px;
+	margin : 0 15px 15px 0;	
+}
+
+.selected {
+	border : 3px #519802 groove;
+	background-color:#519802;
+}
+
 .valider{
     background-color: #519802; /* vert */
 }
