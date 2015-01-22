@@ -19,10 +19,8 @@ body{
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
     .app {
         background-position:left center;
-        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
-        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
-                                      /* offset horizontal: half of image width and text area width */
-    /
+        padding:75px 0px 75px 170px;
+        margin:-90px 0px 0px -198px;
 }
 
 h1 {
@@ -78,7 +76,6 @@ h1 {
 	padding: 10%;
 }
 h2{
-    font-size: 100%;
     font-weight: bold;
     text-align: center;
 }
@@ -91,7 +88,10 @@ button{
 }
 
 /*** SELECTION DU NOMBRE DE SUJETS ***/
-
+#nombreSujets{
+    width: 80%;
+    margin: 0 auto;
+}
 
 .choixSujet{
     background-color: #ff284a; /* rose */
