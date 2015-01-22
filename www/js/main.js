@@ -48,8 +48,24 @@ $(function(){
 	}
 
 	function initNombreSujet(nbr){
+		$('#sujets').append("<table><tr></tr><tr></tr></table>");
+		var cases1tab = $('#sujets tr:eq(0)');
+		cases1tab.css("height", "100px");
+		var cases2tab = $('#sujets tr:eq(1)');
+
 		for(var i=0; i<nbr; i++){
-			$('#sujets').append("<canvas class='couleurSujet' style='background-color:"+couleursVote[i]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' />");
+			if (i <= 2){
+				if (nbr == 4 && i == 2){ //le troisieme choix parmi 4 choix est mis sur la ligne suivante
+					cases2tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[i]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' /></td>");
+				}
+				else{
+					cases1tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[i]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' /></td>");
+				}
+			}
+			else{ // les 4eme 5eme et 6eme choix sur la seconde ligne
+				cases2tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[i]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' /></td>");
+			}
+			
 		}
 		creation = true;
 	}
