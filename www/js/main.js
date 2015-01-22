@@ -1,5 +1,6 @@
 $(function(){
 	var couleursVote = new Array("#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF", "#FF00FF");
+	var resultatVote = {bulletin1:0, bulletin2:0, bulletin3:0, bulletin4:0, bulletin5:0, bulletin6:0};
 	$("#nombreSujets").hide();
 	$("#couleursSujets").hide();
 	$("#demarre_vote").hide();
@@ -80,8 +81,13 @@ $(function(){
 			$('.validation_vote').attr('go', 'fin_vote');
 	}
 
+	function compteurDeVote(){
+		$('.choixSujet .selected').attr('id');
+	}
+
 	$('.validation_vote').on("click", function(event){
 		nbrVote++;
+		compteurDeVote();
 	});
 
 	$(".choixSujet").on("click", function(event){
