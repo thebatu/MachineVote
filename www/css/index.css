@@ -87,6 +87,7 @@ h1 {
 	font-size: 400%;
 	width: 80%;
 	padding: 10%;
+    margin: 0 auto;
 }
 h2{
     text-transform: uppercase;
@@ -103,10 +104,6 @@ button{
 }
 
 /*** SELECTION DU NOMBRE DE SUJETS ***/
-#nombreSujets{
-    width: 80%;
-    margin: 0 auto;
-}
 
 .choixSujet{
     background-color: #ff284a; /* rose */
@@ -121,7 +118,8 @@ button{
 /*** FIN SELECTION DU NOMBRE DE SUJETS ***/
 /*** CHOIX DES SUJETS COULEURS ET TITRES ***/
 #sujets{
-    margin-top: 10%;
+    width: 80%;
+    margin: 0 auto;
 }
 #sujets input{
     font-size: 75%;
@@ -133,18 +131,18 @@ button{
     box-shadow:1px 1px 2px #C0C0C0 inset;
 }
 
-#sujets canvas{
-    margin-bottom: -3%;
-}
 .couleurSujet{ /*canvas de couleur*/
     width : 60px;
     height: 60px;
     background-color: black;
     border-radius : 15px;
     margin : 0 2% 0 0; 
+    margin-bottom: -3%;
+
 }
 #sujets table{
-    vertical-align: middle;
+    margin-top: 5%;
+
 }
 
 /*** FIN CHOIX DES SUJETS COULEURS ET TITRES ***/
