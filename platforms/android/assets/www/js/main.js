@@ -4,9 +4,10 @@ $(function(){
 	$("#couleursSujets").hide();
 	$("#demarre_vote").hide();
 	$("#vote").hide();
+	$("#fin_vote").hide();
 	var creation = false;
-	var nbrVotant = 5;
-	var nbtVote = 0;
+	var nbrVotant = 3;
+	var nbrVote = 1;
 
 	$("#ecranLogo").on( "click", function(event){
 		$("#ecranLogo").hide();
@@ -29,9 +30,7 @@ $(function(){
 		if(key == "couleursSujets" && creation == false){	
 			initNombreSujet(nbrSujet);
 		} else if(key == "vote") {
-			for(var i = 0; i < nbrSujet ; i++){
-				$('#bulletins').append("<button class='bulletin' style='background-color:"+couleursVote[i]+"'>"+$('#sujet').attr(name)+"</button>");
-			}
+			initBulletins(nbrSujet);
 		}
 	}
 
@@ -71,8 +70,27 @@ $(function(){
 		creation = true;
 	}
 
+	function initBulletins(nbr){
+		$("#bulletins").empty();
+		$(".bulletin").removeClass("selected");
+		for(var i = 0; i < nbr ; i++){
+			$('#bulletins').append("<button id='bulletin"+[i]+"' class='bulletin' style='background-color:"+couleursVote[i]+"'>"+$('#sujet'+[i]).val()+"</button>");
+		}
+		if(nbrVote == (nbrVotant-1))
+			$('.validation_vote').attr('go', 'fin_vote');
+	}
+
+	$('.validation_vote').on("click", function(event){
+		nbrVote++;
+	});
+
 	$(".choixSujet").on("click", function(event){
 		$(".choixSujet").removeClass("selected");
+		$(event.target).addClass("selected");
+	});
+
+	$(".bulletin").on("click", function(event){
+		$(".bulletin").removeClass("selected");
 		$(event.target).addClass("selected");
 	});
 });
