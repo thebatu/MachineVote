@@ -1,5 +1,5 @@
 $(function(){
-	var couleursVote = new Array("#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF", "#FF00FF","#F6358A","#347C17","#7E3817","#8E35EF");
+	var couleursVote = new Array("#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF", "#FF00FF","#F778A1","#347C17","#7E3817","#8E35EF");
 	var color = [false,false,false,false,false,false,false,false,false,false];
 	$("#nombreSujets").hide();
 	$("#couleursSujets").hide();
@@ -48,22 +48,20 @@ $(function(){
 		}
 	}
 
+
+/*
+*
+*	change colors of the interface Couleurs des sujets
+*
+*/
 	function randomColorGenerator(){
 		var tmpRandomColor = Math.floor((Math.random() * 10 ) );
-		
 		if(color[tmpRandomColor]==false){
 			color[tmpRandomColor]=true;
-			
-			alert(color+"     inside if    "+tmpRandomColor);
-
 			return tmpRandomColor;
-
 		}else{
 			randomColorGenerator();
-			alert(color+"     inside ELSE   "+tmpRandomColor);
 		}
-
-		
 	}
 
 
