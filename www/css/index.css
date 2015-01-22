@@ -13,21 +13,12 @@ body{
         width: 30%;
         margin: 0 auto;
         display: table-cell;
-       /* float: left;*/
-    }/*
-    #ecranLogoRight{
-        /*display: table;
-        float:right;
-        padding-top: 25px;
-
     }
-    /*    .app  h1{
-            display: table-row;
-        }
-        #deviceready{
-            display: table-row;
-        }*/
-
+    #iut{
+        width: 20%;
+        margin-top: 3%;
+        float:right;
+    }
 /* Landscape layout (with min-width) */
 /*@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
     .app {
@@ -151,6 +142,16 @@ button{
     text-align: center;
     margin-top: 5%;
 }
+/*** VOTE ***/
+#bulletins{
+    text-align: center;
+}
+
+.bulletin{
+    border-radius: 0%;
+}
+/*** FIN VOTE***/
+
 /*** SELECTION DE PRESENTATION DE RESULTATS***/
 .choixResult{
 }

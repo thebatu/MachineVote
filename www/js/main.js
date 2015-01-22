@@ -72,7 +72,6 @@ $(function(){
 		}
 		$('#sujets').append("<table><tr></tr><tr></tr></table>");
 		var cases1tab = $('#sujets tr:eq(0)');
-		cases1tab.css("height", "100px");
 		var cases2tab = $('#sujets tr:eq(1)');
 		randomColorGenerator(nbr);
 		for(var i=0; i<nbr; i++){
@@ -98,6 +97,25 @@ $(function(){
 		for(var i = 0; i < nbr ; i++){
 			$('#bulletins').append("<button id='bulletin"+[i]+"' class='bulletin' style='background-color:"+couleursVote[color[i]]+"'>"+$('#sujet'+[i]).val()+"</button>");
 		}
+		if (nbr == 4){ //le troisieme choix parmi 4 choix est mis sur la ligne suivante}
+			$(".bulletin:lt(2)").css("float","left");
+			$(".bulletin:nth-child(3)").css("clear","both");
+			$(".bulletin:gt(0)").css("float","left");
+		}
+		else{
+			$(".bulletin:lt(3)").css("float","left");
+			$(".bulletin:nth-child(4)").css("clear","both");
+			$(".bulletin:gt(0)").css("float","left");
+		}
+		if(nbr ==4 || nbr == 2){
+			$(".bulletin").css("width", "50%");
+			$(".bulletin").css("height", "200px");
+		}
+		else{
+			$(".bulletin").css("width", "33.3%");
+			$(".bulletin").css("height", "200px");
+		}
+
 		if(nbrVote == (nbrVotant-1))
 			$('.validation_vote').attr('go', 'fin_vote');
 	}
