@@ -60,12 +60,19 @@ $(function(){
 			color[tmpRandomColor]=true;
 			return tmpRandomColor;
 		}else{
-			randomColorGenerator();
+			return randomColorGenerator();
 		}
 	}
 
 
 	function initNombreSujet(nbr){
+	//reset the colors
+		for (var i=0; i<color.length; i++){	
+			color[i]=false;
+
+		}
+
+
 		$('#sujets').append("<table><tr></tr><tr></tr></table>");
 		var cases1tab = $('#sujets tr:eq(0)');
 		cases1tab.css("height", "100px");
