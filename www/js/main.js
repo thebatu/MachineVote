@@ -1,5 +1,5 @@
 $(function(){
-	var resultatVote = {bulletin1:0, bulletin2:0, bulletin3:0, bulletin4:0, bulletin5:0, bulletin6:0};
+	var resultatVote = {bulletin0:0, bulletin1:0, bulletin2:0, bulletin3:0, bulletin4:0, bulletin5:0};
 	var couleursVote = new Array("#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF", "#FF00FF","#F778A1","#347C17","#7E3817","#8E35EF");
 	var color = new Array();
 	$("#nombreSujets").hide();
@@ -9,9 +9,15 @@ $(function(){
 	$("#fin_vote").hide();
 	var creation = false;
 	var nbrVotant = 3;
-	var nbrVote = 1;
+	var nbrVote = 0;
 	/* Liste des boutons récurrents */
 	var button = $(".content .navigation"); 
+
+	$('.validation_vote').on("click", function(event){
+		nbrVote++;
+		var key = $('.bulletin').filter('.selected').attr('id');
+		resultatVote[key] = resultatVote[key]+1;
+	});
 
 	// Gestion du clic sur les boutons de choix de chemin //
 	button.click( function() {
@@ -27,6 +33,9 @@ $(function(){
 			initNombreSujet(nbrSujet);
 		} else if(key == "vote") {
 			initBulletins(nbrSujet);
+		} else if(key == "fin_vote"){
+			for(var i in resultatVote)
+				alert(i + " : " + resultatVote[i]);
 		}
 	}
 
@@ -94,16 +103,11 @@ $(function(){
 
 	function initBulletins(nbr){
 		$("#bulletins").empty();
-		$(".bulletin").removeClass("selected");
 		for(var i = 0; i < nbr ; i++){
-			$('#bulletins').append("<button id='bulletin"+[i]+"' class='bulletin' style='background-color:"+couleursVote[color[i]]+"'>"+$('#sujet'+[i]).val()+"</button>");
+			$('#bulletins').append("<button onclick='addBulletinSelect();' id='bulletin"+[i]+"' class='bulletin' style='background-color:"+couleursVote[color[i]]+"'>"+$('#sujet'+[i]).val()+"</button>");
 		}
 		if(nbrVote == (nbrVotant-1))
 			$('.validation_vote').attr('go', 'fin_vote');
-	}
-
-	function compteurDeVote(){
-		$('.choixSujet .selected').attr('id');
 	}
 
 	$("#ecranLogo").on( "click", function(event){
@@ -111,18 +115,13 @@ $(function(){
 		gotoSection("nombreSujets");
 	});
 
-	$('.validation_vote').on("click", function(event){
-		nbrVote++;
-		compteurDeVote();
-	});
-
 	$(".choixSujet").on("click", function(event){
 		$(".choixSujet").removeClass("selected");
 		$(event.target).addClass("selected");
 	});
-
-	$(".bulletin").on("click", function(event){
-		$(".bulletin").removeClass("selected");
-		$(event.target).addClass("selected");
-	});
 });
+
+function addBulletinSelect(){
+	$(".bulletin").removeClass("selected");
+	$(event.target).addClass("selected");
+}
