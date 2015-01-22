@@ -5,28 +5,28 @@ body{
 
 /*** Ecran Logo ***/
 .app {
-    font-size: 300%;
     width: 80%;
-    padding: 10%;
-
+    margin: 0 auto;
+    display: table;
 }   
     .app img{
         width: 30%;
+        margin: 0 auto;
         display: table-cell;
-        float: left;
-    }
+       /* float: left;*/
+    }/*
     #ecranLogoRight{
-        display: table;
-        float:left;
+        /*display: table;
+        float:right;
         padding-top: 25px;
 
     }
-        .app  h1{
+    /*    .app  h1{
             display: table-row;
         }
         #deviceready{
             display: table-row;
-        }
+        }*/
 
 /* Landscape layout (with min-width) */
 /*@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
@@ -147,6 +147,10 @@ button{
 
 /*** FIN CHOIX DES SUJETS COULEURS ET TITRES ***/
 
+#demarre_vote{
+    text-align: center;
+    margin-top: 5%;
+}
 /*** SELECTION DE PRESENTATION DE RESULTATS***/
 .choixResult{
 }
