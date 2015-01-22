@@ -12,43 +12,39 @@
         <title>BoitAvot'</title>
     </head>
     <body>
-        <div id="selectionResultat" class="content">
+        <div id="resultats" class="content">
             <div id="canvasResultatChoix1" class="choixResult">
             <div id="ligne1" class="croixRouge">
-                <canvas class="vote voteRouge"></canvas> <canvas class="vote voteRouge"></canvas> <canvas class="vote voteRouge"></canvas>
+<!-- exemple de vote rouge <canvas class="vote voteRouge"></canvas>-->
             </div>
             <div id="ligne2" class="croixBleu">
-                <canvas class="vote voteBleu"></canvas> <canvas class="vote voteBleu"></canvas> <canvas class="vote voteBleu"></canvas> <canvas class="vote voteBleu"></canvas> <canvas class="vote voteBleu"></canvas>
+<!-- exemple de vote bleu <canvas class="vote voteBleu"></canvas>-->
             </div>
             </div>
             <div id="canvasResultatChoix2" class="choixResult">
                 <div id="ligne1comptResultat">
                     <div id="canvas1compt" class="croixRouge">
-                        <canvas class="vote voteRouge"></canvas> 
-                        <canvas class="vote voteRouge"></canvas> 
-                        <canvas class="vote voteRouge"></canvas>
+
                     </div>
-                    <span>3</span>
+                    <span></span> <!-- compteur des qu'on clique et grisage du vote -->
                 </div>
                 <div id="ligne1compt">
                     <div id="canvas2compt" class="croixBleu">
-                        <canvas class="vote voteBleu"></canvas> 
-                        <canvas class="vote voteBleu"></canvas> 
-                        <canvas class="vote voteBleu"></canvas> 
-                        <canvas class="vote voteBleu"></canvas> 
-                        <canvas class="vote voteBleu"></canvas>
+
                     </div>
-                    <span>5</span>
+                    <span></span> <!-- compteur des qu'on clique et grisage du vote -->
                 </div>
             </div>
-
+<!-- tableaux des resultats. Si + de 2 choix de sujets ajouter des divs-->
             <div id="canvasResultatChoix3" class="choixResult">
+                <!-- tableaux des rouges. Si + de 10 votes pour le choix alors ajouter un tableau -->
                 <div id="ligne1tableauResultat">
+                    <!-- exemple de vote rouge <canvas class="vote voteRouge"></canvas>-->
                     <table>
                         <tr> 
-                            <td><canvas class="voteCase voteRouge"></canvas></td>
-                            <td><canvas class="voteCase voteRouge"></canvas></td>
-                            <td><canvas class="voteCase voteRouge"></canvas></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td></td>
                             <td></td>
                         </tr>
@@ -61,11 +57,15 @@
                         </tr>
                     </table>
                 </div>
+                <!-- tableaux des bleus. Si + de 10 votes pour le choix alors ajouter un tableau -->
+
                 <div id="ligne2tableauResultat">
+                    <!-- exemple de vote bleu <canvas class="vote voteBleu"></canvas>-->
+
                     <table>
                         <tr> 
-                            <td><canvas class="voteCase voteBleu"></canvas></td>
-                            <td><canvas class="voteCase voteBleu"></canvas></td>
+                            <td></td>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
