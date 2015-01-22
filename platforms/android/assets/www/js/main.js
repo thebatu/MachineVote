@@ -1,12 +1,14 @@
 $(function(){
-	var couleursVote = new Array("#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF", "#FF00FF");
+	var couleursVote = new Array("#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF", "#FF00FF","#F778A1","#347C17","#7E3817","#8E35EF");
+	var color = [false,false,false,false,false,false,false,false,false,false];
 	$("#nombreSujets").hide();
 	$("#couleursSujets").hide();
 	$("#demarre_vote").hide();
 	$("#vote").hide();
+	$("#fin_vote").hide();
 	var creation = false;
-	var nbrVotant = 5;
-	var nbtVote = 0;
+	var nbrVotant = 3;
+	var nbrVote = 1;
 
 	$("#ecranLogo").on( "click", function(event){
 		$("#ecranLogo").hide();
@@ -29,9 +31,7 @@ $(function(){
 		if(key == "couleursSujets" && creation == false){	
 			initNombreSujet(nbrSujet);
 		} else if(key == "vote") {
-			for(var i = 0; i < nbrSujet ; i++){
-				$('#bulletins').append("<button class='bulletin' style='background-color:"+couleursVote[i]+"'>"+$('#sujet').attr(name)+"</button>");
-			}
+			initBulletins(nbrSujet);
 		}
 	}
 
@@ -48,7 +48,31 @@ $(function(){
 		}
 	}
 
+
+/*
+*
+*	change colors of the interface Couleurs des sujets
+*
+*/
+	function randomColorGenerator(){
+		var tmpRandomColor = Math.floor((Math.random() * 10 ) );
+		if(color[tmpRandomColor]==false){
+			color[tmpRandomColor]=true;
+			return tmpRandomColor;
+		}else{
+			return randomColorGenerator();
+		}
+	}
+
+
 	function initNombreSujet(nbr){
+	//reset the colors
+		for (var i=0; i<color.length; i++){	
+			color[i]=false;
+
+		}
+
+
 		$('#sujets').append("<table><tr></tr><tr></tr></table>");
 		var cases1tab = $('#sujets tr:eq(0)');
 		cases1tab.css("height", "100px");
@@ -57,22 +81,41 @@ $(function(){
 		for(var i=0; i<nbr; i++){
 			if (i <= 2){
 				if (nbr == 4 && i == 2){ //le troisieme choix parmi 4 choix est mis sur la ligne suivante
-					cases2tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[i]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' /></td>");
+					cases2tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[randomColorGenerator()]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' /></td>");
 				}
 				else{
-					cases1tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[i]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' /></td>");
+					cases1tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[randomColorGenerator()]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' /></td>");
 				}
 			}
 			else{ // les 4eme 5eme et 6eme choix sur la seconde ligne
-				cases2tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[i]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' /></td>");
+				cases2tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[randomColorGenerator()]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' /></td>");
 			}
 			
 		}
 		creation = true;
 	}
 
+	function initBulletins(nbr){
+		$("#bulletins").empty();
+		$(".bulletin").removeClass("selected");
+		for(var i = 0; i < nbr ; i++){
+			$('#bulletins').append("<button id='bulletin"+[i]+"' class='bulletin' style='background-color:"+couleursVote[i]+"'>"+$('#sujet'+[i]).val()+"</button>");
+		}
+		if(nbrVote == (nbrVotant-1))
+			$('.validation_vote').attr('go', 'fin_vote');
+	}
+
+	$('.validation_vote').on("click", function(event){
+		nbrVote++;
+	});
+
 	$(".choixSujet").on("click", function(event){
 		$(".choixSujet").removeClass("selected");
+		$(event.target).addClass("selected");
+	});
+
+	$(".bulletin").on("click", function(event){
+		$(".bulletin").removeClass("selected");
 		$(event.target).addClass("selected");
 	});
 });
