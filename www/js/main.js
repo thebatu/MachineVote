@@ -75,10 +75,7 @@ $(function(){
 
 	function initNombreSujet(nbr){
 	//reset the colors
-		for (var i=0; i<color.length; i++){	
-			color[i]=false;
-
-		}
+		color.length = 0;
 		$('#sujets').append("<table><tr></tr><tr></tr></table>");
 		var cases1tab = $('#sujets tr:eq(0)');
 		var cases2tab = $('#sujets tr:eq(1)');
