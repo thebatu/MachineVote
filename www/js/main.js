@@ -25,6 +25,9 @@ $(function(){
 		gotoSection($(this).attr("go"));
 	});
 
+	/*
+	 * Redirection sur la div 
+	*/ 
 	function gotoSection(key) {
 		gererAction(getAction(key));
 		$("#"+key).show();
@@ -38,10 +41,16 @@ $(function(){
 		}
 	}
 
+	/*
+	 * Récupère une action dans une div
+	*/
 	function getAction(key) {
 		return $("#" + key + " action").attr("name");
 	}
 
+	/*
+	 * Gère les actions qui ont été récupérés
+	*/
 	function gererAction(actionName) {
 		switch (actionName) {
 			case "vider_couleursSujets" :
@@ -71,7 +80,9 @@ $(function(){
 		}
 	}
 
-
+	/*
+	 * Initialise le nombre de sujet après que l'utilisateur ai choisi le nombre de sujets
+	*/
 	function initNombreSujet(nbr){
 	//reset the colors
 		color.length = 0;
@@ -96,6 +107,9 @@ $(function(){
 		creation = true;
 	}
 
+	/*
+	 * Initialise les bulletins de vote, en fonction des couleurs et du nombre de sujes proposés
+	*/
 	function initBulletins(nbr){
 		$("#bulletins").empty();
 		for(var i = 0; i < nbr ; i++){
@@ -129,6 +143,9 @@ $(function(){
 			$('.validation_vote').attr('go', 'fin_vote');
 	}
 
+	/*
+	 * Affiche les résultats une fois le vote finit
+	*/
 	function affichageResultats(nbr){
 		for(var i=0; i<nbr ; i++){
 			alert(resultatVote['bulletin'+i]);
@@ -138,17 +155,26 @@ $(function(){
 		}
 	}
 
+	/*
+	 * Appuie sur le logo d'accueil
+	*/
 	$("#ecranLogo").on( "click", function(event){
 		$("#ecranLogo").hide();
 		gotoSection("nombreSujets");
 	});
 
+	/*
+	 * ajoute la classe selected au nombre de sujets choisi
+	*/
 	$(".choixSujet").on("click", function(event){
 		$(".choixSujet").removeClass("selected");
 		$(event.target).addClass("selected");
 	});
 });
 
+/*
+ * Ajout la classe selected au bulletin de vote choisi
+*/
 function addBulletinSelect(){
 	$(".bulletin").removeClass("selected");
 	$(event.target).addClass("selected");
