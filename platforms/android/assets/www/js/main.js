@@ -9,7 +9,7 @@ $(function(){
 	$("#validation_vote").hide();
 	$("#fin_vote").hide();
 	var creation = false;
-	var nbrVotant = 3;
+	var nbrVotant = 6;
 	var nbrVote = 0;
 	/* Liste des boutons récurrents */
 	var button = $(".content .navigation"); 
@@ -20,6 +20,24 @@ $(function(){
 		resultatVote[key] = resultatVote[key]+1;
 	});
 
+
+	/*
+	 * Affiche les résultats une fois le vote finit
+	*/
+	function affichageResultats(nbr){
+		var tmp;
+		for(var i=0; i<nbr ; i++){
+			//alert(resultatVote['bulletin'+i]);
+
+			$('#resultats').append("<br>");
+			for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
+		
+				$('#resultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>");	
+			}
+		}
+	}
+
+
 	// Gestion du clic sur les boutons de choix de chemin //
 	button.click( function() {
 		$(this).closest("div").hide();
@@ -27,6 +45,7 @@ $(function(){
 	});
 
 	/*
+	 * Function main
 	 * Redirection sur la div 
 	*/ 
 	function gotoSection(key) {
@@ -144,18 +163,7 @@ $(function(){
 			$('.continuer_vote').attr('go', 'fin_vote');
 	}
 
-	/*
-	 * Affiche les résultats une fois le vote finit
-	*/
-	function affichageResultats(nbr){
-		for(var i=0; i<nbr ; i++){
-			alert(resultatVote['bulletin'+i]);
-			for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
-				$('#resultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>");
-			}
-		}
-	}
-
+	
 	/*
 	 * Appuie sur le logo d'accueil
 	*/
