@@ -6,6 +6,7 @@ $(function(){
 	$("#couleursSujets").hide();
 	$("#demarre_vote").hide();
 	$("#vote").hide();
+	$("#validation_vote").hide();
 	$("#fin_vote").hide();
 	var creation = false;
 	var nbrVotant = 3;
@@ -140,7 +141,7 @@ $(function(){
 		$(".bulletin").css("height", "200px");
 
 		if(nbrVote == (nbrVotant-1))
-			$('.validation_vote').attr('go', 'fin_vote');
+			$('.continuer_vote').attr('go', 'fin_vote');
 	}
 
 	/*
