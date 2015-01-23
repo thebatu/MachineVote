@@ -25,12 +25,20 @@ $(function(){
 	 * Affiche les résultats une fois le vote finit
 	*/
 	function affichageResultats(nbr){
+<<<<<<< HEAD
 		var tmp;
 		for(var i=0; i<nbr ; i++){			
+=======
+		for(var i=0; i<nbr ; i++){
+>>>>>>> 57fdbebee60fbe95ca5377bc511c64151e4d7a7d
 			$('#resultats').append("<br>");
 			
 			for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
+<<<<<<< HEAD
 				$('#resultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>");	
+=======
+				$('#resultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas> ");	
+>>>>>>> 57fdbebee60fbe95ca5377bc511c64151e4d7a7d
 			}
 		}
 	}

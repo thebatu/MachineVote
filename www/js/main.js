@@ -25,12 +25,17 @@ $(function(){
 	 * Affiche les résultats une fois le vote finit
 	*/
 	function affichageResultats(nbr){
+
 		var tmp;
 		for(var i=0; i<nbr ; i++){			
+
+		for(var i=0; i<nbr ; i++){
+
 			$('#resultats').append("<br>");
 			
 			for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
 				$('#resultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>");	
+
 			}
 		}
 	}
