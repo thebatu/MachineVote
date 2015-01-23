@@ -1,6 +1,7 @@
 $(function(){
+	var resultatVote = {bulletin0:0, bulletin1:0, bulletin2:0, bulletin3:0, bulletin4:0, bulletin5:0};
 	var couleursVote = new Array("#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF", "#FF00FF","#F778A1","#347C17","#7E3817","#8E35EF");
-	var color = [false,false,false,false,false,false,false,false,false,false];
+	var color = new Array();
 	$("#nombreSujets").hide();
 	$("#couleursSujets").hide();
 	$("#demarre_vote").hide();
@@ -8,15 +9,15 @@ $(function(){
 	$("#fin_vote").hide();
 	var creation = false;
 	var nbrVotant = 3;
-	var nbrVote = 1;
-
-	$("#ecranLogo").on( "click", function(event){
-		$("#ecranLogo").hide();
-		gotoSection("nombreSujets");
-	});
-
+	var nbrVote = 0;
 	/* Liste des boutons récurrents */
 	var button = $(".content .navigation"); 
+
+	$('.validation_vote').on("click", function(event){
+		nbrVote++;
+		var key = $('.bulletin').filter('.selected').attr('id');
+		resultatVote[key] = resultatVote[key]+1;
+	});
 
 	// Gestion du clic sur les boutons de choix de chemin //
 	button.click( function() {
@@ -32,6 +33,9 @@ $(function(){
 			initNombreSujet(nbrSujet);
 		} else if(key == "vote") {
 			initBulletins(nbrSujet);
+		} else if(key == "fin_vote"){
+			for(var i in resultatVote)
+				alert(i + " : " + resultatVote[i]);
 		}
 	}
 
@@ -48,19 +52,23 @@ $(function(){
 		}
 	}
 
-
 /*
-*
 *	change colors of the interface Couleurs des sujets
-*
 */
-	function randomColorGenerator(){
-		var tmpRandomColor = Math.floor((Math.random() * 10 ) );
-		if(color[tmpRandomColor]==false){
-			color[tmpRandomColor]=true;
-			return tmpRandomColor;
-		}else{
-			return randomColorGenerator();
+	function randomColorGenerator(nbr){
+		while(color.length < nbr){
+			var presence = false;
+			var tmpRandomColor = Math.floor((Math.random() * 10 ) );
+			if(color.length == 0)
+				color.push(tmpRandomColor);
+			else{
+				for(var key in color){
+					if(color[key] == tmpRandomColor)
+						presence = true;
+				}
+				if(presence == false)
+					color.push(tmpRandomColor);
+			}
 		}
 	}
 
@@ -71,24 +79,21 @@ $(function(){
 			color[i]=false;
 
 		}
-
-
 		$('#sujets').append("<table><tr></tr><tr></tr></table>");
 		var cases1tab = $('#sujets tr:eq(0)');
-		cases1tab.css("height", "100px");
 		var cases2tab = $('#sujets tr:eq(1)');
-
+		randomColorGenerator(nbr);
 		for(var i=0; i<nbr; i++){
 			if (i <= 2){
 				if (nbr == 4 && i == 2){ //le troisieme choix parmi 4 choix est mis sur la ligne suivante
-					cases2tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[randomColorGenerator()]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' /></td>");
+					cases2tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[color[i]]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' /></td>");
 				}
 				else{
-					cases1tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[randomColorGenerator()]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' /></td>");
+					cases1tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[color[i]]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' /></td>");
 				}
 			}
 			else{ // les 4eme 5eme et 6eme choix sur la seconde ligne
-				cases2tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[randomColorGenerator()]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' /></td>");
+				cases2tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[color[i]]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' /></td>");
 			}
 			
 		}
@@ -97,25 +102,44 @@ $(function(){
 
 	function initBulletins(nbr){
 		$("#bulletins").empty();
-		$(".bulletin").removeClass("selected");
 		for(var i = 0; i < nbr ; i++){
-			$('#bulletins').append("<button id='bulletin"+[i]+"' class='bulletin' style='background-color:"+couleursVote[i]+"'>"+$('#sujet'+[i]).val()+"</button>");
+			$('#bulletins').append("<button onclick='addBulletinSelect();' id='bulletin"+[i]+"' class='bulletin' style='background-color:"+couleursVote[color[i]]+"'>"+$('#sujet'+[i]).val()+"</button>");
 		}
+		if (nbr == 4){ //le troisieme choix parmi 4 choix est mis sur la ligne suivante}
+			$(".bulletin:lt(2)").css("float","left");
+			$(".bulletin:nth-child(3)").css("clear","both");
+			$(".bulletin:gt(0)").css("float","left");
+		}
+		else{
+			$(".bulletin:lt(3)").css("float","left");
+			$(".bulletin:nth-child(4)").css("clear","both");
+			$(".bulletin:gt(0)").css("float","left");
+		}
+		if(nbr ==4 || nbr == 2){
+			$(".bulletin").css("width", "50%");
+			$(".bulletin").css("height", "200px");
+		}
+		else{
+			$(".bulletin").css("width", "33.3%");
+			$(".bulletin").css("height", "200px");
+		}
+
 		if(nbrVote == (nbrVotant-1))
 			$('.validation_vote').attr('go', 'fin_vote');
 	}
 
-	$('.validation_vote').on("click", function(event){
-		nbrVote++;
+	$("#ecranLogo").on( "click", function(event){
+		$("#ecranLogo").hide();
+		gotoSection("nombreSujets");
 	});
 
 	$(".choixSujet").on("click", function(event){
 		$(".choixSujet").removeClass("selected");
 		$(event.target).addClass("selected");
 	});
-
-	$(".bulletin").on("click", function(event){
-		$(".bulletin").removeClass("selected");
-		$(event.target).addClass("selected");
-	});
 });
+
+function addBulletinSelect(){
+	$(".bulletin").removeClass("selected");
+	$(event.target).addClass("selected");
+}
