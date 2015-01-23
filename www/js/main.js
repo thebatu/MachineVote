@@ -33,9 +33,8 @@ $(function(){
 			initNombreSujet(nbrSujet);
 		} else if(key == "vote") {
 			initBulletins(nbrSujet);
-		} else if(key == "fin_vote"){
-			for(var i in resultatVote)
-				alert(i + " : " + resultatVote[i]);
+		} else if(key == "resultats"){
+			affichageResultats(nbrSujet);
 		}
 	}
 
@@ -128,6 +127,15 @@ $(function(){
 
 		if(nbrVote == (nbrVotant-1))
 			$('.validation_vote').attr('go', 'fin_vote');
+	}
+
+	function affichageResultats(nbr){
+		for(var i=0; i<nbr ; i++){
+			alert(resultatVote['bulletin'+i]);
+			for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
+				$('#resultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>");
+			}
+		}
 	}
 
 	$("#ecranLogo").on( "click", function(event){
