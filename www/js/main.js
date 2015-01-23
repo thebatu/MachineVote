@@ -9,7 +9,7 @@ $(function(){
 	$("#validation_vote").hide();
 	$("#fin_vote").hide();
 	var creation = false;
-	var nbrVotant = 6;
+	var nbrVotant = 4;
 	var nbrVote = 0;
 	/* Liste des boutons récurrents */
 	var button = $(".content .navigation"); 
@@ -26,12 +26,10 @@ $(function(){
 	*/
 	function affichageResultats(nbr){
 		var tmp;
-		for(var i=0; i<nbr ; i++){
-			//alert(resultatVote['bulletin'+i]);
-
+		for(var i=0; i<nbr ; i++){			
 			$('#resultats').append("<br>");
+			
 			for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
-		
 				$('#resultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>");	
 			}
 		}
