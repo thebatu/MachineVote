@@ -83,14 +83,14 @@ $(function(){
 		for(var i=0; i<nbr; i++){
 			if (i <= 2){
 				if (nbr == 4 && i == 2){ //le troisieme choix parmi 4 choix est mis sur la ligne suivante
-					cases2tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[color[i]]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' /></td>");
+					cases2tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[color[i]]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' maxlength='10' /></td>");
 				}
 				else{
-					cases1tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[color[i]]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' /></td>");
+					cases1tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[color[i]]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' maxlength='10' /></td>");
 				}
 			}
 			else{ // les 4eme 5eme et 6eme choix sur la seconde ligne
-				cases2tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[color[i]]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' /></td>");
+				cases2tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[color[i]]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' maxlength='10' /></td>");
 			}
 			
 		}
@@ -114,12 +114,17 @@ $(function(){
 		}
 		if(nbr ==4 || nbr == 2){
 			$(".bulletin").css("width", "50%");
-			$(".bulletin").css("height", "200px");
 		}
 		else{
 			$(".bulletin").css("width", "33.3%");
-			$(".bulletin").css("height", "200px");
+			if (nbr == 5){
+				$("#bulletin3").css("margin-left","16.7%");
+			}
+			if (nbr == 3 || nbr == 2){
+				$(".bulletin").css("margin-top", "100px");
+			}
 		}
+		$(".bulletin").css("height", "200px");
 
 		if(nbrVote == (nbrVotant-1))
 			$('.validation_vote').attr('go', 'fin_vote');
