@@ -91,6 +91,34 @@ button{
     color:white;
     border-radius: 20%;
 }
+/*** ACCUEIL ***/
+#accueil{
+    text-align: center;
+}
+    #params{
+        float:right;
+        background-color: #aeadac;
+        padding: 2%;
+    }
+    #accueil button:nth-child(2){
+        width: 100%;
+        margin-top: 8%;
+    }
+
+/*** FIN ACCUEIL ***/
+
+/*** PARAMS ***/
+#parametres{
+    text-align: center;
+}
+    .menuParams{
+        width:100%;
+        margin-top: 4%;
+        margin-bottom: 2%;
+    }
+
+
+/*** FIN PARAMS ***/
 
 /*** SELECTION DU NOMBRE DE SUJETS ***/
 
@@ -251,4 +279,10 @@ button{
 .bigButton {
     background-color: #ff284a;
     padding : 5%;
+}
+
+.codeButton{
+    position: absolute;
+    right:10%;
+    bottom: 10%;
 }

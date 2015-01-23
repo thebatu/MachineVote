@@ -89,8 +89,63 @@ button{
     background: none repeat scroll 0 0 transparent;
     border:medium none;
     color:white;
-    border-radius: 20%;
+    border-radius: 20px;
 }
+/*** ACCUEIL ***/
+#accueil{
+    text-align: center;
+}
+    #params{
+        float:right;
+        background-color: #aeadac;
+        padding: 2%;
+    }
+    #accueil button:nth-child(2){
+        width: 100%;
+        margin-top: 8%;
+    }
+
+/*** FIN ACCUEIL ***/
+
+/*** PARAMS ***/
+#parametres{
+    text-align: center;
+}
+    #menuParams{
+        display: none;
+    }
+        .menuParams{
+            width:100%;
+            margin-top: 4%;
+            margin-bottom: 2%;
+        }
+        .codeButton{
+        position: absolute;
+        right:10%;
+        bottom: 10%;
+    }
+    #codeParams{
+        margin-top: 6%;
+        text-align: center;
+        background-color: white;
+        border-radius: 25px;
+    }
+        #codeParams h3{
+            padding-top: 5%;
+        }
+        .codeParams{
+            background-color: #aeadac;
+            width: 200px;
+            margin-top: 20px;
+        }
+        #codeParams button:last-child{
+            color: black;
+            margin: 30px 0px 30px 80%;
+            text-align: right;
+        }
+
+
+/*** FIN PARAMS ***/
 
 /*** SELECTION DU NOMBRE DE SUJETS ***/
 
@@ -145,7 +200,7 @@ button{
 }
 
 .bulletin{
-    border-radius: 0%;
+    border-radius: 0px;
 }
 /*** FIN VOTE***/
 
@@ -194,12 +249,12 @@ button{
 	.vote{
 	 	height: 72px;
 	 	width: 5%;
-	 	border-radius: 45%;
+	 	border-radius: 45px;
 	}
 	.voteCase{
 	 	width: 65px;
 	 	height: 65px;
-	 	border-radius: 50%;
+	 	border-radius: 50px;
 	}
 	#canvasChoix3{
 
@@ -252,3 +307,4 @@ button{
     background-color: #ff284a;
     padding : 5%;
 }
+
