@@ -5,7 +5,7 @@ $(function(){
 	$(".content").not(":first").hide();
 
 	var creation = false;
-	var nbrVotant = 4;
+	var nbrVotant = 0;
 	var nbrVote = 0;
 	/* Liste des boutons récurrents */
 	var button = $(".content .navigation"); 
@@ -55,6 +55,8 @@ $(function(){
 			initBulletins(nbrSujet);
 		} else if(key == "resultats"){
 			affichageResultats(nbrSujet);
+		} else if(key == "demarre_vote"){
+			nbrVotant = $('#numVot').attr('value');
 		}
 	}
 
@@ -119,7 +121,6 @@ $(function(){
 			else{ // les 4eme 5eme et 6eme choix sur la seconde ligne
 				cases2tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[color[i]]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' maxlength='10' /></td>");
 			}
-			
 		}
 		creation = true;
 	}
@@ -175,6 +176,20 @@ $(function(){
 	$(".choixSujet").on("click", function(event){
 		$(".choixSujet").removeClass("selected");
 		$(event.target).addClass("selected");
+	});
+
+	/*
+	 * Appuie sur le bouton + lors du choix du nombre de votant
+	*/
+	$('#plusVot').on("click", function(event){
+		$('#numVot').attr('value', parseInt($('#numVot').attr('value'))+1);
+	});
+
+	/*
+	 * Appuie sur le bouton - lors du choix du nombre de votant
+	*/
+	$('#moinsVot').on("click", function(event){
+		$('#numVot').attr('value', $('#numVot').attr('value')-1);
 	});
 });
 
