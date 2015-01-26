@@ -2,12 +2,8 @@ $(function(){
 	var resultatVote = {bulletin0:0, bulletin1:0, bulletin2:0, bulletin3:0, bulletin4:0, bulletin5:0};
 	var couleursVote = new Array("#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF", "#FF00FF","#F778A1","#347C17","#7E3817","#8E35EF");
 	var color = new Array();
-	$("#nombreSujets").hide();
-	$("#couleursSujets").hide();
-	$("#demarre_vote").hide();
-	$("#vote").hide();
-	$("#validation_vote").hide();
-	$("#fin_vote").hide();
+	$(".content").not(":first").hide();
+
 	var creation = false;
 	var nbrVotant = 4;
 	var nbrVote = 0;
