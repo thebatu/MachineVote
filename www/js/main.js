@@ -191,12 +191,14 @@ $(function(){
 	$('#moinsVot').on("click", function(event){
 		$('#numVot').attr('value', $('#numVot').attr('value')-1);
 	});
-});
 
-/*
- * Ajout la classe selected au bulletin de vote choisi
-*/
-function addBulletinSelect(){
-	$(".bulletin").removeClass("selected");
-	$(event.target).addClass("selected");
-}
+
+	/*
+	 * Ajout la classe selected au bulletin de vote choisi
+	*/
+	function addBulletinSelect(){
+		$(".bulletin").removeClass("selected");
+		$(event.target).addClass("selected");
+	}
+	
+});
