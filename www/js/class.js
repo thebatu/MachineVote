@@ -18,6 +18,7 @@ $(function(){
 	}
 
 	$(".codeParams").click(function(){
+		//changer pour faire apparaitre un clavier numerique
 		$(this).html(increaseNumber($(this).html()));
 	});
 
