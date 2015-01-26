@@ -6,9 +6,10 @@ $(function(){
 	$("#couleursSujets").hide();
 	$("#demarre_vote").hide();
 	$("#vote").hide();
+	$("#validation_vote").hide();
 	$("#fin_vote").hide();
 	var creation = false;
-	var nbrVotant = 3;
+	var nbrVotant = 4;
 	var nbrVote = 0;
 	/* Liste des boutons récurrents */
 	var button = $(".content .navigation"); 
@@ -19,12 +20,35 @@ $(function(){
 		resultatVote[key] = resultatVote[key]+1;
 	});
 
+
+	/*
+	 * Affiche les résultats une fois le vote finit
+	*/
+	function affichageResultats(nbr){
+		var tmp;
+		for(var i=0; i<nbr ; i++){			
+
+			$('#resultats').append("<br>");
+			
+			for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
+
+				$('#resultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>");	
+
+			}
+		}
+	}
+
+
 	// Gestion du clic sur les boutons de choix de chemin //
 	button.click( function() {
 		$(this).closest("div").hide();
 		gotoSection($(this).attr("go"));
 	});
 
+	/*
+	 * Function main
+	 * Redirection sur la div 
+	*/ 
 	function gotoSection(key) {
 		gererAction(getAction(key));
 		$("#"+key).show();
@@ -33,16 +57,21 @@ $(function(){
 			initNombreSujet(nbrSujet);
 		} else if(key == "vote") {
 			initBulletins(nbrSujet);
-		} else if(key == "fin_vote"){
-			for(var i in resultatVote)
-				alert(i + " : " + resultatVote[i]);
+		} else if(key == "resultats"){
+			affichageResultats(nbrSujet);
 		}
 	}
 
+	/*
+	 * Récupère une action dans une div
+	*/
 	function getAction(key) {
 		return $("#" + key + " action").attr("name");
 	}
 
+	/*
+	 * Gère les actions qui ont été récupérés
+	*/
 	function gererAction(actionName) {
 		switch (actionName) {
 			case "vider_couleursSujets" :
@@ -72,7 +101,9 @@ $(function(){
 		}
 	}
 
-
+	/*
+	 * Initialise le nombre de sujet après que l'utilisateur ai choisi le nombre de sujets
+	*/
 	function initNombreSujet(nbr){
 	//reset the colors
 		color.length = 0;
@@ -97,6 +128,9 @@ $(function(){
 		creation = true;
 	}
 
+	/*
+	 * Initialise les bulletins de vote, en fonction des couleurs et du nombre de sujes proposés
+	*/
 	function initBulletins(nbr){
 		$("#bulletins").empty();
 		for(var i = 0; i < nbr ; i++){
@@ -127,20 +161,30 @@ $(function(){
 		$(".bulletin").css("height", "200px");
 
 		if(nbrVote == (nbrVotant-1))
-			$('.validation_vote').attr('go', 'fin_vote');
+			$('.continuer_vote').attr('go', 'fin_vote');
 	}
 
+	
+	/*
+	 * Appuie sur le logo d'accueil
+	*/
 	$("#ecranLogo").on( "click", function(event){
 		$("#ecranLogo").hide();
 		gotoSection("nombreSujets");
 	});
 
+	/*
+	 * ajoute la classe selected au nombre de sujets choisi
+	*/
 	$(".choixSujet").on("click", function(event){
 		$(".choixSujet").removeClass("selected");
 		$(event.target).addClass("selected");
 	});
 });
 
+/*
+ * Ajout la classe selected au bulletin de vote choisi
+*/
 function addBulletinSelect(){
 	$(".bulletin").removeClass("selected");
 	$(event.target).addClass("selected");

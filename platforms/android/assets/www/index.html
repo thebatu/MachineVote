@@ -53,11 +53,21 @@
             <div id="bulletins">
 
             </div>
-            <button class='navigation valider validation_vote' go='vote'>Valider</button>
+            <button class='navigation valider validation_vote' go='validation_vote'>Valider</button>
+        </div>
+
+        <div id="validation_vote" class="content">
+            <h2>Merci, votre vote est bien enregistré</h2>
+            <button class='navigation valider continuer_vote' go='vote'>Continuer</button>
         </div>
 
         <div id="fin_vote" class="content">
-            <h2>Coucou</h2>
+            <h2>Fin du vote</h2>
+            <button class='navigation bigButton' go='resultats'>Affichage des résultats</button>
+        </div>
+
+        <div id='resultats' class='content'>
+            
         </div>
 
         <script type="text/javascript" src="js/jquery.js"></script>
