@@ -19,7 +19,7 @@ body{
     overflow:hidden; /* contre le scroll */ 
 	width:100%;
     height:100%; /* pour mettre des height en pourcentages*/
-    /*background: url("../img/degradechaudbullesopaque.png");*/
+    background: url("../img/degradechaudbullesopaque.png");
 	font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
 }
 
@@ -281,22 +281,19 @@ input{
 
     #canvasChoix1{
         text-align: left;
-        display:none;
-
     }
-    #canvasChoix2{
+    .choix2{
         text-align: left;
         display:table;
-        display: none;
     }
-	    #canvasChoix2 span{
+	    .choix2 span{
         	display:table-cell;
         	padding-left: 20px;
 	    }
 	.ligne1compt{
 		display:table-row;
 	}
-	#canvas1compt{
+	.canvasCompt{
 		display: table-cell;
 	}
    
@@ -313,19 +310,19 @@ input{
 	 	height: 65px;
 	 	border-radius: 50px;
 	}
-	#canvasChoix3{
+	#affichageResultatsTableau{
 
 	}
-		#canvasChoix3 table{
+		#affichageResultatsTableau table{
 			margin-top: 20px;
 		 	border-collapse:collapse;
 		 	text-align: center;
 		}
-		#canvasChoix3 tr{
+		#affichageResultatsTableau tr{
 			width: auto;
 			height: 75px;
 		}
-		#canvasChoix3 td {
+		#affichageResultatsTableau td {
 		 	border:1px solid black;
 		 	width:75px;
 		 	padding-top: 4px;
@@ -376,8 +373,9 @@ text-shadow: 0px 1px 0px rgba( 255, 255, 255, 0.3);
     background: linear-gradient( #519802, #142d0b);
 }
 .valider:active{
-    box-shadow: 1px 1px 10px #000 inset, 0 1px 0 rgba( 255, 255, 255, 0.4);}
+    box-shadow: 1px 1px 10px #000 inset, 0 1px 0 rgba( 255, 255, 255, 0.4);
 }
+
 .retour{
     position: absolute;
     left:10%;

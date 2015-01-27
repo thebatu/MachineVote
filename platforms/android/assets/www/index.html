@@ -54,10 +54,12 @@
         </div>
 
         <div id="demarre_vote" class="content">
-            <button class='navigation bigButton' go="vote">Démarrer le vote</button>
+            <button class='navigation bigButton' go="selection_prenom">Démarrer le vote</button>
             <button class="navigation retour" go="nombreVotant">←</button>
         </div>
 
+        <div id="selection_prenom" class="content"><button class="navigation valider" go="vote">→</button>
+        </div>
         <div id="vote" class="content">
             <div id="bulletins">
 
@@ -82,7 +84,7 @@
         </div>
 
         <div id='resultatsChiffres' class='content'>
-            <div id="affichageResultatsChiffre">
+            <div id="affichageResultatsChiffre" class="choix2">
 
             </div>
             <button class='navigation valider' go='resultatsTableau'>Switch</button>
