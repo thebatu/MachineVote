@@ -17,23 +17,13 @@
                         <p class="event received">Chargement terminé</p>
                     </div>
             <img id="iut" src="./img/logo_info_couleur.png">
-
         </div>
 
-		<div id="nombreSujets" class="content">
-			<h2>Nombre de sujets</h2>
-            <button class="navigation" go="parametres">Paramètres</button>
-			<div id="boutons">
-				<button class="choixSujet selected" value='2'>2</button>
-				<button class="choixSujet" value='3'>3</button>
-				<button class="choixSujet" value='4'>4</button>
-				<button class="choixSujet" value='5'>5</button>
-				<button class="choixSujet" value='6'>6</button>
-			</div>
-            <action name="vider_couleursSujets" />
-			<button class="navigation retour" go="ecranLogo">Retour</button>
-			<button class="navigation valider" go="couleursSujets">→</button>
-		</div>
+        <div id="accueil" class="content">
+            <button id="params" class="navigation" go="parametres">Paramètres</button>
+            <button class="navigation bigButton" go="">Sélectionner une classe</button>
+            <button class="navigation valider" go="nombreSujets">Passer</button>
+        </div>
 
         <div id="parametres" class="content">
             <h2>Paramètres</h2>
@@ -58,6 +48,20 @@
 
             <button class="navigation retour" go="accueil">Retour</button>
         </div>
+
+		<div id="nombreSujets" class="content">
+			<h2>Nombre de sujets</h2>
+			<div id="boutons">
+				<button class="choixSujet selected" value='2'>2</button>
+				<button class="choixSujet" value='3'>3</button>
+				<button class="choixSujet" value='4'>4</button>
+				<button class="choixSujet" value='5'>5</button>
+				<button class="choixSujet" value='6'>6</button>
+			</div>
+            <action name="vider_couleursSujets" />
+			<button class="navigation retour" go="accueil">Retour</button>
+			<button class="navigation valider" go="couleursSujets">→</button>
+		</div>
 
         <div id="couleursSujets" class="content">
             <h2>Intitules des sujets</h2>
