@@ -31,7 +31,7 @@ $(function(){
 			if(resultatVote['bulletin'+i] != 0)		
 				$('#affichageResultats').append("<br>");
 			for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
-				$('#affichageResultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>");	
+				$('#affichageResultats').append("  <canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>");	
 			}
 		}
 	}
@@ -50,6 +50,22 @@ $(function(){
 				$('#affichageResultatsChiffre div:last').append("<p style='color="+couleursVote[color[i]]+"'>0</p>");
 			}
 		}
+	}
+
+	function affichageResultatsTableau(nbr){
+		$('#affichageResultatsTableau').empty();
+		for(var i=0; i<nbr ; i++){
+		    if(resultatVote['bulletin'+i] != 0)	{
+		        $('#affichageResultatsTableau').append("<table>");
+		        for(var j=0 ; j<10; j++){
+		        	if(j%5 == 0)
+                        $('#affichageResultatsTableau table:last').append("<tr>");
+                    $('#affichageResultatsTableau tr:last').append("<td>");
+                    if(j <resultatVote['bulletin'+i])
+                    	$('#affichageResultatsTableau td:last').append("<canvas class='voteCase' style='background-color:"+couleursVote[color[i]]+"'></canvas>");
+                }
+            }
+        }
 	}
 
 	// Gestion du clic sur les boutons de choix de chemin //
@@ -76,6 +92,8 @@ $(function(){
 			nbrVotant = $('#numVot').attr('value');
 		} else if(key == "resultatsChiffres"){
 			affichageResultatsChiffres(nbrSujet);
+		} else if(key == "resultatsTableau"){
+			affichageResultatsTableau(nbrSujet);
 		}
 	}
 
@@ -208,7 +226,8 @@ $(function(){
 	 * Appuie sur le bouton - lors du choix du nombre de votant
 	*/
 	$('#moinsVot').on("click", function(event){
-		$('#numVot').attr('value', $('#numVot').attr('value')-1);
+		if($('#numVot').attr('value') > 1)
+			$('#numVot').attr('value', $('#numVot').attr('value')-1);
 	});
 });
 

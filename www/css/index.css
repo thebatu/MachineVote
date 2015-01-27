@@ -313,19 +313,19 @@ input{
 	 	height: 65px;
 	 	border-radius: 50px;
 	}
-	#canvasChoix3{
+	#affichageResultatsTableau{
 
 	}
-		#canvasChoix3 table{
+		#affichageResultatsTableau table{
 			margin-top: 20px;
 		 	border-collapse:collapse;
 		 	text-align: center;
 		}
-		#canvasChoix3 tr{
+		#affichageResultatsTableau tr{
 			width: auto;
 			height: 75px;
 		}
-		#canvasChoix3 td {
+		#affichageResultatsTableau td {
 		 	border:1px solid black;
 		 	width:75px;
 		 	padding-top: 4px;
