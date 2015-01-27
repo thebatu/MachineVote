@@ -2,13 +2,7 @@ $(function(){
 	var resultatVote = {bulletin0:0, bulletin1:0, bulletin2:0, bulletin3:0, bulletin4:0, bulletin5:0};
 	var couleursVote = new Array("#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF", "#FF00FF","#F778A1","#347C17","#7E3817","#8E35EF");
 	var color = new Array();
-	$("#nombreSujets").hide();
-	$("#couleursSujets").hide();
-	$("#nombreVotant").hide();
-	$("#demarre_vote").hide();
-	$("#vote").hide();
-	$("#validation_vote").hide();
-	$("#fin_vote").hide();
+	$(".content").not(":first").hide();
 	var creation = false;
 	var nbrVotant = 0;
 	var nbrVote = 0;
@@ -21,24 +15,42 @@ $(function(){
 		resultatVote[key] = resultatVote[key]+1;
 	});
 
+	$('.canvaResultat').live("click", function(event){
+		var tmp = $(event.target).parent().find('p').text();
+		$(event.target).parent().find('p').html(parseInt(tmp)+1);
+		$(event.target).removeClass('canvaResultat');
+		$(event.target).css('background-color', 'gray');
+	});
 
 	/*
 	 * Affiche les résultats une fois le vote finit
 	*/
 	function affichageResultats(nbr){
-		var tmp;
-		for(var i=0; i<nbr ; i++){			
-
-			$('#resultats').append("<br>");
-			
+		$('#affichageResultats').empty();
+		for(var i=0; i<nbr ; i++){
+			if(resultatVote['bulletin'+i] != 0)		
+				$('#affichageResultats').append("<br>");
 			for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
-
-				$('#resultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>");	
-
+				$('#affichageResultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>");	
 			}
 		}
 	}
 
+	/*
+	 * Affiche les résultats chiffrés
+	*/
+	function affichageResultatsChiffres(nbr){
+		$('#affichageResultatsChiffre').empty();
+		for(var i=0; i<nbr ; i++){
+			if(resultatVote['bulletin'+i] != 0)	{
+				$('#affichageResultatsChiffre').append("<br><div></div>");
+				for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
+					$('#affichageResultatsChiffre div:last').append("  <canvas class='vote canvaResultat' style='background-color:"+couleursVote[color[i]]+"'></canvas>");	
+				}
+				$('#affichageResultatsChiffre div:last').append("<p style='color="+couleursVote[color[i]]+"'>0</p>");
+			}
+		}
+	}
 
 	// Gestion du clic sur les boutons de choix de chemin //
 	button.click( function() {
@@ -62,6 +74,8 @@ $(function(){
 			affichageResultats(nbrSujet);
 		} else if(key == "demarre_vote"){
 			nbrVotant = $('#numVot').attr('value');
+		} else if(key == "resultatsChiffres"){
+			affichageResultatsChiffres(nbrSujet);
 		}
 	}
 
