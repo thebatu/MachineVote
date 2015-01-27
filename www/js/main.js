@@ -16,8 +16,8 @@ $(function(){
 	});
 
 	$('.canvaResultat').live("click", function(event){
-		var tmp = $(event.target).parent().find('p').text();
-		$(event.target).parent().find('p').html(parseInt(tmp)+1);
+		var tmp = $(event.target).parent().parent().find('span').text();
+		$(event.target).parent().parent().find('span').html(parseInt(tmp)+1);
 		$(event.target).removeClass('canvaResultat');
 		$(event.target).css('background-color', 'gray');
 	});
@@ -43,11 +43,11 @@ $(function(){
 		$('#affichageResultatsChiffre').empty();
 		for(var i=0; i<nbr ; i++){
 			if(resultatVote['bulletin'+i] != 0)	{
-				$('#affichageResultatsChiffre').append("<br><div></div>");
+				$('#affichageResultatsChiffre').append("<br><div class='canvasCompt'></div>");
 				for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
 					$('#affichageResultatsChiffre div:last').append("  <canvas class='vote canvaResultat' style='background-color:"+couleursVote[color[i]]+"'></canvas>");	
 				}
-				$('#affichageResultatsChiffre div:last').append("<p style='color="+couleursVote[color[i]]+"'>0</p>");
+				$('#affichageResultatsChiffre').append("<span style='color="+couleursVote[color[i]]+"'>0</span>");
 			}
 		}
 	}

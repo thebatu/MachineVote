@@ -281,22 +281,19 @@ input{
 
     #canvasChoix1{
         text-align: left;
-        display:none;
-
     }
-    #canvasChoix2{
+    .choix2{
         text-align: left;
         display:table;
-        display: none;
     }
-	    #canvasChoix2 span{
+	    .choix2 span{
         	display:table-cell;
         	padding-left: 20px;
 	    }
 	.ligne1compt{
 		display:table-row;
 	}
-	#canvas1compt{
+	.canvasCompt{
 		display: table-cell;
 	}
    

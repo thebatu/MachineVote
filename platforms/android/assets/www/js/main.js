@@ -16,8 +16,8 @@ $(function(){
 	});
 
 	$('.canvaResultat').live("click", function(event){
-		var tmp = $(event.target).parent().find('p').text();
-		$(event.target).parent().find('p').html(parseInt(tmp)+1);
+		var tmp = $(event.target).parent().parent().find('span').text();
+		$(event.target).parent().parent().find('span').html(parseInt(tmp)+1);
 		$(event.target).removeClass('canvaResultat');
 		$(event.target).css('background-color', 'gray');
 	});
@@ -31,7 +31,7 @@ $(function(){
 			if(resultatVote['bulletin'+i] != 0)		
 				$('#affichageResultats').append("<br>");
 			for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
-				$('#affichageResultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>");	
+				$('#affichageResultats').append("  <canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>");	
 			}
 		}
 	}
@@ -43,13 +43,29 @@ $(function(){
 		$('#affichageResultatsChiffre').empty();
 		for(var i=0; i<nbr ; i++){
 			if(resultatVote['bulletin'+i] != 0)	{
-				$('#affichageResultatsChiffre').append("<br><div></div>");
+				$('#affichageResultatsChiffre').append("<br><div class='canvasCompt'></div>");
 				for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
 					$('#affichageResultatsChiffre div:last').append("  <canvas class='vote canvaResultat' style='background-color:"+couleursVote[color[i]]+"'></canvas>");	
 				}
-				$('#affichageResultatsChiffre div:last').append("<p style='color="+couleursVote[color[i]]+"'>0</p>");
+				$('#affichageResultatsChiffre').append("<span style='color="+couleursVote[color[i]]+"'>0</span>");
 			}
 		}
+	}
+
+	function affichageResultatsTableau(nbr){
+		$('#affichageResultatsTableau').empty();
+		for(var i=0; i<nbr ; i++){
+		    if(resultatVote['bulletin'+i] != 0)	{
+		        $('#affichageResultatsTableau').append("<table>");
+		        for(var j=0 ; j<10; j++){
+		        	if(j%5 == 0)
+                        $('#affichageResultatsTableau table:last').append("<tr>");
+                    $('#affichageResultatsTableau tr:last').append("<td>");
+                    if(j <resultatVote['bulletin'+i])
+                    	$('#affichageResultatsTableau td:last').append("<canvas class='voteCase' style='background-color:"+couleursVote[color[i]]+"'></canvas>");
+                }
+            }
+        }
 	}
 
 	// Gestion du clic sur les boutons de choix de chemin //
@@ -76,6 +92,8 @@ $(function(){
 			nbrVotant = $('#numVot').attr('value');
 		} else if(key == "resultatsChiffres"){
 			affichageResultatsChiffres(nbrSujet);
+		} else if(key == "resultatsTableau"){
+			affichageResultatsTableau(nbrSujet);
 		}
 	}
 
@@ -208,7 +226,8 @@ $(function(){
 	 * Appuie sur le bouton - lors du choix du nombre de votant
 	*/
 	$('#moinsVot').on("click", function(event){
-		$('#numVot').attr('value', $('#numVot').attr('value')-1);
+		if($('#numVot').attr('value') > 1)
+			$('#numVot').attr('value', $('#numVot').attr('value')-1);
 	});
 });
 
