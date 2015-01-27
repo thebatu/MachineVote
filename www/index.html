@@ -17,7 +17,36 @@
                         <p class="event received">Chargement terminé</p>
                     </div>
             <img id="iut" src="./img/logo_info_couleur.png">
+        </div>
 
+        <div id="accueil" class="content">
+            <button id="params" class="navigation" go="parametres">Paramètres</button>
+            <button class="navigation bigButton" go="">Sélectionner une classe</button>
+            <button class="navigation valider" go="nombreSujets">Passer</button>
+        </div>
+
+        <div id="parametres" class="content">
+            <h2>Paramètres</h2>
+            <div id="codeParams">
+                <h3>Entrez le code</h3>
+                <!-- faire une fonction qui vérifie si le code est valide -->
+                <!-- Si le code est bon, ajouter go="menuParams" au bouton-->
+                <button class="codeParams">0</button>
+                <button class="codeParams">0</button>
+                <button class="codeParams">0</button>
+                <button class="codeParams">0</button><br />
+                <button>OK</button>
+
+            </div>
+
+            <div id="menuParams" class="">
+            <button class="navigation menuParams" go="">Ajouter une classe</button>
+            <button class="navigation menuParams" go="">Modifier une classe</button>
+            <button class="navigation menuParams" go="">Options couleurs</button>
+            <button class="codeButton" go="">Changer le code</button>
+            </div>
+
+            <button class="navigation retour" go="accueil">Retour</button>
         </div>
 
 		<div id="nombreSujets" class="content">
@@ -30,7 +59,7 @@
 				<button class="choixSujet" value='6'>6</button>
 			</div>
             <action name="vider_couleursSujets" />
-			<button class="navigation retour" go="ecranLogo">Retour</button>
+			<button class="navigation retour" go="accueil">Retour</button>
 			<button class="navigation valider" go="couleursSujets">→</button>
 		</div>
 
