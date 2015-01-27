@@ -45,7 +45,7 @@
 
         <div id="nombreVotant" class="content">
             <h2>Nombre de votants</h2>
-            <input type="number" id="numVot" value='10' />
+            <input type="number" id="numVot" value='3' />
             <button id="plusVot">+</button>
             <button id="moinsVot">-</button>
 
@@ -76,7 +76,23 @@
         </div>
 
         <div id='resultats' class='content'>
-            
+            <div id="affichageResultats">
+            </div>
+            <button class='navigation valider' go='resultatsChiffres'>Switch</button>
+        </div>
+
+        <div id='resultatsChiffres' class='content'>
+            <div id="affichageResultatsChiffre">
+
+            </div>
+            <button class='navigation valider' go='resultatsTableau'>Switch</button>
+        </div>
+
+        <div id='resultatsTableau' class='content'>
+            <div id="affichageResultatsTableau">
+                
+            </div>
+            <button class='navigation valider' go='resultats'>Switch</button>
         </div>
 
         <script type="text/javascript" src="js/jquery.js"></script>
