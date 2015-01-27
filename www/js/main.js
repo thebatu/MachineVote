@@ -61,7 +61,7 @@ $(function(){
 		        	if(j%5 == 0)
                         $('#affichageResultatsTableau table:last').append("<tr>");
                     $('#affichageResultatsTableau tr:last').append("<td>");
-                    if(j < resultatVote['bulletin'+i])
+                    if(j <resultatVote['bulletin'+i])
                     	$('#affichageResultatsTableau td:last').append("<canvas class='voteCase' style='background-color:"+couleursVote[color[i]]+"'></canvas>");
                 }
             }
