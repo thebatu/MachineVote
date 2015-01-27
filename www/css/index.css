@@ -16,6 +16,8 @@ html, body{
     height:100%; /* pour mettre des height en pourcentages*/
     background: url("../img/degradechaudbullesopaque.png");
 	font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    background-size: cover; 
+
 }
 
 /*** Ecran Logo ***/
