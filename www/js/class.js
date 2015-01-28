@@ -32,12 +32,11 @@ $(function(){
 		$(this).html(increaseNumber($(this).html()));
 	});
 
+
 	$("#codeParams button:last").click(function(){
-		//location.reload();
-		
+	
 
-
-
+	$("#codeParams .ok").click(function(){
 
 		//verification du code lors de l'appui sur ok
 		var a = $(".codeParams:first").html();
@@ -54,6 +53,22 @@ $(function(){
 		}
 			//a=null;
 			//b=null;
+	});
+
+	function replaceCode(n1, n2, n3, n4){
+		code[0]=n1;
+		code[1]=n2;
+		code[2]=n3;
+		code[3]=n4;
+	}
+
+	$("#changeCodeParams .ok").click(function(){
+		//verification du code lors de l'appui sur ok
+		var a = $(".codeParams:first").html();
+		var b = $(".codeParams:nth-child(3)").html();
+		var c = $(".codeParams:nth-child(4)").html();
+		var d = $(".codeParams:nth-child(5)").html();
+		replaceCode(a,b,c,d);
 	});
 
 });

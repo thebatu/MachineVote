@@ -12,6 +12,11 @@ $(function(){
 		resultatVote[key] = resultatVote[key]+1;
 	});
 
+	/*$(document).on("swipright", "#resultats", function(){
+		$('#resultats').hide();
+		$('#resultatsTableau').show();
+	});*/
+
 	$('.canvaResultat').live("click", function(event){
 		var tmp = $(event.target).parent().find('p').text();
 		$(event.target).parent().find('p').html(parseInt(tmp)+1);
