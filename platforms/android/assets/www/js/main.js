@@ -1,11 +1,7 @@
 $(function(){
-	var resultatVote = {bulletin0:0, bulletin1:0, bulletin2:0, bulletin3:0, bulletin4:0, bulletin5:0};
+	var resultatVote; var color; var nbrVotant; var nbrVote;
 	var couleursVote = new Array("#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF", "#FF00FF","#F778A1","#347C17","#7E3817","#8E35EF");
-	var color = new Array();
 	$(".content").not(":first").hide();
-	var creation = false;
-	var nbrVotant = 0;
-	var nbrVote = 0;
 	/* Liste des boutons récurrents */
 	var button = $(".content .navigation"); 
 
@@ -16,8 +12,8 @@ $(function(){
 	});
 
 	$('.canvaResultat').live("click", function(event){
-		var tmp = $(event.target).parent().parent().find('span').text();
-		$(event.target).parent().parent().find('span').html(parseInt(tmp)+1);
+		var tmp = $(event.target).parent().find('p').text();
+		$(event.target).parent().find('p').html(parseInt(tmp)+1);
 		$(event.target).removeClass('canvaResultat');
 		$(event.target).css('background-color', 'gray');
 	});
@@ -31,7 +27,7 @@ $(function(){
 			if(resultatVote['bulletin'+i] != 0)		
 				$('#affichageResultats').append("<br>");
 			for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
-				$('#affichageResultats').append("  <canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>");	
+				$('#affichageResultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas> ");	
 			}
 		}
 	}
@@ -42,12 +38,13 @@ $(function(){
 	function affichageResultatsChiffres(nbr){
 		$('#affichageResultatsChiffre').empty();
 		for(var i=0; i<nbr ; i++){
-			if(resultatVote['bulletin'+i] != 0)	{
-				$('#affichageResultatsChiffre').append("<br><div class='canvasCompt'></div>");
+			if(resultatVote['bulletin'+i] != 0) {
+				$('#affichageResultatsChiffre').append("<div class='ligne1compt'></div>");
 				for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
-					$('#affichageResultatsChiffre div:last').append("  <canvas class='vote canvaResultat' style='background-color:"+couleursVote[color[i]]+"'></canvas>");	
+					$('#affichageResultatsChiffre div:last').append("<canvas class='vote canvaResultat' style='background-color:"+couleursVote[color[i]]+"'></canvas> ");
 				}
-				$('#affichageResultatsChiffre').append("<span style='color="+couleursVote[color[i]]+"'>0</span>");
+				$('#affichageResultatsChiffre div:last').append("<p class='span'>0</p>");
+				$("#affichageResultatsChiffre div:last p").css("color",couleursVote[color[i]]);
 			}
 		}
 	}
@@ -112,6 +109,13 @@ $(function(){
 			case "vider_couleursSujets" :
 				$("#sujets").empty();
 				creation = false;
+				break;
+			case "initialisation" :
+				resultatVote = {bulletin0:0, bulletin1:0, bulletin2:0, bulletin3:0, bulletin4:0, bulletin5:0};
+				color = new Array();
+				creation = false;
+				nbrVote = 0;
+				$('.continuer_vote').attr('go', 'vote');
 				break;
 		}
 	}
@@ -228,6 +232,13 @@ $(function(){
 	$('#moinsVot').on("click", function(event){
 		if($('#numVot').attr('value') > 1)
 			$('#numVot').attr('value', $('#numVot').attr('value')-1);
+	});
+
+	$('#selectionClass button').on('click', function(){
+		$('#selectionClass button').css("color", "white");
+		$('#selectionClass button').css("background-color", "");
+  		$(event.target).css("color","black");
+  		$(event.target).css("background-color","white");
 	});
 });
 
