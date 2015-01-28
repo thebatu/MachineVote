@@ -2,16 +2,6 @@ $(function(){
 	var code = new Array("0","0","0","0");
 
 
-
-	function reinitializePass() {
-		if(!$('#codeParams').is(':visible')){
-			$("#codeParams").show();
-		}
-		// body...
-	}
-
-
-
 	function increaseNumber(nbr){
 		var tot = parseInt(nbr) + 1;
 		if (tot == 10){
@@ -32,17 +22,8 @@ $(function(){
 		$(this).html(increaseNumber($(this).html()));
 	});
 
-<<<<<<< HEAD
-	$("#codeParams button:last").click(function(){
-		//location.reload();
-		
-
-
-
-
-=======
 	$("#codeParams .ok").click(function(){
->>>>>>> fb3f09d76b178ec4a8613c83a67c7a0d24fe4138
+
 		//verification du code lors de l'appui sur ok
 		var a = $(".codeParams:first").html();
 		var b = $(".codeParams:nth-child(3)").html();
@@ -65,6 +46,7 @@ $(function(){
 		code[1]=n2;
 		code[2]=n3;
 		code[3]=n4;
+		alert("code changé");
 	}
 
 	$("#changeCodeParams .ok").click(function(){
@@ -74,6 +56,11 @@ $(function(){
 		var c = $(".codeParams:nth-child(4)").html();
 		var d = $(".codeParams:nth-child(5)").html();
 		replaceCode(a,b,c,d);
+	});
+
+	$(".codeButton").click(function(){
+		$(this).parent().hide();
+		$("#changeCodeParams").show();
 	});
 
 });

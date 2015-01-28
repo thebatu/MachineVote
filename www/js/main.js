@@ -46,7 +46,6 @@ $(function(){
 			$("#menuParams").hide();
 			$("#changeCodeParams").hide();
 		}
-		// body...
 	}
 
 

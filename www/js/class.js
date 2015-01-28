@@ -2,16 +2,6 @@ $(function(){
 	var code = new Array("0","0","0","0");
 
 
-
-	function reinitializePass() {
-		if(!$('#codeParams').is(':visible')){
-			$("#codeParams").show();
-		}
-		// body...
-	}
-
-
-
 	function increaseNumber(nbr){
 		var tot = parseInt(nbr) + 1;
 		if (tot == 10){
@@ -31,10 +21,6 @@ $(function(){
 		//changer pour faire apparaitre un clavier numerique
 		$(this).html(increaseNumber($(this).html()));
 	});
-
-
-	$("#codeParams button:last").click(function(){
-	
 
 	$("#codeParams .ok").click(function(){
 
@@ -60,6 +46,7 @@ $(function(){
 		code[1]=n2;
 		code[2]=n3;
 		code[3]=n4;
+		alert("code changé");
 	}
 
 	$("#changeCodeParams .ok").click(function(){
