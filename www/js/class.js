@@ -53,4 +53,9 @@ $(function(){
 		replaceCode(a,b,c,d);
 	});
 
+	$(".codeButton").click(function(){
+		$(this).parent().hide();
+		$("#changeCodeParams").show();
+	});
+
 });

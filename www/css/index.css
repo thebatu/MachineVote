@@ -181,6 +181,9 @@ button:active{
             color: black;
             margin: 30px 0px 30px 80%;
         }
+    #changeCodeParams{
+        display:none;
+    }
 
 
 /*** FIN PARAMS ***/
@@ -278,7 +281,7 @@ input{
 }
 
 /*** FIN CHOIX DES SUJETS COULEURS ET TITRES ***/
-#nombreVotant, #demarre_vote{
+#nombreVotant, #demarre_vote, #fin_vote{
     text-align: center;
 }
     #choixVotant{
@@ -403,12 +406,10 @@ input{
     /*padding: 10px;*/
 }
 .valider, .valider:active{
-    background: #519802;
     background: linear-gradient( #519802, #9ccf31);
 }
 
 .valider:hover{
-    background: #519802;
     background: linear-gradient( #519802, #142d0b);
 }
 
@@ -417,6 +418,13 @@ input{
     background-color: lightgray;
     left:10%;
     transform: scale(-1, 1);
+}
+.retour, .retour:active{
+    background: linear-gradient( lightgray, #ffffff);
+}
+
+.retour:hover{
+    background: linear-gradient( lightgray, #666666);
 }
 .retourAccueil{
     color:black;
@@ -436,7 +444,9 @@ input{
 }
 
 .bigButton {
+    background: linear-gradient( #ff284a, #ff1313, #ff284a);
     background-color: #ff284a;
     padding : 5%;
+    margin-top: 5%;
 }
 
