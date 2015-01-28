@@ -1,11 +1,7 @@
 $(function(){
-	var resultatVote = {bulletin0:0, bulletin1:0, bulletin2:0, bulletin3:0, bulletin4:0, bulletin5:0};
+	var resultatVote; var color; var nbrVotant; var nbrVote;
 	var couleursVote = new Array("#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF", "#FF00FF","#F778A1","#347C17","#7E3817","#8E35EF");
-	var color = new Array();
 	$(".content").not(":first").hide();
-	var creation = false;
-	var nbrVotant = 0;
-	var nbrVote = 0;
 	/* Liste des boutons récurrents */
 	var button = $(".content .navigation"); 
 
@@ -112,6 +108,13 @@ $(function(){
 			case "vider_couleursSujets" :
 				$("#sujets").empty();
 				creation = false;
+				break;
+			case "initialisation" :
+				resultatVote = {bulletin0:0, bulletin1:0, bulletin2:0, bulletin3:0, bulletin4:0, bulletin5:0};
+				color = new Array();
+				creation = false;
+				nbrVote = 0;
+				$('.continuer_vote').attr('go', 'vote');
 				break;
 		}
 	}
@@ -228,6 +231,13 @@ $(function(){
 	$('#moinsVot').on("click", function(event){
 		if($('#numVot').attr('value') > 1)
 			$('#numVot').attr('value', $('#numVot').attr('value')-1);
+	});
+
+	$('#selectionClass button').on('click', function(){
+		$('#selectionClass button').css("color", "white");
+		$('#selectionClass button').css("background-color", "");
+  		$(event.target).css("color","black");
+  		$(event.target).css("background-color","white");
 	});
 });
 
