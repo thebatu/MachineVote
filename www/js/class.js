@@ -32,8 +32,7 @@ $(function(){
 		if (verifyCode(a,b,c,d)){
 			$("#codeParams").hide();
 			$("#menuParams").show();
-			//a =null;
-						}
+			}
 		else{
 			alert("wrong");
 		}

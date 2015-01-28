@@ -287,10 +287,16 @@ input{
     #choixVotant{
         margin-top: 4%;
     }
+    #choixVotant input{
+        width:20%;
+    }
+        .modifNb{
+            padding: 2%;
+        }
 
 /*** CHOIX DES CLASSES ***/
 #listeClass{ 
-    height:450px;
+    height:400px;
     overflow-y : scroll;
     margin-bottom: 1%;
 }
@@ -309,7 +315,8 @@ input{
 }
 
 .bulletin{
-    border-radius: 0px;
+    border-radius: 15px;
+    margin:1%;
 }
 /*** FIN VOTE***/
 
@@ -396,7 +403,6 @@ input{
     bottom: 10%;
     /*display: inline-block;*/
     border-radius:7px;
-
 
 }
 .valider{
