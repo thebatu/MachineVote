@@ -127,14 +127,15 @@ button:active{
     text-align: center;
 }
     #params{
+        width: 15%;
+        height: auto;
         margin-top: -5%;
         margin-right: -5%;
         float:right;
     }
-        #params img{
-            width:50%;
-        }
-    #accueil button:nth-child(2){
+
+    #accueil button.bigButton{
+        clear:both;
         width: 100%;
         margin-top: 5%;
     }
@@ -280,10 +281,12 @@ input{
 }
 
 /*** FIN CHOIX DES SUJETS COULEURS ET TITRES ***/
-
-#demarre_vote{
+#nombreVotant, #demarre_vote{
     text-align: center;
 }
+    #choixVotant{
+        margin-top: 4%;
+    }
 
 /*** CHOIX DES CLASSES ***/
 #listeClass{ 
