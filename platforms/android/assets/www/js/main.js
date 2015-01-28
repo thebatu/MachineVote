@@ -204,7 +204,7 @@ $(function(){
 	*/
 	$("#ecranLogo").on( "click", function(event){
 		$("#ecranLogo").hide();
-		gotoSection("nombreSujets");
+		gotoSection("accueil");
 	});
 
 	/*

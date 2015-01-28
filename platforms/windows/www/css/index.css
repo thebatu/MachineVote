@@ -1,0 +1,398 @@
+﻿
+/** Contre la selection de texte **/
+*{
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -webkit-touch-callout: none;
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+
+  /* No support for these yet, use at own risk */
+  -o-user-select: none;
+  user-select: none;          
+}
+html{
+    overflow:hidden; /* contre le scroll */ 
+    width:100%;
+    height:100%; /* pour mettre des height en pourcentages*/
+}
+body{
+	width:100%;
+    height:100%; /* pour mettre des height en pourcentages*/
+    background: url("../img/gitPhp.png");
+	font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+}
+
+/*** Ecran Logo ***/
+#ecranLogo{
+    width:80%;
+    height:auto;
+    text-align: center;
+}
+#title {
+    width:75%;
+}   
+    #iut{
+        position:absolute;
+        bottom:10%;
+        width:15%;
+        left:10%;
+    }
+    #deviceready{
+        position:absolute;
+        bottom:15%;
+        left:40%;
+    }
+
+.event {
+    font-size:70%;
+    text-align: center;
+}
+
+.event.listening {
+    display:block;
+}
+
+.event.received {
+    display:none;
+}
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+}
+/*** FIN Ecran Logo ***/
+
+.content{
+	font-size: 400%;
+	width: 80%;
+	padding: 10%;
+    margin: 0 auto;
+}
+h2{
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    margin-top: -5%;
+}
+button{
+    font-size: 1em;
+    background: none repeat scroll 0 0 transparent;
+    border:medium none;
+    color:white;
+    border-radius: 20px;
+}
+/*** ACCUEIL ***/
+#accueil{
+    text-align: center;
+}
+    #params{
+        float:right;
+        background-color: #aeadac;
+        padding: 2%;
+    }
+    #accueil button:nth-child(2){
+        width: 100%;
+        margin-top: 8%;
+    }
+
+/*** FIN ACCUEIL ***/
+
+/*** PARAMS ***/
+#parametres{
+    text-align: center;
+}
+    #menuParams{
+        display: none;
+    }
+        .menuParams{
+            width:100%;
+            margin-top: 4%;
+            margin-bottom: 2%;
+        }
+        .codeButton{
+        position: absolute;
+        right:10%;
+        bottom: 10%;
+        padding: 10px;
+    }
+    #codeParams{
+        margin-top: 6%;
+        text-align: center;
+        background-color: white;
+        border-radius: 25px;
+    }
+        #codeParams h3{
+            padding-top: 5%;
+        }
+        .codeParams{
+            background-color: #aeadac;
+            width: 200px;
+            margin-top: 20px;
+        }
+        #codeParams button:last-child{
+            color: black;
+            margin: 30px 0px 30px 80%;
+            text-align: right;
+        }
+
+
+/*** FIN PARAMS ***/
+/*** GESTION DE CLASSE ***/
+
+#ajoutClasse{
+
+}   
+    .modif{
+        float: left;
+        width:45%;
+        text-align: right;
+    }
+        .modif input{
+            width:100%;
+            margin-top:10%;
+        }
+        .modif .ajout{
+            background-color: #519802; /* vert */
+            width:100px;
+            height:100px;
+            border-radius: 50px;
+        }
+    .classRight{
+        width:45%;
+        float:right;
+        margin-top:5%;
+    }
+    .classRight div{
+        background-color: white;
+        height:200px;
+        margin-top:5%;
+    }
+        .classRight .agrandir{
+            border-radius: 50px;
+            display: inline-block;
+            background-color: lightgrey;
+            color: black;
+            transform:rotate(-45deg);
+        }
+        .classRight label{
+            font-size: 75%;
+        }
+
+#modifClasse{
+
+}
+    #modifClasse button{
+        padding:2%;
+        font-size: 75%;
+        margin-top: 4%;
+    }
+    .suppr{
+        background-color: red;
+    }
+/*** FIN GESTION DE CLASSE ***/
+
+/*** SELECTION DU NOMBRE DE SUJETS ***/
+
+.choixSujet{
+    background-color: #ff284a; /* rose */
+	border : 3px #ff284a ridge;
+	padding: 2% 4% 2% 4%;
+}
+
+#boutons{
+    margin-top: 5%;
+    text-align: center;
+}
+/*** FIN SELECTION DU NOMBRE DE SUJETS ***/
+/*** CHOIX DES SUJETS COULEURS ET TITRES ***/
+#sujets{
+    width: 80%;
+    margin: 0 auto;
+}
+input{
+    font-size: 75%;
+    height: 60px;
+    padding:3px;
+    border:1px solid #F5C5C5;
+    border-radius:5px;
+    width:60%;
+    box-shadow:1px 1px 2px #C0C0C0 inset;
+}
+
+.couleurSujet{ /*canvas de couleur*/
+    width : 60px;
+    height: 60px;
+    background-color: black;
+    border-radius : 15px;
+    margin : 0 2% 0 0; 
+    margin-bottom: -3%;
+
+}
+#sujets table{
+    margin-top: 5%;
+}
+
+/*** FIN CHOIX DES SUJETS COULEURS ET TITRES ***/
+
+#demarre_vote{
+    text-align: center;
+}
+/*** VOTE ***/
+#bulletins{
+    text-align: center;
+}
+
+.bulletin{
+    border-radius: 0px;
+}
+/*** FIN VOTE***/
+
+/*** SELECTION DE PRESENTATION DE RESULTATS***/
+.choixResult{
+}
+    .voteRouge{ 
+        background-color:red;
+    }
+
+    .voteBleu{
+		background-color: blue;
+	}
+
+	.croixBleu+span{
+        color:blue;
+    }
+
+    .croixRouge+span{
+        color:red;
+    }
+
+    #canvasChoix1{
+        text-align: left;
+    }
+    .choix2{
+        text-align: left;
+        display:table;
+    }
+	    .choix2 span{
+        	display:table-cell;
+        	padding-left: 20px;
+	    }
+	.ligne1compt{
+		display:table-row;
+	}
+	.canvasCompt{
+		display: table-cell;
+	}
+   
+    #ligne2compt{
+		display:table-row;
+	}
+	.vote{
+	 	height: 72px;
+	 	width: 5%;
+	 	border-radius: 45px;
+	}
+	.voteCase{
+	 	width: 65px;
+	 	height: 65px;
+	 	border-radius: 50px;
+	}
+	#affichageResultatsTableau{
+
+	}
+		#affichageResultatsTableau table{
+			margin-top: 20px;
+		 	border-collapse:collapse;
+		 	text-align: center;
+		}
+		#affichageResultatsTableau tr{
+			width: auto;
+			height: 75px;
+		}
+		#affichageResultatsTableau td {
+		 	border:1px solid black;
+		 	width:75px;
+		 	padding-top: 4px;
+		}
+/*** FIN SELECTION DE PRESENTATION DE RESULTATS***/
+
+.selected {
+    border : 3px #aa33ff groove;
+    background-color:#aa33ff;
+}
+
+.valider{
+    width:auto;
+    padding:8px 0;
+    text-align:center;
+    display: inline-block;
+    margin:0 8px 0 0;
+    border-radius:7px;
+    font-size: 0.85em;
+    width:120px;
+    color:white;
+    font-weight: bold;
+    position: absolute;
+    right:10%;
+    bottom: 10%;
+    background-color: #519802; /* vert */
+    /*padding: 10px;*/
+
+    box-shadow: 0 0 1px rgba( 0, 0, 0, 0.2), 0 -1px 0 rgba( 255, 255, 255, 0.1);
+text-shadow: 0px 1px 0px rgba( 255, 255, 255, 0.3);
+}
+.valider, .valider:active{
+    background: #444;
+    background: linear-gradient( #519802, #9ccf31);
+    background: -webkit-linear-gradient( #519802, #9ccf31);
+    background: -moz-linear-gradient( #519802, #9ccf31);
+    background: -ms-linear-gradient( #519802, #9ccf31);
+    background: -o-linear-gradient( #519802, #9ccf31);
+    background: linear-gradient( #519802, #9ccf31);
+}
+
+.valider:hover{
+    background: #519802;
+    background: -webkit-linear-gradient( #519802, #142d0b);
+    background: -moz-linear-gradient( #519802, #142d0b);
+    background: -ms-linear-gradient( #519802, #142d0b);
+    background: -o-linear-gradient( #519802, #142d0b);
+    background: linear-gradient( #519802, #142d0b);
+}
+.valider:active{
+    box-shadow: 1px 1px 10px #000 inset, 0 1px 0 rgba( 255, 255, 255, 0.4);
+}
+
+.retour{
+    position: absolute;
+    left:10%;
+    bottom: 10%;
+    padding: 10px;
+}
+
+.demarre_vote {
+    background-color: #ff284a;
+}
+
+.ecran_de_vote{
+    border : 3px #519802 groove;
+    background-color:#519802;
+}
+
+.bigButton {
+    background-color: #ff284a;
+    padding : 5%;
+}
+
