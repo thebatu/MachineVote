@@ -47,7 +47,8 @@ $(function(){
 				for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
 					$('#affichageResultatsChiffre div:last').append("<canvas class='vote canvaResultat' style='background-color:"+couleursVote[color[i]]+"'></canvas> ");
 				}
-				$('#affichageResultatsChiffre div:last').append("<p class='span' style='color="+couleursVote[color[i]]+"'>0</p>");
+				$('#affichageResultatsChiffre div:last').append("<p class='span'>0</p>");
+				$("#affichageResultatsChiffre div:last p").css("color",couleursVote[color[i]]);
 			}
 		}
 	}
