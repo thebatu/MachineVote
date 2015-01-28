@@ -23,6 +23,7 @@ $(function(){
 	});
 
 	$("#codeParams button:last").click(function(){
+		//verification du code lors de l'appui sur ok
 		var a = $(".codeParams:first").html();
 		var b = $(".codeParams:nth-child(3)").html();
 		var c = $(".codeParams:nth-child(4)").html();

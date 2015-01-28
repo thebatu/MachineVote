@@ -11,6 +11,19 @@
   user-select: none;          
 }
 
+::-webkit-scrollbar{
+    width: 25px;
+}
+
+::-webkit-scrollbar-thumb {                 
+    background: green;
+}
+
+::-webkit-scrollbar-track-piece {
+    background: red;
+
+}
+
 html, body{
 	width:100%;
     height:100%; /* pour mettre des height en pourcentages*/
@@ -28,6 +41,7 @@ html, body{
     height:auto;
     text-align: center;
 }
+
 #title {
     width:75%;
 }   
@@ -37,6 +51,7 @@ html, body{
         width:15%;
         left:10%;
     }
+
     #deviceready{
         position:absolute;
         bottom:15%;
@@ -72,6 +87,7 @@ html, body{
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+
 /*** FIN Ecran Logo ***/
 
 .content{
@@ -80,12 +96,14 @@ html, body{
 	padding: 10%;
     margin: 0 auto;
 }
+
 h2{
     text-transform: uppercase;
     font-weight: bold;
     text-align: center;
     margin-top: -5%;
 }
+
 button{
     font-size: 1em;
     background: none repeat scroll 0 0 transparent;
@@ -93,6 +111,7 @@ button{
     color:white;
     border-radius: 20px;
 }
+
 /*** ACCUEIL ***/
 #accueil{
     text-align: center;
@@ -182,7 +201,7 @@ button{
         .classRight .agrandir{
             border-radius: 50px;
             display: inline-block;
-            background-color: lightgrey;
+            background-color: lightgray;
             color: black;
             transform:rotate(-45deg);
         }
@@ -249,6 +268,15 @@ input{
 #demarre_vote{
     text-align: center;
 }
+
+/*** CHOIX DES CLASSES ***/
+#listeClass{ 
+    height: 470px;
+    overflow-y : scroll;
+}
+
+/*** FIN CHOIX DES CLASSES ***/
+
 /*** VOTE ***/
 #bulletins{
     text-align: center;
@@ -261,6 +289,7 @@ input{
 
 /*** SELECTION DE PRESENTATION DE RESULTATS***/
 .choixResult{
+    display:none;
 }
     .voteRouge{ 
         background-color:red;
@@ -279,29 +308,30 @@ input{
     }
 
     #canvasChoix1{
+        display:none;
         text-align: left;
     }
     .choix2{
         text-align: left;
         display:table;
+        width:100%;
     }
-	    .choix2 span{
+	    .choix2 .ligne1compt{
+            display:table-row;
+        }
+        .choix2 .span{
         	display:table-cell;
         	padding-left: 20px;
 	    }
-	.ligne1compt{
-		display:table-row;
-	}
 	.canvasCompt{
-		display: table-cell;
+		display: table-row;
 	}
-   
     #ligne2compt{
 		display:table-row;
 	}
 	.vote{
-	 	height: 72px;
-	 	width: 5%;
+	 	height: 60px;
+	 	width: 30px;
 	 	border-radius: 45px;
 	}
 	.voteCase{
@@ -309,8 +339,8 @@ input{
 	 	height: 65px;
 	 	border-radius: 50px;
 	}
-	#affichageResultatsTableau{
 
+	#affichageResultatsTableau{
 	}
 		#affichageResultatsTableau table{
 			margin-top: 20px;
@@ -351,7 +381,7 @@ input{
     /*padding: 10px;*/
 
     box-shadow: 0 0 1px rgba( 0, 0, 0, 0.2), 0 -1px 0 rgba( 255, 255, 255, 0.1);
-text-shadow: 0px 1px 0px rgba( 255, 255, 255, 0.3);
+    text-shadow: 0px 1px 0px rgba( 255, 255, 255, 0.3);
 }
 .valider, .valider:active{
     background: #444;

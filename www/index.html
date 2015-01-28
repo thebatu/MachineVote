@@ -21,8 +21,11 @@
 
         <div id="accueil" class="content">
             <button id="params"><img class="navigation" go="parametres" id="title" src="./img/param.png" /></button>
-            <button class="navigation bigButton" go="">Sélectionner une classe</button>
+            <button class="navigation bigButton" go="selectionClass">Sélectionner une classe</button>
+
             <button class="navigation valider" go="nombreSujets">Passer</button>
+
+            <action name="initialisation" />
         </div>
 
         <div id="parametres" class="content">
@@ -45,6 +48,21 @@
             </div>
 
             <button class="navigation retour" go="accueil">&#10162;</button>
+        </div>
+
+        <div id="selectionClass" class="content">
+            <ul id="listeClass">
+                <li><button>CM2 A</button></li>  
+                <li><button>GS A</button></li> 
+                <li><button>GS B</button></li>
+                <li><button>CM2 A</button></li>
+                <li><button>MS A</button></li>
+                <li><button>Les Rockeurs</button></li>
+                <li><button>Team 4</button></li>
+                <li><button>CI1 D</button></li> 
+            </ul>
+            <button class="navigation retour" go="accueil">Retour</button>
+            <button class="navigation valider" go="nombreSujets">→</button>
         </div>
 
 		<div id="nombreSujets" class="content">
@@ -88,6 +106,7 @@
 
         <div id="selection_prenom" class="content"><button class="navigation valider" go="vote">&#10162;</button>
         </div>
+
         <div id="vote" class="content">
             <div id="bulletins">
 
@@ -107,7 +126,9 @@
 
         <div id='resultats' class='content'>
             <div id="affichageResultats">
+
             </div>
+            <button class='navigation retour' go='confirmationRetour'>Retour à l'accueil</button>
             <button class='navigation valider' go='resultatsChiffres'>Switch</button>
         </div>
 
@@ -115,6 +136,7 @@
             <div id="affichageResultatsChiffre" class="choix2">
 
             </div>
+            <button class='navigation retour' go='confirmationRetour'>Retour à l'accueil</button>
             <button class='navigation valider' go='resultatsTableau'>Switch</button>
         </div>
 
@@ -122,7 +144,14 @@
             <div id="affichageResultatsTableau" class='choix2'>
                 
             </div>
+            <button class='navigation retour' go='confirmationRetour'>Retour à l'accueil</button>
             <button class='navigation valider' go='resultats'>Switch</button>
+        </div>
+
+        <div id='confirmationRetour' class='content'>
+            <h2>Voulez vous vraiment retourner à l'écran d'accueil ?</h2>
+            <button class='navigation retour' go='resultats'>Non</button>
+            <button class='navigation valider' go='accueil'>Oui</button>
         </div>
 
         <script type="text/javascript" src="js/jquery.js"></script>
