@@ -261,6 +261,7 @@ input{
 
 /*** SELECTION DE PRESENTATION DE RESULTATS***/
 .choixResult{
+    display:none;
 }
     .voteRouge{ 
         background-color:red;
@@ -279,29 +280,32 @@ input{
     }
 
     #canvasChoix1{
+        display:none;
         text-align: left;
     }
     .choix2{
         text-align: left;
         display:table;
+        width:100%;
     }
-	    .choix2 span{
+	    .choix2 .ligne1compt{
+            display:table-row;
+        }
+        .choix2 .span{
         	display:table-cell;
         	padding-left: 20px;
 	    }
-	.ligne1compt{
-		display:table-row;
-	}
 	.canvasCompt{
-		display: table-cell;
+		display: table-row;
 	}
+
    
     #ligne2compt{
 		display:table-row;
 	}
 	.vote{
-	 	height: 72px;
-	 	width: 5%;
+	 	height: 60px;
+	 	width: 30px;
 	 	border-radius: 45px;
 	}
 	.voteCase{
@@ -309,8 +313,8 @@ input{
 	 	height: 65px;
 	 	border-radius: 50px;
 	}
-	#affichageResultatsTableau{
 
+	#affichageResultatsTableau{
 	}
 		#affichageResultatsTableau table{
 			margin-top: 20px;
