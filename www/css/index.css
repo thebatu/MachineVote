@@ -118,6 +118,9 @@ button{
 button:focus {
     outline:0;
 }
+button:active{
+    box-shadow: 1px 1px 10px #000 inset, 0 1px 0 rgba( 255, 255, 255, 0.4);
+}
 
 /*** ACCUEIL ***/
 #accueil{
@@ -375,49 +378,47 @@ input{
     border : 3px #519802 groove;
     background-color:#519802;
 }
-.valider, .retour{
+.valider, .retour, .retourAccueil{
     width: 30%;
     position: absolute;
     font-weight: bold;
     box-shadow: 0 0 1px rgba( 0, 0, 0, 0.5), 0 -1px 0 rgba( 255, 255, 255, 0.1);
     bottom: 10%;
     /*display: inline-block;*/
+    border-radius:7px;
+
 
 }
 .valider{
-    border-radius:7px;
     color:white;
     right:10%;
     background-color: #519802; /* vert */
     /*padding: 10px;*/
 }
 .valider, .valider:active{
-    background: #444;
-    background: linear-gradient( #519802, #9ccf31);
-    background: -webkit-linear-gradient( #519802, #9ccf31);
-    background: -moz-linear-gradient( #519802, #9ccf31);
-    background: -ms-linear-gradient( #519802, #9ccf31);
-    background: -o-linear-gradient( #519802, #9ccf31);
+    background: #519802;
     background: linear-gradient( #519802, #9ccf31);
 }
 
 .valider:hover{
     background: #519802;
-    background: -webkit-linear-gradient( #519802, #142d0b);
-    background: -moz-linear-gradient( #519802, #142d0b);
-    background: -ms-linear-gradient( #519802, #142d0b);
-    background: -o-linear-gradient( #519802, #142d0b);
     background: linear-gradient( #519802, #142d0b);
-}
-.valider:active{
-    box-shadow: 1px 1px 10px #000 inset, 0 1px 0 rgba( 255, 255, 255, 0.4);
 }
 
 .retour{
+    color:black;
+    background-color: lightgray;
     left:10%;
     transform: scale(-1, 1);
 }
-
+.retourAccueil{
+    color:black;
+    background-color: lightgray;
+    left:10%;
+    font-size: 60%;
+    font-weight:bold !important;
+} 
+    
 .demarre_vote {
     background-color: #ff284a;
 }
