@@ -20,6 +20,9 @@
     "installed_plugins": {
         "com.mesmotronic.plugins.fullscreen": {
             "PACKAGE_NAME": "com.phonegap.boitavot"
+        },
+        "uk.co.ilee.nativetransitions": {
+            "PACKAGE_NAME": "com.phonegap.boitavot"
         }
     },
     "dependent_plugins": {}

@@ -6,6 +6,10 @@
     "config_munge": {
         "files": {}
     },
-    "installed_plugins": {},
+    "installed_plugins": {
+        "uk.co.ilee.nativetransitions": {
+            "PACKAGE_NAME": "BoitAvot'"
+        }
+    },
     "dependent_plugins": {}
 }
