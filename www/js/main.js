@@ -1,4 +1,5 @@
 $(function(){
+	
 	var resultatVote; var color; var nbrVotant; var nbrVote;
 	var couleursVote = new Array("#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF", "#FF00FF","#F778A1","#347C17","#7E3817","#8E35EF");
 	$(".content").not(":first").hide();
@@ -31,6 +32,20 @@ $(function(){
 			}
 		}
 	}
+
+
+
+	function reinitializePass() {
+		if(!$('#codeParams').is(':visible')){
+			$("#codeParams").show();
+			$("#menuParams").hide();
+			$("#changeCodeParams").hide();
+		}
+		// body...
+	}
+
+
+
 
 	/*
 	 * Affiche les résultats chiffrés
@@ -83,7 +98,7 @@ $(function(){
 			initNombreSujet(nbrSujet);
 		} else if(key == "vote") {
 			initBulletins(nbrSujet);
-		} else if(key == "resultats"){
+		} else if(key == "resultatss"){
 			affichageResultats(nbrSujet);
 		} else if(key == "demarre_vote"){
 			nbrVotant = $('#numVot').attr('value');
@@ -91,7 +106,10 @@ $(function(){
 			affichageResultatsChiffres(nbrSujet);
 		} else if(key == "resultatsTableau"){
 			affichageResultatsTableau(nbrSujet);
+		}else if(key == "parametres"){
+			reinitializePass();
 		}
+
 	}
 
 	/*
