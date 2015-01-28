@@ -4,6 +4,7 @@ $(function(){
 	$(".content").not(":first").hide();
 	/* Liste des boutons récurrents */
 	var button = $(".content .navigation"); 
+	nativetransitions.fade(0.5, button.onclick());
 
 	$('.validation_vote').on("click", function(event){
 		nbrVote++;
