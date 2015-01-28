@@ -4,13 +4,17 @@ $(function(){
 	$(".content").not(":first").hide();
 	/* Liste des boutons récurrents */
 	var button = $(".content .navigation"); 
-	nativetransitions.fade(0.5, button.onclick());
 
 	$('.validation_vote').on("click", function(event){
 		nbrVote++;
 		var key = $('.bulletin').filter('.selected').attr('id');
 		resultatVote[key] = resultatVote[key]+1;
 	});
+
+	/*$(document).on("swipright", "#resultats", function(){
+		$('#resultats').hide();
+		$('#resultatsTableau').show();
+	});*/
 
 	$('.canvaResultat').live("click", function(event){
 		var tmp = $(event.target).parent().find('p').text();

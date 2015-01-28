@@ -20,7 +20,7 @@
         </div>
 
         <div id="accueil" class="content">
-            <button id="params"><img class="navigation" go="parametres" id="title" src="./img/param.png" /></button>
+            <img id="params" class="navigation" go="parametres"  src="./img/param.png" />
             <button class="navigation bigButton" go="selectionClass">Sélectionner une classe</button>
 
             <button class="navigation valider" go="nombreSujets">Passer</button>
@@ -30,13 +30,13 @@
 
         <div id="parametres" class="content">
             <h2>Paramètres</h2>
-            <div id="codeParams">
+            <div id="codeParams" class="entrerCode">
                 <h3>Entrez le code</h3>
                 <button class="codeParams">0</button>
                 <button class="codeParams">0</button>
                 <button class="codeParams">0</button>
                 <button class="codeParams">0</button><br />
-                <button>OK</button>
+                <button class="ok">OK</button>
 
             </div>
 
@@ -47,6 +47,15 @@
             <button class="codeButton" go="">Changer le code</button>
             </div>
 
+            <div id="changeCodeParams" class="entrerCode">
+                <h3>Entrez le nouveau code</h3>
+                <button class="codeParams">0</button>
+                <button class="codeParams">0</button>
+                <button class="codeParams">0</button>
+                <button class="codeParams">0</button><br />
+                <button class="ok">OK</button>
+
+            </div>
             <button class="navigation retour" go="accueil">&#10143;</button>
         </div>
 
@@ -90,11 +99,12 @@
 
         <div id="nombreVotant" class="content">
             <h2>Nombre de votants</h2>
-            <input type="text" id="numVot" value='3' onKeypress="validate(event)"/>
+            <div id="choixVotant">
+                <input type="text" id="numVot" value='3' onKeypress="validate(event)"/>
 
-            <button id="plusVot">+</button>
-            <button id="moinsVot">-</button>
-
+                <button id="plusVot">+</button>
+                <button id="moinsVot">-</button>
+            </div>
             <button class="navigation retour" go="couleursSujets">&#10143;</button>
             <button class="navigation valider" go="demarre_vote">&#10143;</button>
         </div>
@@ -136,13 +146,8 @@
             <div id="affichageResultatsChiffre" class="choix2">
 
             </div>
-<<<<<<< HEAD
-            <button class='navigation retour' go='confirmationRetour'>Retour à l'accueil</button>
-            <button class='navigation valider' id="goResultatsTableau" go='resultatsTableau'>Switch</button>
-=======
             <button class='navigation retourAccueil' go='confirmationRetour'>Retour à l'accueil</button>
             <button class='navigation valider' go='resultatsTableau'>Switch</button>
->>>>>>> a9b07476d4ccfa9ae7f82b9952bffa0256de77c5
         </div>
 
         <div id='resultatsTableau' class='content'>
