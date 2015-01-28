@@ -20,7 +20,7 @@
         </div>
 
         <div id="accueil" class="content">
-            <button id="params"><img class="navigation" go="parametres" id="title" src="./img/param.png" /></button>
+            <img id="params" class="navigation" go="parametres"  src="./img/param.png" />
             <button class="navigation bigButton" go="selectionClass">Sélectionner une classe</button>
 
             <button class="navigation valider" go="nombreSujets">Passer</button>
@@ -90,11 +90,12 @@
 
         <div id="nombreVotant" class="content">
             <h2>Nombre de votants</h2>
-            <input type="text" id="numVot" value='3' onKeypress="validate(event)"/>
+            <div id="choixVotant">
+                <input type="text" id="numVot" value='3' onKeypress="validate(event)"/>
 
-            <button id="plusVot">+</button>
-            <button id="moinsVot">-</button>
-
+                <button id="plusVot">+</button>
+                <button id="moinsVot">-</button>
+            </div>
             <button class="navigation retour" go="couleursSujets">&#10143;</button>
             <button class="navigation valider" go="demarre_vote">&#10143;</button>
         </div>
