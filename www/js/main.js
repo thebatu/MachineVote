@@ -86,7 +86,7 @@ $(function(){
 		} else if(key == "resultats"){
 			affichageResultats(nbrSujet);
 		} else if(key == "demarre_vote"){
-			nbrVotant = $('#numVot').attr('value');
+			nbrVotant = $('#numVot').html();
 		} else if(key == "resultatsChiffres"){
 			affichageResultatsChiffres(nbrSujet);
 		} else if(key == "resultatsTableau"){
@@ -178,26 +178,30 @@ $(function(){
 			$('#bulletins').append("<button onclick='addBulletinSelect();' id='bulletin"+[i]+"' class='bulletin' style='background-color:"+couleursVote[color[i]]+"'>"+$('#sujet'+[i]).val()+"</button>");
 		}
 		if (nbr == 4){ //le troisieme choix parmi 4 choix est mis sur la ligne suivante}
-			$(".bulletin:lt(2)").css("float","left");
+			/*$(".bulletin:lt(2)").css("float","left");
 			$(".bulletin:nth-child(3)").css("clear","both");
 			$(".bulletin:gt(0)").css("float","left");
 		}
 		else{
 			$(".bulletin:lt(3)").css("float","left");
 			$(".bulletin:nth-child(4)").css("clear","both");
-			$(".bulletin:gt(0)").css("float","left");
+			$(".bulletin:gt(0)").css("float","left");*/
+			$(".bulletin:nth-child(2)").after("<br/>");
 		}
-		if(nbr ==4 || nbr == 2){
-			$(".bulletin").css("width", "50%");
+		else if (nbr > 4) {
+			$(".bulletin:nth-child(3)").after("<br/>");
 		}
-		else{
-			$(".bulletin").css("width", "33.3%");
-			if (nbr == 5){
-				$("#bulletin3").css("margin-left","16.7%");
-			}
-			if (nbr == 3 || nbr == 2){
+		if (nbr == 3 || nbr == 2){
 				$(".bulletin").css("margin-top", "100px");
 			}
+		if(nbr ==4 || nbr == 2){
+			$(".bulletin").css("width", "40%");
+		}
+		else{
+			$(".bulletin").css("width", "26%");
+			/*if (nbr == 5){
+				$("#bulletin3").css("margin-left","16.7%");
+			}*/
 		}
 		$(".bulletin").css("height", "200px");
 
@@ -226,15 +230,21 @@ $(function(){
 	 * Appuie sur le bouton + lors du choix du nombre de votant
 	*/
 	$('#plusVot').on("click", function(event){
-		$('#numVot').attr('value', parseInt($('#numVot').attr('value'))+1);
+		var tmp = $("#numVot").html();
+		if (tmp < 40){
+			$('#numVot').html(parseInt(tmp)+1);
+		}
 	});
 
 	/*
 	 * Appuie sur le bouton - lors du choix du nombre de votant
 	*/
 	$('#moinsVot').on("click", function(event){
-		if($('#numVot').attr('value') > 1)
-			$('#numVot').attr('value', $('#numVot').attr('value')-1);
+		var tmp = $("#numVot").html();
+		if (tmp > 0){
+			$('#numVot').html(parseInt(tmp)-1);			
+		}
+
 	});
 
 	$('#selectionClass button').on('click', function(){
