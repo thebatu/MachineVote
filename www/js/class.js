@@ -6,6 +6,9 @@ $(function(){
 		});
 	});
 
+
+
+
 	function increaseNumber(nbr){
 		var tot = parseInt(nbr) + 1;
 		if (tot == 10){
@@ -14,6 +17,9 @@ $(function(){
 		return tot;
 		}
 
+
+
+
 	function verifyCode(n1, n2, n3, n4){
 		if (n1 == code[0] && n2 == code[1] && n3 == code[2] && n4 == code[3]){
 			return true;
@@ -21,10 +27,27 @@ $(function(){
 		return false;
 		}
 
+
+
+	/*
+	*
+	*	Virtual Keyboard handler for seurity code 
+	*
+	*/
+
 	$(".codeParams").click(function(){
-		//changer pour faire apparaitre un clavier numerique
-		$(this).html(increaseNumber($(this).html()));
+		$(".codeParams").removeClass("sel");
+		$(this).addClass("sel");
+
+
+		$('.codeParamz').click(function(){
+			var tmp = $(this).html();
+			$('.sel').html(tmp);
+		});
 	});
+
+
+
 
 	$("#codeParams .ok").click(function(){
 		//verification du code lors de l'appui sur ok
