@@ -20,7 +20,7 @@
         </div>
 
         <div id="accueil" class="content">
-            <img id="params" class="navigation" go="parametres"  src="./img/param.png" />
+            <img id="params" class="navigation" go="codeParams"  src="./img/param.png" />
             <button class="navigation bigButton" go="selectionClass">Sélectionner une classe</button>
 
             <button class="navigation valider" go="nombreSujets">Passer</button>
@@ -28,35 +28,34 @@
             <action name="initialisation" />
         </div>
 
+        <div id="codeParams" class="entrerCode content">
+            <h3>Entrez le code</h3>
+            <button class="codeParams">0</button>
+            <button class="codeParams">0</button>
+            <button class="codeParams">0</button>
+            <button class="codeParams">0</button><br />
+            <button class="ok">OK</button>
+            <button class="navigation retour" go="accueil">&#10143;</button>
+        </div>
+
         <div id="parametres" class="content">
             <h2>Paramètres</h2>
-            <div id="codeParams" class="entrerCode">
-                <h3>Entrez le code</h3>
-                <button class="codeParams">0</button>
-                <button class="codeParams">0</button>
-                <button class="codeParams">0</button>
-                <button class="codeParams">0</button><br />
-                <button class="ok">OK</button>
-
-            </div>
-
-            <div id="menuParams" class="">
             <button class="navigation menuParams" go="">Ajouter une classe</button>
             <button class="navigation menuParams" go="">Modifier une classe</button>
             <button class="navigation menuParams" go="">Options couleurs</button>
-            <button class="codeButton">Changer le code</button>
-            </div>
+            <button class="navigation menu" go="changeCodeParams">Changer le code</button>
 
-            <div id="changeCodeParams" class="entrerCode">
-                <h3>Entrez le nouveau code</h3>
-                <button class="codeParams">0</button>
-                <button class="codeParams">0</button>
-                <button class="codeParams">0</button>
-                <button class="codeParams">0</button><br />
-                <button class="ok">OK</button>
-
-            </div>
             <button class="navigation retour" go="accueil">&#10143;</button>
+        </div>
+
+        <div id="changeCodeParams" class="entrerCode content">
+            <h3>Entrez le nouveau code</h3>
+            <button class="codeParams">0</button>
+            <button class="codeParams">0</button>
+            <button class="codeParams">0</button>
+            <button class="codeParams">0</button><br />
+            <button class="ok">OK</button>
+            <button class="navigation retour" go="parametres">&#10143;</button>
         </div>
 
         <div id="selectionClass" class="content">
@@ -165,7 +164,7 @@
         </div>
 
         <script type="text/javascript" src="js/jquery.js"></script>
-           <script type="text/javascript" src="js/class.js"></script>
+        <script type="text/javascript" src="js/class.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
      

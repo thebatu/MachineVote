@@ -41,6 +41,9 @@
     <gap:plugin name="org.apache.cordova.media" />
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
+	<feature name="SQLitePlugin">
+		<param name="ios-package" value="com.phonegap.plugin.sqlitePlugin.SQLitePlugin"/>
+	</feature>
     <!-- <gap:plugin name="org.apache.cordova.vibration" /> -->
     <icon src="www/icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/icon.png" />

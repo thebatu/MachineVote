@@ -9,6 +9,9 @@
     "installed_plugins": {
         "uk.co.ilee.nativetransitions": {
             "PACKAGE_NAME": "BoitAvot'"
+        },
+        "com.brodysoft.sqlitePlugin": {
+            "PACKAGE_NAME": "BoitAvot'"
         }
     },
     "dependent_plugins": {}
