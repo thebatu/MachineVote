@@ -49,10 +49,12 @@ $(function(){
 	$("#changeCodeParams .ok").click(function(){
 		//verification du code lors de l'appui sur ok
 		var a = $(".codeParams:first").html();
-		var b = $(".codeParams:nth-child(3)").html();
-		var c = $(".codeParams:nth-child(4)").html();
-		var d = $(".codeParams:nth-child(5)").html();
+		var b = $(".codeParams:nth-child(2)").html();
+		var c = $(".codeParams:nth-child(3)").html();
+		var d = $(".codeParams:nth-child(4)").html();
+		alert(a,b,c,d);
 		replaceCode(a,b,c,d);
+		alert("code changé");
 	});
 
 	$(".codeButton").click(function(){

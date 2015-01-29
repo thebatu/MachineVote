@@ -117,7 +117,6 @@ $(function(){
 				nbrVote = 0;
 				$('.continuer_vote').attr('go', 'vote');
 				$("#menuParams").hide();
-				$("#changeCodeParams").hide();
 				$(".codeParams").text("0");
 				break;
 		}

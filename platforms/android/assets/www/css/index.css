@@ -148,30 +148,28 @@ button:active{
 #parametres{
     text-align: center;
 }
-
-    #menuParams{
-        display: none;
-    }
         .menuParams{
-            width:100%;
-            margin-top: 4%;
-            margin-bottom: 2%;
+            background: linear-gradient(#ff284a, #ff1313, #ff284a);
+            width:90%;
+            margin-top: 2%;
         }
+            .menuParams:active, .menuParams:hover{
+                background: linear-gradient(#ff1313, #ff284a, #ff1313);
+            }
         .codeButton{
         position: absolute;
         right:10%;
         bottom: 10%;
         padding: 10px;
     }
+
     .entrerCode{
-        margin-top: 2%;
+        padding-top: 2%;
         text-align: center;
-        background-color: white;
         border-radius: 25px;
+        background: linear-gradient( #ffdfb1, #ffdec8);
+
     }
-        h3{
-            padding-top: 5%;
-        }
         .codeParams{ /* boutons de code*/
             background-color: #aeadac;
             width: 200px;
@@ -181,9 +179,6 @@ button:active{
             color: black;
             margin: 30px 0px 30px 80%;
         }
-    #changeCodeParams{
-        display:none;
-    }
 
 
 /*** FIN PARAMS ***/
@@ -426,11 +421,11 @@ input{
     transform: scale(-1, 1);
 }
 .retour, .retour:active{
-    background: linear-gradient( lightgray, #ffffff);
+    background: linear-gradient( lightgray, #666666);
 }
 
 .retour:hover{
-    background: linear-gradient( lightgray, #666666);
+    background: linear-gradient( lightgray, #ffffff);
 }
 .retourAccueil{
     color:black;
