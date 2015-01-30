@@ -52,10 +52,10 @@
         <div id="changeCodeParams" class="content">
             <div class="entrerCode">
             <h3>Entrez le nouveau code</h3>
-            <button class="codeParams">0</button>
-            <button class="codeParams">0</button>
-            <button class="codeParams">0</button>
-            <button class="codeParams">0</button><br />
+            <button class="codeParams changecodeParams">0</button>
+            <button class="codeParams changecodeParams">0</button>
+            <button class="codeParams changecodeParams">0</button>
+            <button class="codeParams changecodeParams">0</button><br />
             <button class="ok">OK</button>
             <button class="navigation retour" go="parametres">&#10143;</button>
             </div>
@@ -104,8 +104,9 @@
             <div id="choixVotant">
                 <div id="numVot">3</div>
                 <br/>
-                <button id="plusVot" class="modifNb">+</button>
                 <button id="moinsVot" class="modifNb">-</button>
+                <button id="plusVot" class="modifNb">+</button>
+
             </div>
             <button class="navigation retour" go="couleursSujets">&#10143;</button>
             <button class="navigation valider" go="demarre_vote">&#10143;</button>
@@ -153,7 +154,7 @@
         </div>
 
         <div id='resultatsTableau' class='content'>
-            <div id="affichageResultatsTableau" class='choix2'>
+            <div id="affichageResultatsTableau" class='choix3'>
                 
             </div>
             <button class='navigation retourAccueil' go='confirmationRetour'>Retour à l'accueil</button>
@@ -165,6 +166,34 @@
             <button class='navigation retourAccueil' go='resultats'>Non</button>
             <button class='navigation valider' go='accueil'>Oui</button>
         </div>
+
+
+        <div id="numericInput" >
+            <table id="keypad" >
+                <tr>
+                    <td class="key codeParamz">1</td>
+                    <td class="key codeParamz">2</td>
+                    <td class="key codeParamz">3</td>
+                </tr>
+                <tr>
+                    <td class="key codeParamz">4</td>
+                    <td class="key codeParamz">5</td>
+                    <td class="key codeParamz">6</td>
+                </tr>
+                <tr>
+                    <td class="key codeParamz">7</td>
+                    <td class="key codeParamz">8</td>
+                    <td class="key codeParamz">9</td>
+                </tr>
+                <tr>
+                    <td class="btn codeParamz"></td>
+                    <td class="key codeParamz">0</td>
+                    <td class="btn codeParamz"></td>
+                </tr>
+                
+            </table>
+        </div>
+
 
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/class.js"></script>
