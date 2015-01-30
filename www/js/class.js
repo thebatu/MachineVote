@@ -38,7 +38,7 @@ $(function(){
 	$(".codeParams").click(function(){
 		$(".codeParams").removeClass("sel");
 		$(this).addClass("sel");
-
+		$("#numericInput").show();
 
 		$('.codeParamz').click(function(){
 			var tmp = $(this).html();

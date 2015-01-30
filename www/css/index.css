@@ -486,9 +486,8 @@ input{
     left: 43%;
     bottom:36%;
     width:15%;
-    visibility: hidden;        
+    display:none;       
 }
-
 
 #keypad{
     width:200px;
@@ -505,7 +504,6 @@ input{
     font-weight:bold;
     color:white;
 }
-
 .key:hover{
     background-color:LightBlue;
 }
