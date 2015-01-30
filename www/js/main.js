@@ -53,7 +53,7 @@ $(function(){
 		$('#affichageResultatsTableau').empty();
 		for(var i=0; i<nbr ; i++){
 		    if(resultatVote['bulletin'+i] != 0)	{
-		        $('#affichageResultatsTableau').append("<table>");
+		        $('#affichageResultatsTableau').append("<table></table>");
 		        for(var j=0 ; j<10; j++){
 		        	if(j%5 == 0)
                         $('#affichageResultatsTableau table:last').append("<tr>");

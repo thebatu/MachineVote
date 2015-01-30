@@ -340,6 +340,9 @@ input{
         text-align: left;
     }
     .choix2{
+        height:400px;
+        overflow-y : scroll;
+        margin-bottom: 1%;
         text-align: left;
         display:table;
         width:100%;
@@ -369,9 +372,12 @@ input{
 	}
 
 	#affichageResultatsTableau{
-	}
+        height: 400px;
+        overflow-y:scroll;
+        margin-bottom: 1%;	
+    }
 		#affichageResultatsTableau table{
-			margin-top: 20px;
+			margin-top: 2%;
 		 	border-collapse:collapse;
 		 	text-align: center;
 		}
