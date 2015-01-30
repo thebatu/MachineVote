@@ -1,3 +1,12 @@
+document.addEventListener("deviceready", onDeviceReady, false);
+ 
+function onDeviceReady() {
+  	var db = window.sqlitePlugin.openDatabase({name: "Databases"});
+  	db.transaction(function(tx) {
+        tx.executeSql('CREATE TABLE IF NOT EXISTS Password (id integer primary key, premier integer, deuxieme integer, troisieme integer, quatrieme integer)');
+	});
+}
+
 $(function(){
 	var code = new Array();
 	$.getJSON('res/Password.json', function(data){
