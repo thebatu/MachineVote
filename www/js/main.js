@@ -7,7 +7,7 @@ $(function(){
 
 	$('.validation_vote').on("click", function(event){
 		nbrVote++;
-		var key = $('.bulletin').filter('.selected').attr('id');
+		var key = $('.bulletin').filter('.select').attr('id');
 		resultatVote[key] = resultatVote[key]+1;
 	});
 
@@ -24,10 +24,11 @@ $(function(){
 	function affichageResultats(nbr){
 		$('#affichageResultats').empty();
 		for(var i=0; i<nbr ; i++){
-			if(resultatVote['bulletin'+i] != 0)		
-				$('#affichageResultats').append("<br>");
+			if(resultatVote['bulletin'+i] != 0)
+				if (nbr > 0)		
+					$('#affichageResultats').append("<br>");
 			for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
-				$('#affichageResultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas> ");	
+				$('#affichageResultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");	
 			}
 		}
 	}
@@ -41,7 +42,8 @@ $(function(){
 			if(resultatVote['bulletin'+i] != 0) {
 				$('#affichageResultatsChiffre').append("<div class='ligne1compt'></div>");
 				for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
-					$('#affichageResultatsChiffre div:last').append("<canvas class='vote canvaResultat' style='background-color:"+couleursVote[color[i]]+"'></canvas> ");
+					$('#affichageResultatsChiffre div:last').append(" <canvas class='vote canvaResultat' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
+
 				}
 				$('#affichageResultatsChiffre div:last').append("<p class='span'>0</p>");
 				$("#affichageResultatsChiffre div:last p").css("color",couleursVote[color[i]]);
@@ -176,15 +178,7 @@ $(function(){
 		for(var i = 0; i < nbr ; i++){
 			$('#bulletins').append("<button onclick='addBulletinSelect();' id='bulletin"+[i]+"' class='bulletin' style='background-color:"+couleursVote[color[i]]+"'>"+$('#sujet'+[i]).val()+"</button>");
 		}
-		if (nbr == 4){ //le troisieme choix parmi 4 choix est mis sur la ligne suivante}
-			/*$(".bulletin:lt(2)").css("float","left");
-			$(".bulletin:nth-child(3)").css("clear","both");
-			$(".bulletin:gt(0)").css("float","left");
-		}
-		else{
-			$(".bulletin:lt(3)").css("float","left");
-			$(".bulletin:nth-child(4)").css("clear","both");
-			$(".bulletin:gt(0)").css("float","left");*/
+		if (nbr == 4){ 
 			$(".bulletin:nth-child(2)").after("<br/>");
 		}
 		else if (nbr > 4) {
@@ -198,9 +192,6 @@ $(function(){
 		}
 		else{
 			$(".bulletin").css("width", "26%");
-			/*if (nbr == 5){
-				$("#bulletin3").css("margin-left","16.7%");
-			}*/
 		}
 		$(".bulletin").css("height", "200px");
 
@@ -230,7 +221,7 @@ $(function(){
 	*/
 	$('#plusVot').on("click", function(event){
 		var tmp = $("#numVot").html();
-		if (tmp < 40){
+		if (tmp < 400){
 			$('#numVot').html(parseInt(tmp)+1);
 		}
 	});
@@ -258,6 +249,6 @@ $(function(){
  * Ajout la classe selected au bulletin de vote choisi
 */
 function addBulletinSelect(){
-	$(".bulletin").removeClass("selected");
-	$(event.target).addClass("selected");
+	$(".bulletin").removeClass("select");
+	$(event.target).addClass("select");
 }
