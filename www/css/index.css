@@ -170,11 +170,14 @@ button:active{
         background: linear-gradient( #ffdfb1, #ffdec8);
 
     }
-        .codeParams{ /* boutons de code*/
-            background-color: #aeadac;
-            width: 200px;
-            margin-top: 20px;
-        }
+    
+
+    .codeParams{ /* boutons de code*/
+        background-color: #aeadac;
+        width: 200px;
+        margin-top: 20px;
+    }
+
         .ok{ /* bouton ok*/
             color: black;
             margin: 30px 0px 30px 80%;
