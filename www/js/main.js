@@ -199,6 +199,23 @@ $(function(){
 
 		if(nbrVote == (nbrVotant-1))
 			$('.continuer_vote').attr('go', 'fin_vote');
+
+		$(".bulletin").click(function(){
+			resetBackground();
+			if ($(this).hasClass("select")){
+				$(this).css("background", "radial-gradient(white,"+couleursVote[color[$(this).attr('id').replace("bulletin","")]]+")");
+			}
+
+		});
+	}
+
+	function resetBackground(){
+		var identifiant = $('.bulletin').filter('.select').attr('id');
+		$('.bulletin').each(function(){
+
+			$(this).css("background", couleursVote[color[$(this).attr('id').replace("bulletin","")]] );
+		});
+
 	}
 
 	
@@ -245,6 +262,8 @@ $(function(){
   		$(event.target).css("color","black");
   		$(event.target).css("background-color","white");
 	});
+
+		
 });
 
 /*
@@ -254,3 +273,5 @@ function addBulletinSelect(){
 	$(".bulletin").removeClass("select");
 	$(event.target).addClass("select");
 }
+
+
