@@ -36,8 +36,6 @@ $(function(){
 	*/
 
 	$(".codeParams").click(function(){
-
-		//$(this).html(increaseNumber($(this).html()));
 		$(".codeParams").removeClass("sel");
 		$(this).addClass("sel");
 
