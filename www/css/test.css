@@ -1,0 +1,50 @@
+#numericInput{
+    position:relative;
+}
+#numBox{
+    width:150px;
+    height:20px;
+    text-align:right;
+    border:solid 1px black;
+    cursor:text;
+    overflow:hidden;
+}
+#keypad{
+    width:150px;
+    height:200px;
+    border:solid 1px black;
+    display:none;
+    position:absolute;
+    top:22px;
+    left:1px;
+}
+.key{
+    border:solid 1px black;
+    background-color:blue;
+    text-align:center;
+    font-weight:bold;
+    color:white;
+    cursor:pointer;
+}
+.key:hover{
+    background-color:LightBlue;
+}
+.key:active{
+    background-color:white;
+}
+.btn{
+    border:solid 1px black;
+    text-align:center;
+    font-weight:bold;
+    color:black;
+    cursor:pointer;
+    background-color:DimGray;
+    width:33.3%;
+}
+.btn:hover{
+    background-color:DarkGray;
+}
+.btn:active{
+    background-color:LightGray;
+}
+
