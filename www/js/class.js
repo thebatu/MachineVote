@@ -36,6 +36,7 @@ $(function(){
 	*/
 
 	$(".codeParams").click(function(){
+		$("#numericInput").hide();
 		$(".codeParams").removeClass("sel");
 		$(this).addClass("sel");
 		$("#numericInput").show();
@@ -50,6 +51,7 @@ $(function(){
 
 
 	$("#codeParams .ok").click(function(){
+		$("#numericInput").hide();
 		//verification du code lors de l'appui sur ok
 		var a = $(".codeParams:first").html();
 		var b = $(".codeParams:nth-child(3)").html();
@@ -69,6 +71,7 @@ $(function(){
 	}
 
 	$("#changeCodeParams .ok").click(function(){
+		$("#numericInput").hide();
 		//verification du code lors de l'appui sur ok
 		var a = $(".changecodeParams:first").text();
 		var b = $(".changecodeParams:nth-child(3)").text();

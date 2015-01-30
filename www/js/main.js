@@ -120,6 +120,8 @@ $(function(){
 				$('.continuer_vote').attr('go', 'vote');
 				$("#menuParams").hide();
 				$(".codeParams").text("0");
+				$("#numericInput").hide();
+				$(".entrerCode").css("background", "linear-gradient( #519802, #9ccf31)");
 				break;
 		}
 	}
