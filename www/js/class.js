@@ -59,7 +59,7 @@ $(function(){
 			$("#codeParams").hide();
 			$("#parametres").show();
 		}else{
-			alert("wrong");
+			$("#codeParams .entrerCode").css("background","linear-gradient( #aa4444, #ff0000)");
 		}
 	});
 
