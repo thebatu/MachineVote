@@ -454,3 +454,56 @@ input{
     margin-top: 5%;
 }
 
+
+/*
+*   Numeic input for keypad
+*
+*/
+#numericInput{
+    position:relative;
+    left: 43%;
+    bottom:36%;
+    width:15%;
+    visibility: hidden;        
+}
+
+
+#keypad{
+    width:200px;
+    height:150px;
+    border:solid 1px black;
+    top:22px;
+    left:1px;
+}
+
+.key{
+    border:solid 1px black;
+    background-color:#aeadac;
+    text-align:center;
+    font-weight:bold;
+    color:white;
+}
+
+.key:hover{
+    background-color:LightBlue;
+}
+.key:active{
+    background-color:white;
+}
+.btn{
+    display:hidden;
+    border:solid 1px white;
+    text-align:center;
+    font-weight:bold;
+    color:black;
+    cursor:pointer;
+    background-color:DimGray;
+    width:33.3%;
+}
+.btn:hover{
+    background-color:DarkGray;
+}
+.btn:active{
+    background-color:LightGray;
+}
+

@@ -30,7 +30,6 @@ $(function(){
 
 
 	/*
-	*
 	*	Virtual Keyboard handler for seurity code 
 	*
 	*/
