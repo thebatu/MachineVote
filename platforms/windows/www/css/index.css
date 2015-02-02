@@ -29,7 +29,8 @@ html, body{
 	width:100%;
     height:100%; /* pour mettre des height en pourcentages*/
     background: url("../img/degradechaudbullesopaque.png");
-	font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+	/*font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;*/
+    font-family: "Verdana", Verdana, sans-serif;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;  
@@ -148,42 +149,47 @@ button:active{
 #parametres{
     text-align: center;
 }
-
-    #menuParams{
-        display: none;
-    }
         .menuParams{
-            width:100%;
-            margin-top: 4%;
-            margin-bottom: 2%;
+            background: linear-gradient( #9ccf31, #519802, #519802, #9ccf31);
+            width:90%;
+            margin-top: 2%;
         }
+            .menuParams:active, .menuParams:hover{
+                /*tons roses*/
+                background: linear-gradient(#ff1313, #ff284a, #ff1313);
+            }
         .codeButton{
         position: absolute;
         right:10%;
         bottom: 10%;
         padding: 10px;
     }
+
     .entrerCode{
-        margin-top: 2%;
+        padding-top: 2%;
         text-align: center;
-        background-color: white;
         border-radius: 25px;
+        /*ton vert*/
+        background: linear-gradient( #519802, #9ccf31);
+        /*background: linear-gradient( #ffdfb1, #ffdec8);*/
+        color:white;
+
     }
-        h3{
-            padding-top: 5%;
-        }
-        .codeParams{ /* boutons de code*/
-            background-color: #aeadac;
-            width: 200px;
-            margin-top: 20px;
-        }
+    
+
+    .codeParams{ /* boutons de code*/
+        /*tons beiges*/
+        background: linear-gradient( #ffdfb1, #ffdec8);
+        /*background-color: #aeadac;*/
+        width: 200px;
+        margin-top: 20px;
+        color:black;
+    }
+
         .ok{ /* bouton ok*/
             color: black;
             margin: 30px 0px 30px 80%;
         }
-    #changeCodeParams{
-        display:none;
-    }
 
 
 /*** FIN PARAMS ***/
@@ -242,7 +248,8 @@ button:active{
 /*** SELECTION DU NOMBRE DE SUJETS ***/
 
 .choixSujet{
-    background-color: #ff284a; /* rose */
+    background: linear-gradient(#ff1313, #ff284a, #ff1313);
+    /*background-color: #ff284a; /* rose */*/
 	border : 3px #ff284a ridge;
 	padding: 2% 4% 2% 4%;
 }
@@ -262,10 +269,13 @@ input{
     height: 60px;
     padding:3px;
     border:1px solid #F5C5C5;
-    border-radius:5px;
+    border-radius:15px;
     width:60%;
-    box-shadow:1px 1px 2px #C0C0C0 inset;
+    box-shadow:2px 2px 4px #C0C0C0 inset;
 }
+    input:focus{
+        outline: 0;
+    }
 
 .couleurSujet{ /*canvas de couleur*/
     width : 60px;
@@ -318,13 +328,16 @@ input{
     border-radius: 15px;
     margin:1%;
 }
+    .bulletin.select{
+        color: black;
+    }
 /*** FIN VOTE***/
 
 /*** SELECTION DE PRESENTATION DE RESULTATS***/
 .choixResult{
     display:none;
 }
-    .voteRouge{ 
+    .voteRouge{
         background-color:red;
     }
 
@@ -345,6 +358,9 @@ input{
         text-align: left;
     }
     .choix2{
+        height:400px;
+        overflow-y : scroll;
+        margin-bottom: 1%;
         text-align: left;
         display:table;
         width:100%;
@@ -374,9 +390,12 @@ input{
 	}
 
 	#affichageResultatsTableau{
-	}
+        height: 400px;
+        overflow-y:scroll;
+        margin-bottom: 1%;	
+    }
 		#affichageResultatsTableau table{
-			margin-top: 20px;
+			margin-top: 2%;
 		 	border-collapse:collapse;
 		 	text-align: center;
 		}
@@ -393,7 +412,8 @@ input{
 
 .selected {
     border : 3px #519802 groove;
-    background-color:#519802;
+    background: linear-gradient( #9ccf31, #519802, #519802, #9ccf31);
+    /*background-color:#519802;*/
 }
 .valider, .retour, .retourAccueil{
     width: 30%;
@@ -426,11 +446,11 @@ input{
     transform: scale(-1, 1);
 }
 .retour, .retour:active{
-    background: linear-gradient( lightgray, #ffffff);
+    background: linear-gradient( lightgray, #666666);
 }
 
 .retour:hover{
-    background: linear-gradient( lightgray, #666666);
+    background: linear-gradient( lightgray, #ffffff);
 }
 .retourAccueil{
     color:black;
@@ -454,5 +474,63 @@ input{
     background-color: #ff284a;
     padding : 5%;
     margin-top: 5%;
+}
+
+
+/*
+*   Numeic input for keypad
+*
+*/
+#numericInput{
+    position:relative;
+    left: 66%;
+    bottom:15%;
+    width:15%;
+    display:none;       
+}
+
+#keypad{
+    width:300px;
+    height:250px;
+    vertical-align: middle;
+    text-align: center;
+    
+}
+
+.key{
+    border:solid 1px black;
+    vertical-align: middle;
+    background-color:#aeadac;
+    text-align:center;
+    font-weight:bold;
+    font-size: 170%;
+    color:white;
+}
+.key:hover{
+    background-color:LightBlue;
+}
+.key:active{
+    background-color:white;
+}
+.btn{
+
+    width:98.5px;
+    height:70px;
+    border-bottom:solid 1px black;
+    border-left:solid 1px black; 
+    border-right:solid 1px black;
+    background-color:#aeadac;
+    text-align:center;
+    font-weight:bold;
+    font-size: 170%;
+    color:white;
+    margin-left: 99px;
+    line-height: 70px;
+
+.btn:hover{
+    background-color:DarkGray;
+}
+.btn:active{
+    background-color:LightGray;
 }
 
