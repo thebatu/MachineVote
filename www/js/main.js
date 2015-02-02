@@ -207,11 +207,19 @@ $(function(){
 
 		if(nbrVote == (nbrVotant-1))
 			$('.continuer_vote').attr('go', 'fin_vote');
+var storage = window.localStorage;
+var style = storage.getItem('styleSheet');
 
 		$(".bulletin").click(function(){
+			alert(style);
 			resetBackground();
 			if ($(this).hasClass("select")){
-				$(this).css("background", "radial-gradient(white,"+couleursVote[color[$(this).attr('id').replace("bulletin","")]]+")");
+				if (style == 1){
+					$(this).css("background", "radial-gradient(white,"+couleursVote[color[$(this).attr('id').replace("bulletin","")]]+")");
+				}
+				else if (style == 2){
+					$(this).css("outline", "10px solid black");
+				}
 			}
 
 		});
@@ -222,6 +230,7 @@ $(function(){
 		$('.bulletin').each(function(){
 
 			$(this).css("background", couleursVote[color[$(this).attr('id').replace("bulletin","")]] );
+			$(this).css("border", "none");
 		});
 
 	}

@@ -1,0 +1,25 @@
+*{
+	border-radius: 0px !important;
+}
+html, body{
+	background : #ff8900;
+}
+*{
+	color:white;
+}
+.selected, .menuParams, .valider, .entrerCode, .valider:hover, .valider:active{
+	background: #769600 !important;
+}
+.retour, .retour:active, .retour:hover, .retourAccueil{/* bordeaux */
+	background: #8c091e;
+	color:white;
+}
+.menuParams:active, .menuParams:hover, .sel{ /*violet */
+	background: #6b1a6a !important;
+}
+.bigButton, .choixSujet{ /* rouge */
+	background: #db2218;
+}
+.bulletin.select{
+	
+}
