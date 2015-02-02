@@ -36,6 +36,11 @@ $(function(){
 		return false;
 	}
 
+
+	function nextSelection(next){
+		next.next().addClass("sel");
+	}
+
 	/*
 	*	Virtual Keyboard handler for seurity code 
 	*/
@@ -43,13 +48,18 @@ $(function(){
 	$(".codeParams").click(function(){
 		$("#numericInput").hide();
 		$(".codeParams").removeClass("sel");
-		$(this).addClass("sel");
+	    $(this).addClass("sel");
+	    var tttt = $(this);
 		$("#numericInput").show();
 
-		$('.codeParamz').click(function(){
-			var tmp = $(this).html();
-			$('.sel').html(tmp);
-		});
+
+			$('.codeParamz').click(function(){
+				var tmp = $(this).html();
+				var current = $('.sel').html(tmp);						
+				
+				$('.sel').next().addClass("sel");
+				current.removeClass("sel");
+			});
 	});
 
 
