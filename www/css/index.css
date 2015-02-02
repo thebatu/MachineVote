@@ -497,8 +497,8 @@ input{
 }
 
 #keypad{
-    width:300px;
-    height:250px;
+    width:150px;
+    height:100px;
     vertical-align: middle;
     text-align: center;
     
@@ -520,7 +520,6 @@ input{
     background-color:white;
 }
 .btn{
-
     width:98.5px;
     height:70px;
     border-bottom:solid 1px black;

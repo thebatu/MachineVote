@@ -497,8 +497,8 @@ input{
 }
 
 #keypad{
-    width:300px;
-    height:250px;
+    width:150px;
+    height:100px;
     vertical-align: middle;
     text-align: center;
     
@@ -520,7 +520,6 @@ input{
     background-color:white;
 }
 .btn{
-
     width:98.5px;
     height:70px;
     border-bottom:solid 1px black;
@@ -533,11 +532,7 @@ input{
     color:white;
     margin-left: 99px;
     line-height: 70px;
-<<<<<<< HEAD
-
-=======
 }
->>>>>>> 71cc7f10c6b76f4398f87d3785772b2f0430ea8b
 .btn:hover{
     background-color:DarkGray;
 }
