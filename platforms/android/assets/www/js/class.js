@@ -44,7 +44,6 @@ $(function(){
 		$("#numericInput").hide();
 		$(".codeParams").removeClass("sel");
 	    $(this).addClass("sel");
-	    var tttt = $(this);
 		$("#numericInput").show();
 
 
@@ -52,7 +51,7 @@ $(function(){
 				var tmp = $(this).html();
 				var current = $('.sel').html(tmp);						
 				
-				$('.sel').next().addClass("sel");
+				$('.sel').next('.codeParams').addClass("sel");
 				current.removeClass("sel");
 			});
 	});
