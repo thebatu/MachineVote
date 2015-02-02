@@ -15,7 +15,12 @@ $(function(){
 		storage.setItem('password', "0000");
 	var code = new Array();
 	code = storage.getItem('password');
-	
+
+	if(!('styleSheet' in storage))
+		storage.setItem('styleSheet', "1");
+	var style = new Array();
+	style = storage.getItem('styleSheet');
+
 	function increaseNumber(nbr){
 		var tot = parseInt(nbr) + 1;
 		if (tot == 10){
@@ -93,5 +98,23 @@ $(function(){
 		$(this).parent().hide();
 		$("#changeCodeParams").show();
 	});
+
+/*changer le design de l'application */
+
+	$("#styleSheet").click(function(){
+		if (style == 1){
+			$("head").append("<link rel='stylesheet' type='text/css' href='css/newStyle.css' />");
+			storage.styleSheet=2;
+
+		}
+		else if (style == 2){
+			$("link[href='css/newStyle.css']").remove();
+			
+			storage.styleSheet=1;
+		}
+		style=storage.getItem('styleSheet');
+
+	});
+	
 
 });
