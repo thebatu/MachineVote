@@ -69,7 +69,7 @@ $(function(){
 
 	// Gestion du clic sur les boutons de choix de chemin //
 	button.click( function() {
-		$(this).closest("div").hide();
+		$(this).closest("div[id]").hide(); //a cause de enterCode, sélection de la div engolbante qui a un id.
 		gotoSection($(this).attr("go"));
 	});
 
@@ -93,6 +93,8 @@ $(function(){
 			affichageResultatsChiffres(nbrSujet);
 		} else if(key == "resultatsTableau"){
 			affichageResultatsTableau(nbrSujet);
+		} else if(key == "parametres"){
+			$("#changeCodeParams").hide();
 		}
 	}
 

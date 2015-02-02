@@ -246,6 +246,9 @@ button:active{
 /*** FIN GESTION DE CLASSE ***/
 
 /*** SELECTION DU NOMBRE DE SUJETS ***/
+#sujets{
+    text-align: center;
+}
 
 .choixSujet{
     background: linear-gradient(#ff1313, #ff284a, #ff1313);
@@ -441,20 +444,24 @@ input{
 
 .retour{
     color:black;
-    background-color: lightgray;
+    /*background-color: lightgray;*/
+    background-color: #ff9f77;
     left:10%;
     transform: scale(-1, 1);
 }
 .retour, .retour:active{
-    background: linear-gradient( lightgray, #666666);
+    /*background: linear-gradient( lightgray, #666666);*/
+    background: linear-gradient( #ff9f77, #ff4f47);
 }
 
 .retour:hover{
-    background: linear-gradient( lightgray, #ffffff);
+    /*background: linear-gradient( lightgray, #ffffff);*/
+    background: linear-gradient( #ff9f77, #fe773c);
 }
 .retourAccueil{
     color:black;
-    background-color: lightgray;
+    /*background-color: lightgray;*/
+    background-color: #ff9f77;
     left:10%;
     font-size: 60%;
     font-weight:bold !important;
@@ -526,7 +533,7 @@ input{
     color:white;
     margin-left: 99px;
     line-height: 70px;
-
+}
 .btn:hover{
     background-color:DarkGray;
 }
@@ -534,3 +541,6 @@ input{
     background-color:LightGray;
 }
 
+.sel{
+    background: linear-gradient( #ff9f77, #ff4f47);
+}
