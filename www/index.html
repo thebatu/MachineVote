@@ -44,7 +44,7 @@
         <div id="parametres" class="content">
             <h2>Paramètres</h2>
             <button class="navigation menuParams" go="ajoutClasse">Ajouter une classe</button>
-            <button class="navigation menuParams" go="">Modifier une classe</button>
+            <button class="navigation menuParams" go="modifClasse">Modifier une classe</button>
             <button class="navigation menuParams" go="changeCodeParams">Changer le code</button>
             <button id='styleSheet' class=" menuParams">Changer le thème</button>
 
@@ -65,7 +65,23 @@
             </div>
             <button class="valider" go="parametres">Ajouter la classe</button>
             <button class="navigation retour" go="parametres">Retour</button>
-        </div>        
+        </div>    
+
+        <div id="modifClasse" class="content">
+            <h2>Modifier <span class="classe">classe</span></h2>
+            <div class="modif">
+                <input type="text" placeholder="classe"></input>
+                <input type="text" placeholder="ajouter un prénom"></input>
+                <button class="rond ajout">+</button>
+            </div>
+            <div class="classRight">
+                <button>Voir liste des élèves</button>
+                <button class='suppr'>Supprimer un élève</button>
+                <button class="suppr">Supprimer la classe</button>
+            </div>
+            <button class="valider">Valider</button>
+            <button class="navigation retour" go="accueil">Retour</button>
+        </div>            
 
         <div id="changeCodeParams" class="content">
             <div class="entrerCode">
@@ -124,11 +140,15 @@
         </div>
 
         <div id="demarre_vote" class="content">
-            <button class='navigation bigButton' go="selection_prenom">Démarrer le vote</button>
+            <button class='navigation bigButton' go="selectionPrenom">Démarrer le vote</button>
             <button class="navigation retour" go="nombreVotant">&#10143;</button>
         </div>
 
-        <div id="selection_prenom" class="content"><button class="navigation valider" go="vote">&#10143;</button>
+        <div id="selectionPrenom" class="content">
+            <div id="listeSelectionPrenom">
+
+            </div>
+            <button class="navigation valider" go="vote">&#10143;</button>
         </div>
 
         <div id="vote" class="content">
@@ -205,8 +225,8 @@
             db.transaction(function(tx) {
                 /*tx.executeSql('DROP TABLE Classe');
                 tx.executeSql('DROP TABLE Eleve');*/
-                tx.executeSql('CREATE TABLE IF NOT EXISTS Classe (id integer primary key AUTOINCREMENT, nom text)');
-                tx.executeSql('CREATE TABLE IF NOT EXISTS Eleve (id integer primary key AUTOINCREMENT, id_classe integer, nom text, chemin text)');
+                tx.executeSql('CREATE TABLE IF NOT EXISTS Classe (id_Classe integer primary key AUTOINCREMENT, nom text)');
+                tx.executeSql('CREATE TABLE IF NOT EXISTS Eleve (id_Eleve integer primary key AUTOINCREMENT, id_classe integer, nom text)');
                 //tx.executeSql("ALTER TABLE Eleve ADD CONSTRAINT 'FK_Classe_Eleve' FOREIGN KEY (id_classe) REFERENCES Classe (id) ON DELETE CASCADE ON UPDATE NO ACTION;");
             },onDBError);
 
