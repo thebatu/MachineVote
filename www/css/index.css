@@ -14,14 +14,15 @@
 ::-webkit-scrollbar{
     width: 25px;
 }
-
-::-webkit-scrollbar-thumb {                 
-    background: green;
+::-webkit-scrollbar-thumb {     
+    background: linear-gradient( #519802, #142d0b);
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
 
-::-webkit-scrollbar-track-piece {
-    background: red;
-
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    border-radius: 10px;
 }
 
 html, body{
@@ -310,7 +311,7 @@ input{
 /*** CHOIX DES CLASSES ***/
 #listeClass{ 
     height:400px;
-    overflow-y : scroll;
+    overflow-y : auto;
     margin-bottom: 1%;
 }
     #listeClass li{
@@ -340,21 +341,6 @@ input{
 .choixResult{
     display:none;
 }
-    .voteRouge{
-        background-color:red;
-    }
-
-    .voteBleu{
-		background-color: blue;
-	}
-
-	.croixBleu+span{
-        color:blue;
-    }
-
-    .croixRouge+span{
-        color:red;
-    }
 
     #canvasChoix1{
         display:none;
@@ -362,7 +348,7 @@ input{
     }
     .choix2{
         height:400px;
-        overflow-y : scroll;
+        overflow-y : auto;
         margin-bottom: 1%;
         text-align: left;
         display:table;
@@ -395,7 +381,7 @@ input{
 
 	#affichageResultatsTableau{
         height: 400px;
-        overflow-y:scroll;
+        overflow-y:auto;
         margin-bottom: 1%;	
     }
 		#affichageResultatsTableau table{
