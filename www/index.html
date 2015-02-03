@@ -42,13 +42,29 @@
 
         <div id="parametres" class="content">
             <h2>Paramètres</h2>
-            <button class="navigation menuParams" go="">Ajouter une classe</button>
+            <button class="navigation menuParams" go="ajoutClasse">Ajouter une classe</button>
             <button class="navigation menuParams" go="">Modifier une classe</button>
             <button class="navigation menuParams" go="changeCodeParams">Changer le code</button>
             <button id='styleSheet' class=" menuParams">Changer le thème</button>
 
             <button class="navigation retour" go="accueil">&#10143;</button>
         </div>
+
+        <div id="ajoutClasse" class="content">
+            <h2>Ajouter une classe</h2>
+            <div class="modif">
+                <input type="text" id='inputNomClasse' placeholder="nom de la classe"></input>
+                <input type="text" placeholder="ajouter un prénom"></input>
+                <button class="rond ajout">+</button>
+            </div>
+            <div class="classRight">
+                <label>Liste des élèves <button class="agrandir">↔</button><!-- Aggrandissement --></label>
+                
+                <div></div>
+            </div>
+            <button class="valider" go="parametres">Ajouter la classe</button>
+            <button class="navigation retour" go="parametres">Retour</button>
+        </div>        
 
         <div id="changeCodeParams" class="content">
             <div class="entrerCode">
@@ -64,14 +80,7 @@
 
         <div id="selectionClass" class="content">
             <ul id="listeClass">
-                <li><button>CM2 A</button></li>  
-                <li><button>GS A</button></li> 
-                <li><button>GS B</button></li>
-                <li><button>CM2 A</button></li>
-                <li><button>MS A</button></li>
-                <li><button>Les Rockeurs</button></li>
-                <li><button>Team 4</button></li>
-                <li><button>CI1 D</button></li> 
+
             </ul>
             <button class="navigation retour" go="accueil">&#10143;</button>
             <button class="navigation valider" go="nombreSujets">&#10143;</button>
@@ -189,16 +198,18 @@
                     
     
         </div>
-
-
+        <script type="text/javascript">
+            //var db = window.sqlitePlugin.openDatabase({name: "Databases"});
+            var db = window.openDatabase("Databases", "1.0", "Cordova DB", 200000);
+            db.transaction(function(tx) {
+                tx.executeSql('CREATE TABLE IF NOT EXISTS Classe (id integer primary key AUTOINCREMENT, nom text)');
+                tx.executeSql('CREATE TABLE IF NOT EXISTS Eleve (id integer primary key AUTOINCREMENT, nom text, chemin text)');
+            });
+        </script>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/class.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-     
-        <script type="text/javascript">
-            app.initialize();
-        </script>
         <script type="text/javascript">
             function validate(evt) {
               var theEvent = evt || window.event;

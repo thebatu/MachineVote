@@ -104,6 +104,8 @@ $(function(){
 			affichageResultatsTableau(nbrSujet);
 		} else if(key == "parametres"){
 			$("#changeCodeParams").hide();
+		} else if(key == "selectionClass"){
+			affichageClasse();
 		}
 	}
 
@@ -210,8 +212,8 @@ $(function(){
 
 		if(nbrVote == (nbrVotant-1))
 			$('.continuer_vote').attr('go', 'fin_vote');
-var storage = window.localStorage;
-var style = storage.getItem('styleSheet');
+			var storage = window.localStorage;
+			var style = storage.getItem('styleSheet');
 
 		$(".bulletin").click(function(){
 			resetBackground();
@@ -233,9 +235,21 @@ var style = storage.getItem('styleSheet');
 			$(this).css("background", couleursVote[color[$(this).attr('id').replace("bulletin","")]] );
 			$(this).css("border", "none");
 		});
-
 	}
 
+	function affichageClasse(){
+		db.transaction(function(tx) {
+         	tx.executeSql("SELECT nom FROM Classe", [], function(tx, res) {
+       			if(res.rows.length != 0){
+       				for(var i=0; i<res.rows.length; i++) {
+       					$('#listeClass').append('<li>');
+       					$('#listeClass li:last').append('<button>'+res.rows.item(i).nom+'</button>');
+       				}
+       			}else
+       				$('#listeClass').append("<li>Aucune classe n'a été enregistré</li>");
+    		});
+    	});
+	}
 	
 	/*
 	 * Appuie sur le logo d'accueil

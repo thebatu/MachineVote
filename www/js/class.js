@@ -1,20 +1,10 @@
-/*document.addEventListener("deviceready", onDeviceReady, false);
- 
-function onDeviceReady() {
-  	var db = window.sqlitePlugin.openDatabase({name: "Databases"});
-  	db.transaction(function(tx) {
-        tx.executeSql('CREATE TABLE IF NOT EXISTS Password (id integer primary key, premier integer, deuxieme integer, troisieme integer, quatrieme integer)');
-	});
-}*/
-var current;
-
-
 $(function(){
 	var storage = window.localStorage;
 	if(!('password' in storage))
 		storage.setItem('password', "0000");
 	var code = new Array();
 	code = storage.getItem('password');
+	var current;
 
 	if(!('styleSheet' in storage))
 		storage.setItem('styleSheet', "1");
@@ -52,15 +42,11 @@ $(function(){
 		$("#numericInput").show();
 		 //current = $(this);
 
-
-	
-									
-				
-	$('.keyCode').click(function(){
-				var tmp = $(this).html();
-				var current = $('.sel').html(tmp);					
-				$('.sel').next('.codeParams').addClass("sel");
-				current.removeClass("sel");
+		$('.keyCode').click(function(){
+			var tmp = $(this).html();
+			var current = $('.sel').html(tmp);					
+			$('.sel').next('.codeParams').addClass("sel");
+			current.removeClass("sel");
 
 
 				//$('.sel').next('.codeParams').addClass("sel");
@@ -71,9 +57,7 @@ $(function(){
 				//current=current.next('codeParams');
 				
 				//$('sel').next('codeParams').addClass('sel');
-
-
-			});
+		});
 	});
 
 
@@ -131,7 +115,6 @@ $(function(){
 		if (style == 1){
 			$("head").append("<link rel='stylesheet' type='text/css' href='css/newStyle.css' />");
 			storage.styleSheet=2;
-
 		}
 		else if (style == 2){
 			$("link[href='css/newStyle.css']").remove();
@@ -139,8 +122,15 @@ $(function(){
 			storage.styleSheet=1;
 		}
 		style=storage.getItem('styleSheet');
-
 	});
-	
 
+	$("#ajoutClasse .valider").click(function(){
+		if($('#inputNomClasse').val() != ''){
+			db.transaction(function(tx) {
+         		tx.executeSql("INSERT INTO Classe(nom) VALUES ('"+$('#inputNomClasse').val()+"')");
+         		$("#ajoutClasse .valider").addClass('navigation');
+			});
+		}else
+			alert('Veuillez entrer un nom de classe');
+	});
 });
