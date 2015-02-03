@@ -202,9 +202,15 @@
             //var db = window.sqlitePlugin.openDatabase({name: "Databases"});
             var db = window.openDatabase("Databases", "1.0", "Cordova DB", 200000);
             db.transaction(function(tx) {
-                tx.executeSql('CREATE TABLE IF NOT EXISTS Classe (id integer primary key AUTOINCREMENT, nom text UNIQUE)');
-                tx.executeSql('CREATE TABLE IF NOT EXISTS Eleve (id integer primary key AUTOINCREMENT, nom text, chemin text)');
-            });
+                /*tx.executeSql('DROP TABLE Classe');
+                tx.executeSql('DROP TABLE Eleve');*/
+                tx.executeSql('CREATE TABLE IF NOT EXISTS Classe (id integer primary key AUTOINCREMENT, nom text)');
+                tx.executeSql('CREATE TABLE IF NOT EXISTS Eleve (id integer primary key AUTOINCREMENT, id_classe integer, nom text, chemin text)');
+                //tx.executeSql("ALTER TABLE Eleve ADD CONSTRAINT 'FK_Classe_Eleve' FOREIGN KEY (id_classe) REFERENCES Classe (id) ON DELETE CASCADE ON UPDATE NO ACTION;");
+            },onDBError);
+
+            function onDBError(error){alert("Database Error : "+error.message);}
+            function onDBSuccess(tx,results){alert("successfull");}
         </script>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/class.js"></script>
