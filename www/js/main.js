@@ -55,18 +55,21 @@ $(function(){
 		$('#affichageResultatsTableau').empty();
 		for(var i=0; i<nbr ; i++){
 		    if(resultatVote['bulletin'+i] != 0)	{
-		        $('#affichageResultatsTableau').append("<table></table>");
-		        $('#affichageResultatsTableau table:last').append("<tr>");
-		        $('#affichageResultatsTableau table:last').append("<tr>");
-		        for(var j=0 ; j<10; j++){
-		        	if(j%2 == 0){
-                    	$('#affichageResultatsTableau table:last tr:last').append("<td>");
-                    	if(j <resultatVote['bulletin'+i])
-                    		$('#affichageResultatsTableau table:last tr:last td:last').append("<canvas class='voteCase' style='background-color:"+couleursVote[color[i]]+"'></canvas>");
-                    }else {
-                    	$('#affichageResultatsTableau table:last tr:first').append("<td>");
-                    	if(j <resultatVote['bulletin'+i])
-                    		$('#affichageResultatsTableau table:last tr:first td:last').append("<canvas class='voteCase' style='background-color:"+couleursVote[color[i]]+"'></canvas>");
+		    	var nbrTable = parseInt(resultatVote['bulletin'+i]/10)+1;
+		    	for(var k=0 ; k<nbrTable; k++){
+		        	$('#affichageResultatsTableau').append("<table></table>");
+		        	$('#affichageResultatsTableau table:last').append("<tr>");
+		        	$('#affichageResultatsTableau table:last').append("<tr>");
+		        	for(var j=0 ; j<10; j++){
+		        		if(j%2 == 0){
+                    		$('#affichageResultatsTableau table:last tr:last').append("<td>");
+                    		if(j+(k*10) <resultatVote['bulletin'+i])
+                    			$('#affichageResultatsTableau table:last tr:last td:last').append("<canvas class='voteCase' style='background-color:"+couleursVote[color[i]]+"'></canvas>");
+                    	}else {
+                   		 	$('#affichageResultatsTableau table:last tr:first').append("<td>");
+                    		if(j+(k*10) <resultatVote['bulletin'+i])
+                    			$('#affichageResultatsTableau table:last tr:first td:last').append("<canvas class='voteCase' style='background-color:"+couleursVote[color[i]]+"'></canvas>");
+                    	}
                     }
                 }
             }
@@ -211,7 +214,6 @@ var storage = window.localStorage;
 var style = storage.getItem('styleSheet');
 
 		$(".bulletin").click(function(){
-			alert(style);
 			resetBackground();
 			if ($(this).hasClass("select")){
 				if (style == 1){
@@ -228,7 +230,6 @@ var style = storage.getItem('styleSheet');
 	function resetBackground(){
 		var identifiant = $('.bulletin').filter('.select').attr('id');
 		$('.bulletin').each(function(){
-
 			$(this).css("background", couleursVote[color[$(this).attr('id').replace("bulletin","")]] );
 			$(this).css("border", "none");
 		});
