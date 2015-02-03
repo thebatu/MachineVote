@@ -288,7 +288,7 @@ $(function(){
 
 	});
 
-	$('#selectionClass button').on('click', function(){
+	$('#selectionClass button').live('click', function(){
 		$('#selectionClass button').css("color", "white");
 		$('#selectionClass button').css("background-color", "");
   		$(event.target).css("color","black");

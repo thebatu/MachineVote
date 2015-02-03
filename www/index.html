@@ -54,8 +54,8 @@
             <h2>Ajouter une classe</h2>
             <div class="modif">
                 <input type="text" id='inputNomClasse' placeholder="nom de la classe"></input>
-                <input type="text" placeholder="ajouter un prénom"></input>
-                <button class="rond ajout">+</button>
+                <input type="text" id='inputNomEleve' placeholder="ajouter un prénom"></input>
+                <button id="buttonAjoutEleve" class="rond ajout">+</button>
             </div>
             <div class="classRight">
                 <label>Liste des élèves <button class="agrandir">↔</button><!-- Aggrandissement --></label>
@@ -202,7 +202,7 @@
             //var db = window.sqlitePlugin.openDatabase({name: "Databases"});
             var db = window.openDatabase("Databases", "1.0", "Cordova DB", 200000);
             db.transaction(function(tx) {
-                tx.executeSql('CREATE TABLE IF NOT EXISTS Classe (id integer primary key AUTOINCREMENT, nom text)');
+                tx.executeSql('CREATE TABLE IF NOT EXISTS Classe (id integer primary key AUTOINCREMENT, nom text UNIQUE)');
                 tx.executeSql('CREATE TABLE IF NOT EXISTS Eleve (id integer primary key AUTOINCREMENT, nom text, chemin text)');
             });
         </script>

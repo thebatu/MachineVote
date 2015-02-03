@@ -124,6 +124,13 @@ $(function(){
 		style=storage.getItem('styleSheet');
 	});
 
+	$('#ajoutClasse #buttonAjoutEleve').click(function(){
+		if($('#inputNomEleve').val() != ''){
+			$('.classRight div').append('<p>'+$('#inputNomEleve').val()+'</p>');
+			$('#inputNomEleve').val('');
+		}
+	});
+
 	$("#ajoutClasse .valider").click(function(){
 		if($('#inputNomClasse').val() != ''){
 			db.transaction(function(tx) {
@@ -131,6 +138,6 @@ $(function(){
          		$("#ajoutClasse .valider").addClass('navigation');
 			});
 		}else
-			alert('Veuillez entrer un nom de classe');
+			alert('Veuillez entrer un nom de classe et au moins un élève');
 	});
 });
