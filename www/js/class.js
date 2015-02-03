@@ -1,20 +1,10 @@
-/*document.addEventListener("deviceready", onDeviceReady, false);
- 
-function onDeviceReady() {
-  	var db = window.sqlitePlugin.openDatabase({name: "Databases"});
-  	db.transaction(function(tx) {
-        tx.executeSql('CREATE TABLE IF NOT EXISTS Password (id integer primary key, premier integer, deuxieme integer, troisieme integer, quatrieme integer)');
-	});
-}*/
-
-
-
 $(function(){
 	var storage = window.localStorage;
 	if(!('password' in storage))
 		storage.setItem('password', "0000");
 	var code = new Array();
 	code = storage.getItem('password');
+	var current;
 
 	if(!('styleSheet' in storage))
 		storage.setItem('styleSheet', "1");
@@ -64,19 +54,38 @@ function styliser(){
 		$(".codeParams").removeClass("sel");
 	    $(this).addClass("sel");
 		$("#numericInput").show();
+		 //current = $(this);
+
+		$('.keyCode').click(function(){
+			var tmp = $(this).html();
+			var current = $('.sel').html(tmp);					
+			$('.sel').next('.codeParams').addClass("sel");
+			current.removeClass("sel");
 
 
-			$('.codeParamz').click(function(){
-				var tmp = $(this).html();
-				var current = $('.sel').html(tmp);						
+				//$('.sel').next('.codeParams').addClass("sel");
+				//$('.codeParams').removeClass("sel");
+			//	current.removeClass('sel').next('codeParams').addClass('sel');
+				//current.removeClass('sel');
+				//current.next().addClass('sel');
+				//current=current.next('codeParams');
 				
+				//$('sel').next('codeParams').addClass('sel');
+		});
+	});
+
+
+/*
+			$('.keyCode').click(function(){
+				var tmp = $(this).html();
+				var current = $('.sel').html(tmp);					
 				$('.sel').next('.codeParams').addClass("sel");
 				current.removeClass("sel");
 			});
 	});
 
 
-
+*/
 
 	$("#codeParams .ok").click(function(){
 		$("#numericInput").hide();
@@ -90,6 +99,7 @@ function styliser(){
 			$("#parametres").show();
 		}else{
 			$("#codeParams .entrerCode").css("background","linear-gradient( #aa4444, #ff0000)");
+				$(".codeParams").removeClass("sel");
 		}
 	});
 
@@ -118,6 +128,21 @@ function styliser(){
 	$("#styleSheet").click(function(){
 		styliser();
 	});
-	
 
+	$('#ajoutClasse #buttonAjoutEleve').click(function(){
+		if($('#inputNomEleve').val() != ''){
+			$('.classRight div').append('<p>'+$('#inputNomEleve').val()+'</p>');
+			$('#inputNomEleve').val('');
+		}
+	});
+
+	$("#ajoutClasse .valider").click(function(){
+		if($('#inputNomClasse').val() != ''){
+			db.transaction(function(tx) {
+         		tx.executeSql("INSERT INTO Classe(nom) VALUES ('"+$('#inputNomClasse').val()+"')");
+         		$("#ajoutClasse .valider").addClass('navigation');
+			});
+		}else
+			alert('Veuillez entrer un nom de classe et au moins un élève');
+	});
 });

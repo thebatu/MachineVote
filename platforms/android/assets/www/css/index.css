@@ -491,15 +491,15 @@ input{
 */
 #numericInput{
     position:relative;
-    left: 66%;
+    left: 50%;
     bottom:15%;
     width:15%;
     display:none;       
 }
 
 #keypad{
-    width:300px;
-    height:170px;
+    width:400px;
+    height:270px;
     vertical-align: middle;
     text-align: center;
     
@@ -508,7 +508,7 @@ input{
 .key{
     border:solid 1px black;
     vertical-align: middle;
-    background-color:#aeadac;
+    background-color:LightBlue;
     text-align:center;
     font-weight:bold;
     font-size: 140%;
