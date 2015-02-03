@@ -6,7 +6,7 @@ function onDeviceReady() {
         tx.executeSql('CREATE TABLE IF NOT EXISTS Password (id integer primary key, premier integer, deuxieme integer, troisieme integer, quatrieme integer)');
 	});
 }*/
-
+var current;
 
 
 $(function(){
@@ -50,19 +50,44 @@ $(function(){
 		$(".codeParams").removeClass("sel");
 	    $(this).addClass("sel");
 		$("#numericInput").show();
+		 //current = $(this);
 
 
-			$('.codeParamz').click(function(){
-				var tmp = $(this).html();
-				var current = $('.sel').html(tmp);						
+	
+									
 				
+	$('.keyCode').click(function(){
+				var tmp = $(this).html();
+				var current = $('.sel').html(tmp);					
+				$('.sel').next('.codeParams').addClass("sel");
+				current.removeClass("sel");
+
+
+				//$('.sel').next('.codeParams').addClass("sel");
+				//$('.codeParams').removeClass("sel");
+			//	current.removeClass('sel').next('codeParams').addClass('sel');
+				//current.removeClass('sel');
+				//current.next().addClass('sel');
+				//current=current.next('codeParams');
+				
+				//$('sel').next('codeParams').addClass('sel');
+
+
+			});
+	});
+
+
+/*
+			$('.keyCode').click(function(){
+				var tmp = $(this).html();
+				var current = $('.sel').html(tmp);					
 				$('.sel').next('.codeParams').addClass("sel");
 				current.removeClass("sel");
 			});
 	});
 
 
-
+*/
 
 	$("#codeParams .ok").click(function(){
 		$("#numericInput").hide();
@@ -76,6 +101,7 @@ $(function(){
 			$("#parametres").show();
 		}else{
 			$("#codeParams .entrerCode").css("background","linear-gradient( #aa4444, #ff0000)");
+				$(".codeParams").removeClass("sel");
 		}
 	});
 
