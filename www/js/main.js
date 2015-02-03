@@ -26,7 +26,7 @@ $(function(){
 		for(var i=0; i<nbr ; i++){
 			if(resultatVote['bulletin'+i] != 0)
 				if (nbr > 0)		
-					$('#affichageResultats').append("<br>");
+					$('#affichageResultats').append("<div class='ligne1compt'></div>");
 			for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
 				$('#affichageResultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");	
 			}
@@ -231,7 +231,7 @@ var style = storage.getItem('styleSheet');
 		var identifiant = $('.bulletin').filter('.select').attr('id');
 		$('.bulletin').each(function(){
 			$(this).css("background", couleursVote[color[$(this).attr('id').replace("bulletin","")]] );
-			$(this).css("border", "none");
+			$(this).css("outline", "0px");
 		});
 
 	}
