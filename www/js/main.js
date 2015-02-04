@@ -82,6 +82,25 @@ $(function(){
 		gotoSection($(this).attr("go"));
 	});
 
+
+/*
+ *	progress bar handler
+ *
+ */
+ 	$("#upload").click(function(){
+ 		$('#progressbar').progressbar({value: 37});
+ 		  value: 37
+
+ 	});
+
+ 	/*function progressBar(int_students){
+ 		$('#progressBar').progressbar();
+
+
+ 	}
+*/
+
+
 	/*
 	 * Function main
 	 * Redirection sur la div 

@@ -535,3 +535,7 @@ input{
     color : black;
     background-color : white;
 }
+
+#progressbar{
+    width: 400px;
+}
