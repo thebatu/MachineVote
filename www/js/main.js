@@ -239,6 +239,8 @@ $(function(){
 			if(nbrVote == (nbrVotant-1))
 				$('.continuer_vote').attr('go', 'fin_vote');
 		} else {
+			$('#listeSelectionPrenom .classSelect').addClass('hasBeenSelected');
+			$('#listeSelectionPrenom button').removeClass('classSelect');
 			tousVote = true;
 			$("#listeSelectionPrenom button").each(function(){
 				if(!($(this).hasClass('hasBeenSelected')))
@@ -346,11 +348,6 @@ $(function(){
 			$('#selectionPrenom .valider').show();
 		}
 	});
-
-	$('#selectionPrenom .valider').on('click', function(){
-		$('#listeSelectionPrenom .classSelect').addClass('hasBeenSelected');
-		$('#listeSelectionPrenom button').removeClass('classSelect');
-	});
 });
 
 /*
@@ -360,5 +357,3 @@ function addBulletinSelect(){
 	$(".bulletin").removeClass("select");
 	$(event.target).addClass("select");
 }
-
-
