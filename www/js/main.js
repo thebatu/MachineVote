@@ -123,6 +123,7 @@ $(function(){
 			affichageResultatsTableau(nbrSujet);
 		} else if(key == "parametres"){
 			$("#changeCodeParams").hide();
+			$("#numericInput").hide();
 		} else if(key == "selectionClass"){
 			affichageClasse();
 		} else if(key =="selectionPrenom"){

@@ -54,42 +54,20 @@ function styliser(){
 		$(".codeParams").removeClass("sel");
 	    $(this).addClass("sel");
 		$("#numericInput").show();
-		 //current = $(this);
-
-		$('.keyCode').click(function(){
-			var tmp = $(this).html();
-			var current = $('.sel').html(tmp);
-
-
-				$('.sel').next('#codeParams .codeParams').addClass("sel");
-				current.removeClass("sel");
-
-
-
-
-				//$('.sel').next('.codeParams').addClass("sel");
-				//$('.codeParams').removeClass("sel");
-			//	current.removeClass('sel').next('codeParams').addClass('sel');
-				//current.removeClass('sel');
-				//current.next().addClass('sel');
-				//current=current.next('codeParams');
-				
-				//$('sel').next('codeParams').addClass('sel');
 		});
-	});
+	$('.keyCode').click(function(){
+			var tmp = $(this).html();
+			var current = $('.sel');
+			current.html(tmp);
 
-
-/*
-			$('.keyCode').click(function(){
-				var tmp = $(this).html();
-				var current = $('.sel').html(tmp);					
-				$('.sel').next('.codeParams').addClass("sel");
+				if (current.hasClass("lastCode")){
+					current.siblings(".firstCode").addClass("sel");
+				}
+				else{
+					$('.sel').next('.codeParams').addClass("sel");
+				}
 				current.removeClass("sel");
-			});
 	});
-
-
-*/
 
 	$("#codeParams .ok").click(function(){
 		$("#numericInput").hide();
