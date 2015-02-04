@@ -535,3 +535,8 @@ input{
     color : black;
     background-color : white;
 }
+
+.hasBeenSelected {
+    color : black;
+    background-color: red;
+}

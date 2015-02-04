@@ -24,7 +24,7 @@
             <img id="params" class="navigation" go="codeParams"  src="./img/param.png" />
             <button class="navigation bigButton" go="selectionClass">Sélectionner une classe</button>
 
-            <button class="navigation valider" go="nombreSujets">Passer</button>
+            <button class="navigation valider" go="nombreVotant">Passer</button>
 
             <action name="initialisation" />
         </div>
@@ -64,7 +64,7 @@
                 <div></div>
             </div>
             <button class="valider" go="parametres">Ajouter la classe</button>
-            <button class="navigation retour" go="parametres">Retour</button>
+            <button class="navigation retour" go="parametres">&#10143;</button>
         </div>    
 
         <div id="modifClasse" class="content">
@@ -80,7 +80,7 @@
                 <button class="suppr">Supprimer la classe</button>
             </div>
             <button class="valider">Valider</button>
-            <button class="navigation retour" go="accueil">Retour</button>
+            <button class="navigation retour" go="accueil">&#10143;</button>
         </div>            
 
         <div id="changeCodeParams" class="content">
@@ -103,11 +103,24 @@
             <button class="navigation valider" go="nombreSujets">&#10143;</button>
         </div>
 
+        <div id="nombreVotant" class="content">
+            <h2>Nombre de votants</h2>
+            <div id="choixVotant">
+                <div id="numVot">3</div>
+                <br/>
+                <button id="moinsVot" class="modifNb">-</button>
+                <button id="plusVot" class="modifNb">+</button>
+
+            </div>
+            <button class="navigation retour" go="accueil">&#10143;</button>
+            <button class="navigation valider" go="nombreSujets">&#10143;</button>
+        </div>
+
 		<div id="nombreSujets" class="content">
 			<h2>Nombre de sujets</h2>
 			<div id="boutons">
-				<button class="choixSujet selected" value='2'>2</button>
-				<button class="choixSujet" value='3'>3</button>
+				<button class="choixSujet" value='2'>2</button>
+				<button class="choixSujet selected" value='3'>3</button>
 				<button class="choixSujet" value='4'>4</button>
 				<button class="choixSujet" value='5'>5</button>
 				<button class="choixSujet" value='6'>6</button>
@@ -123,31 +136,21 @@
                 
             </div>
             <button class="navigation retour" go="nombreSujets">&#10143;</button>
-            <button class="navigation valider" go="nombreVotant">&#10143;</button>
-        </div>
-
-        <div id="nombreVotant" class="content">
-            <h2>Nombre de votants</h2>
-            <div id="choixVotant">
-                <div id="numVot">3</div>
-                <br/>
-                <button id="moinsVot" class="modifNb">-</button>
-                <button id="plusVot" class="modifNb">+</button>
-
-            </div>
-            <button class="navigation retour" go="couleursSujets">&#10143;</button>
             <button class="navigation valider" go="demarre_vote">&#10143;</button>
         </div>
 
         <div id="demarre_vote" class="content">
-            <button class='navigation bigButton' go="selectionPrenom">Démarrer le vote</button>
-            <button class="navigation retour" go="nombreVotant">&#10143;</button>
+            <action name="initGoDemarrerVote" />
+
+            <button class='navigation bigButton' go="">Démarrer le vote</button>
+            <button class="navigation retour" go="couleursSujets">&#10143;</button>
         </div>
 
         <div id="selectionPrenom" class="content">
             <div id="listeSelectionPrenom">
 
             </div>
+            <button class="navigation retour" go="fin_vote">Mettre fin au vote</button>
             <button class="navigation valider" go="vote">&#10143;</button>
         </div>
 
