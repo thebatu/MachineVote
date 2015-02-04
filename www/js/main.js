@@ -246,7 +246,7 @@ $(function(){
        					$('#listeClass li:last').append('<button>'+res.rows.item(i).nom+'</button>');
        				}
        			}else
-       				$('#listeClass').append("<li>Aucune classe n'a été enregistré</li>");
+       				$('#listeClass').append("<li>Aucune classe n'a été enregistrée</li>");
     		});
     	});
 	}

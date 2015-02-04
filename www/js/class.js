@@ -58,9 +58,13 @@ function styliser(){
 
 		$('.keyCode').click(function(){
 			var tmp = $(this).html();
-			var current = $('.sel').html(tmp);					
-			$('.sel').next('.codeParams').addClass("sel");
-			current.removeClass("sel");
+			var current = $('.sel').html(tmp);
+
+
+				$('.sel').next('#codeParams .codeParams').addClass("sel");
+				current.removeClass("sel");
+
+
 
 
 				//$('.sel').next('.codeParams').addClass("sel");
