@@ -84,6 +84,25 @@ $(function(){
 		gotoSection($(this).attr("go"));
 	});
 
+
+/*
+ *	progress bar handler
+ *
+ */
+ 	$("#upload").click(function(){
+ 		$('#progressbar').progressbar({value: 37});
+ 		  value: 37
+
+ 	});
+
+ 	/*function progressBar(int_students){
+ 		$('#progressBar').progressbar();
+
+
+ 	}
+*/
+
+
 	/*
 	 * Function main
 	 * Redirection sur la div 
@@ -104,9 +123,10 @@ $(function(){
 			affichageResultatsChiffres(nbrSujet);
 		else if(key == "resultatsTableau")
 			affichageResultatsTableau(nbrSujet);
-		else if(key == "parametres")
+		else if(key == "parametres"){
 			$("#changeCodeParams").hide();
-		else if(key == "selectionClass"){
+			$("#numericInput").hide();
+		} else if(key == "selectionClass"){
 			$('#selectionClass .valider').hide();
 			affichageClasse();
 		} else if(key =="selectionPrenom"){
