@@ -1,9 +1,11 @@
 $(function(){
-	var resultatVote; var color; var nbrVotant; var nbrVote;
+	var resultatVote; var color; var nbrVotant; var nbrVote; var creation; var initListeEleve; var tousVote;
 	var couleursVote = new Array("#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF", "#FF00FF","#F778A1","#347C17","#7E3817","#8E35EF");
 	$(".content").not(":first").hide();
 	/* Liste des boutons récurrents */
 	var button = $(".content .navigation"); 
+	var storage = window.localStorage;
+	var style = storage.getItem('styleSheet');
 
 	$('.validation_vote').on("click", function(event){
 		nbrVote++;
@@ -109,24 +111,28 @@ $(function(){
 		gererAction(getAction(key));
 		$("#"+key).show();
 		var nbrSujet = $('.selected').attr('value');
-		if(key == "couleursSujets" && creation == false){	
+		if(key == "couleursSujets" && creation == false)	
 			initNombreSujet(nbrSujet);
-		} else if(key == "vote") {
+		else if(key == "vote") 
 			initBulletins(nbrSujet);
-		} else if(key == "resultats"){
+		else if(key == "resultats")
 			affichageResultats(nbrSujet);
-		} else if(key == "demarre_vote"){
+		else if(key == "demarre_vote")
 			nbrVotant = $('#numVot').html();
-		} else if(key == "resultatsChiffres"){
+		else if(key == "resultatsChiffres")
 			affichageResultatsChiffres(nbrSujet);
-		} else if(key == "resultatsTableau"){
+		else if(key == "resultatsTableau")
 			affichageResultatsTableau(nbrSujet);
-		} else if(key == "parametres"){
+		else if(key == "parametres"){
 			$("#changeCodeParams").hide();
+			$("#numericInput").hide();
 		} else if(key == "selectionClass"){
+			$('#selectionClass .valider').hide();
 			affichageClasse();
 		} else if(key =="selectionPrenom"){
-			affichagePrenomsSelection();
+			if(initListeEleve == false)	
+				affichagePrenomsSelection();
+			$('#selectionPrenom .valider').hide();
 		}
 	}
 
@@ -150,12 +156,20 @@ $(function(){
 				resultatVote = {bulletin0:0, bulletin1:0, bulletin2:0, bulletin3:0, bulletin4:0, bulletin5:0};
 				color = new Array();
 				creation = false;
+				initListeEleve = false;
 				nbrVote = 0;
+				$('#listeClass').empty();
 				$('.continuer_vote').attr('go', 'vote');
 				$("#menuParams").hide();
 				$(".codeParams").text("0");
 				$("#numericInput").hide();
 				$(".entrerCode").css("background", "linear-gradient( #519802, #9ccf31)");
+				break;
+			case "initGoDemarrerVote" :
+				if($("#listeClass button").length != 0)
+					$("#demarre_vote .bigButton").attr('go', 'selectionPrenom');
+				else
+					$("#demarre_vote .bigButton").attr('go', 'vote');
 				break;
 		}
 	}
@@ -192,16 +206,13 @@ $(function(){
 		randomColorGenerator(nbr);
 		for(var i=0; i<nbr; i++){
 			if (i <= 2){
-				if (nbr == 4 && i == 2){ //le troisieme choix parmi 4 choix est mis sur la ligne suivante
+				if (nbr == 4 && i == 2) //le troisieme choix parmi 4 choix est mis sur la ligne suivante
 					cases2tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[color[i]]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' maxlength='10' /></td>");
-				}
-				else{
+				else
 					cases1tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[color[i]]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' maxlength='10' /></td>");
-				}
 			}
-			else{ // les 4eme 5eme et 6eme choix sur la seconde ligne
+			else // les 4eme 5eme et 6eme choix sur la seconde ligne
 				cases2tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[color[i]]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' maxlength='10' /></td>");
-			}
 		}
 		creation = true;
 	}
@@ -211,42 +222,42 @@ $(function(){
 	*/
 	function initBulletins(nbr){
 		$("#bulletins").empty();
-		for(var i = 0; i < nbr ; i++){
+		for(var i = 0; i < nbr ; i++)
 			$('#bulletins').append("<button onclick='addBulletinSelect();' id='bulletin"+[i]+"' class='bulletin' style='background-color:"+couleursVote[color[i]]+"'>"+$('#sujet'+[i]).val()+"</button>");
-		}
-		if (nbr == 4){ 
+		if (nbr == 4) 
 			$(".bulletin:nth-child(2)").after("<br/>");
-		}
-		else if (nbr > 4) {
+		else if (nbr > 4) 
 			$(".bulletin:nth-child(3)").after("<br/>");
-		}
-		if (nbr == 3 || nbr == 2){
+		if (nbr == 3 || nbr == 2)
 				$(".bulletin").css("margin-top", "100px");
-			}
-		if(nbr ==4 || nbr == 2){
+		if(nbr ==4 || nbr == 2)
 			$(".bulletin").css("width", "40%");
-		}
-		else{
+		else
 			$(".bulletin").css("width", "26%");
-		}
 		$(".bulletin").css("height", "200px");
-
-		if(nbrVote == (nbrVotant-1))
-			$('.continuer_vote').attr('go', 'fin_vote');
-			var storage = window.localStorage;
-			var style = storage.getItem('styleSheet');
-
+		if($("#listeClass button").length == 0){
+			if(nbrVote == (nbrVotant-1))
+				$('.continuer_vote').attr('go', 'fin_vote');
+		} else {
+			tousVote = true;
+			$("#listeSelectionPrenom button").each(function(){
+				if(!($(this).hasClass('hasBeenSelected')))
+					tousVote=false;
+			});
+			if(tousVote == false)
+				$('.continuer_vote').attr('go', 'selectionPrenom');
+			else
+				$('.continuer_vote').attr('go', 'fin_vote');
+		}
+			
 		$(".bulletin").click(function(){
 			resetBackground();
 			if ($(this).hasClass("select")){
-				if (style == 1){
+				if (style == 1)
 					$(this).css("background", "radial-gradient(white,"+couleursVote[color[$(this).attr('id').replace("bulletin","")]]+")");
-				}
-				else if (style == 2){
+				else if (style == 2)
 					$(this).css("outline", "10px solid black");
-				}
 			}
-
 		});
 	}
 
@@ -274,14 +285,15 @@ $(function(){
 	}
 	
 	function affichagePrenomsSelection(){
+		$('#listeSelectionPrenom').empty();
 		db.transaction(function(tx){
 			tx.executeSql("SELECT nom FROM Eleve WHERE id_classe = "+$('#listeClass .classSelect').attr('id_class'), [], function(tx, res){
 				if(res.rows.length != 0){
-					for(var i =0; i< res.rows.length; i++){
+					for(var i =0; i< res.rows.length; i++)
 						$("#listeSelectionPrenom").append("<button>"+res.rows.item(i).nom+"</button>  ");
-					}
 				}
 			});
+			initListeEleve = true;
 		},onDBError);
 	}
 
@@ -319,13 +331,26 @@ $(function(){
 		if (tmp > 0){
 			$('#numVot').html(parseInt(tmp)-1);			
 		}
-
 	});
 
 	$('#listeClass button').live('click', function(){
 		$('#listeClass button').removeClass('classSelect');
   		$(event.target).addClass('classSelect');
+  		$('#selectionClass .valider').show();
 	});	
+
+	$('#listeSelectionPrenom button').live('click',function(){
+		if(!($(event.target).hasClass('hasBeenSelected'))){
+			$('#listeSelectionPrenom button').removeClass('classSelect');
+			$(event.target).addClass('classSelect');
+			$('#selectionPrenom .valider').show();
+		}
+	});
+
+	$('#selectionPrenom .valider').on('click', function(){
+		$('#listeSelectionPrenom .classSelect').addClass('hasBeenSelected');
+		$('#listeSelectionPrenom button').removeClass('classSelect');
+	});
 });
 
 /*
