@@ -26,7 +26,7 @@ $(function(){
 		for(var i=0; i<nbr ; i++){
 			if(resultatVote['bulletin'+i] != 0)
 				if (nbr > 0)		
-					$('#affichageResultats').append("<br>");
+					$('#affichageResultats').append("<div class='ligne1compt'></div>");
 			for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
 				$('#affichageResultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");	
 			}
@@ -104,6 +104,10 @@ $(function(){
 			affichageResultatsTableau(nbrSujet);
 		} else if(key == "parametres"){
 			$("#changeCodeParams").hide();
+		} else if(key == "selectionClass"){
+			affichageClasse();
+		} else if(key =="selectionPrenom"){
+			affichagePrenomsSelection();
 		}
 	}
 
@@ -210,8 +214,8 @@ $(function(){
 
 		if(nbrVote == (nbrVotant-1))
 			$('.continuer_vote').attr('go', 'fin_vote');
-var storage = window.localStorage;
-var style = storage.getItem('styleSheet');
+			var storage = window.localStorage;
+			var style = storage.getItem('styleSheet');
 
 		$(".bulletin").click(function(){
 			resetBackground();
@@ -231,12 +235,37 @@ var style = storage.getItem('styleSheet');
 		var identifiant = $('.bulletin').filter('.select').attr('id');
 		$('.bulletin').each(function(){
 			$(this).css("background", couleursVote[color[$(this).attr('id').replace("bulletin","")]] );
-			$(this).css("border", "none");
+			$(this).css("outline", "0px");
 		});
-
 	}
 
+	function affichageClasse(){
+		$('#listeClass').empty();
+		db.transaction(function(tx) {
+         	tx.executeSql("SELECT * FROM Classe", [], function(tx, res) {
+       			if(res.rows.length != 0){
+       				for(var i=0; i<res.rows.length; i++) {
+       					$('#listeClass').append('<li>');
+       					$('#listeClass li:last').append("<button id_class='"+res.rows.item(i).id_Classe+"'>"+res.rows.item(i).nom+'</button>');
+       				}
+       			}else
+       				$('#listeClass').append("<li>Aucune classe n'a été enregistrée</li>");
+    		});
+    	});
+	}
 	
+	function affichagePrenomsSelection(){
+		db.transaction(function(tx){
+			tx.executeSql("SELECT nom FROM Eleve WHERE id_classe = "+$('#listeClass .classSelect').attr('id_class'), [], function(tx, res){
+				if(res.rows.length != 0){
+					for(var i =0; i< res.rows.length; i++){
+						$("#listeSelectionPrenom").append("<button>"+res.rows.item(i).nom+"</button>  ");
+					}
+				}
+			});
+		},onDBError);
+	}
+
 	/*
 	 * Appuie sur le logo d'accueil
 	*/
@@ -274,14 +303,10 @@ var style = storage.getItem('styleSheet');
 
 	});
 
-	$('#selectionClass button').on('click', function(){
-		$('#selectionClass button').css("color", "white");
-		$('#selectionClass button').css("background-color", "");
-  		$(event.target).css("color","black");
-  		$(event.target).css("background-color","white");
-	});
-
-		
+	$('#listeClass button').live('click', function(){
+		$('#listeClass button').removeClass('classSelect');
+  		$(event.target).addClass('classSelect');
+	});	
 });
 
 /*
