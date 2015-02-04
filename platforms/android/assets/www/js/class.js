@@ -1,26 +1,30 @@
-/*document.addEventListener("deviceready", onDeviceReady, false);
- 
-function onDeviceReady() {
-  	var db = window.sqlitePlugin.openDatabase({name: "Databases"});
-  	db.transaction(function(tx) {
-        tx.executeSql('CREATE TABLE IF NOT EXISTS Password (id integer primary key, premier integer, deuxieme integer, troisieme integer, quatrieme integer)');
-	});
-}*/
-var current;
-
-
 $(function(){
 	var storage = window.localStorage;
 	if(!('password' in storage))
 		storage.setItem('password', "0000");
 	var code = new Array();
 	code = storage.getItem('password');
+	var current;
 
 	if(!('styleSheet' in storage))
 		storage.setItem('styleSheet', "1");
 	var style = new Array();
 	style = storage.getItem('styleSheet');
+	styliser();
 
+function styliser(){
+	if (style == 1){
+			$("head").append("<link rel='stylesheet' type='text/css' href='css/newStyle.css' />");
+			storage.styleSheet=2;
+
+		}
+		else if (style == 2){
+			$("link[href='css/newStyle.css']").remove();
+			
+			storage.styleSheet=1;
+		}
+	style=storage.getItem('styleSheet');
+}
 	function increaseNumber(nbr){
 		var tot = parseInt(nbr) + 1;
 		if (tot == 10){
@@ -52,15 +56,15 @@ $(function(){
 		$("#numericInput").show();
 		 //current = $(this);
 
+		$('.keyCode').click(function(){
+			var tmp = $(this).html();
+			var current = $('.sel').html(tmp);
 
-	
-									
-				
-	$('.keyCode').click(function(){
-				var tmp = $(this).html();
-				var current = $('.sel').html(tmp);					
-				$('.sel').next('.codeParams').addClass("sel");
+
+				$('.sel').next('#codeParams .codeParams').addClass("sel");
 				current.removeClass("sel");
+
+
 
 
 				//$('.sel').next('.codeParams').addClass("sel");
@@ -71,9 +75,7 @@ $(function(){
 				//current=current.next('codeParams');
 				
 				//$('sel').next('codeParams').addClass('sel');
-
-
-			});
+		});
 	});
 
 
@@ -128,19 +130,33 @@ $(function(){
 /*changer le design de l'application */
 
 	$("#styleSheet").click(function(){
-		if (style == 1){
-			$("head").append("<link rel='stylesheet' type='text/css' href='css/newStyle.css' />");
-			storage.styleSheet=2;
-
-		}
-		else if (style == 2){
-			$("link[href='css/newStyle.css']").remove();
-			
-			storage.styleSheet=1;
-		}
-		style=storage.getItem('styleSheet');
-
+		styliser();
 	});
-	
 
+	$('#ajoutClasse #buttonAjoutEleve').click(function(){
+		if($('#inputNomEleve').val() != ''){
+			$('.classRight div').append('<p>'+$('#inputNomEleve').val()+'</p>');
+			$('#inputNomEleve').val('');
+		}
+	});
+
+	$("#ajoutClasse .valider").click(function(){
+		var idDerniereClass;
+		if($('#inputNomClasse').val() != '' && $('#ajoutClasse .classRight p').length != 0){
+			db.transaction(function(tx) {
+         		tx.executeSql("INSERT INTO Classe(nom) VALUES ('"+$('#inputNomClasse').val()+"')");
+         		tx.executeSql("SELECT MAX(id_classe) AS idClass FROM Classe", [], function(tx, res) {
+         			if(res.rows.length != 0)
+         				idDerniereClass=res.rows.item(0).idClass;
+         		});
+         	});
+         	db.transaction(function(tx){
+         		$('#ajoutClasse .classRight p').each(function(){
+         			tx.executeSql("INSERT INTO Eleve(id_classe, nom) VALUES ('"+idDerniereClass+"', '"+$(this).text()+"')");
+         		});
+			},onDBError);
+			//$("#ajoutClasse .valider").addClass('navigation');
+		}else
+			alert('Veuillez entrer un nom de classe et au moins un élève');
+	});
 });
