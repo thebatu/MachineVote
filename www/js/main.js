@@ -106,6 +106,8 @@ $(function(){
 			$("#changeCodeParams").hide();
 		} else if(key == "selectionClass"){
 			affichageClasse();
+		} else if(key =="selectionPrenom"){
+			affichagePrenomsSelection();
 		}
 	}
 
@@ -238,12 +240,13 @@ $(function(){
 	}
 
 	function affichageClasse(){
+		$('#listeClass').empty();
 		db.transaction(function(tx) {
-         	tx.executeSql("SELECT nom FROM Classe", [], function(tx, res) {
+         	tx.executeSql("SELECT * FROM Classe", [], function(tx, res) {
        			if(res.rows.length != 0){
        				for(var i=0; i<res.rows.length; i++) {
        					$('#listeClass').append('<li>');
-       					$('#listeClass li:last').append('<button>'+res.rows.item(i).nom+'</button>');
+       					$('#listeClass li:last').append("<button id_class='"+res.rows.item(i).id_Classe+"'>"+res.rows.item(i).nom+'</button>');
        				}
        			}else
        				$('#listeClass').append("<li>Aucune classe n'a été enregistrée</li>");
@@ -251,6 +254,18 @@ $(function(){
     	});
 	}
 	
+	function affichagePrenomsSelection(){
+		db.transaction(function(tx){
+			tx.executeSql("SELECT nom FROM Eleve WHERE id_classe = "+$('#listeClass .classSelect').attr('id_class'), [], function(tx, res){
+				if(res.rows.length != 0){
+					for(var i =0; i< res.rows.length; i++){
+						$("#listeSelectionPrenom").append("<button>"+res.rows.item(i).nom+"</button>  ");
+					}
+				}
+			});
+		},onDBError);
+	}
+
 	/*
 	 * Appuie sur le logo d'accueil
 	*/
@@ -288,14 +303,10 @@ $(function(){
 
 	});
 
-	$('#selectionClass button').live('click', function(){
-		$('#selectionClass button').css("color", "white");
-		$('#selectionClass button').css("background-color", "");
-  		$(event.target).css("color","black");
-  		$(event.target).css("background-color","white");
-	});
-
-		
+	$('#listeClass button').live('click', function(){
+		$('#listeClass button').removeClass('classSelect');
+  		$(event.target).addClass('classSelect');
+	});	
 });
 
 /*

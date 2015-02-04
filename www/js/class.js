@@ -141,11 +141,21 @@ function styliser(){
 	});
 
 	$("#ajoutClasse .valider").click(function(){
-		if($('#inputNomClasse').val() != ''){
+		var idDerniereClass;
+		if($('#inputNomClasse').val() != '' && $('#ajoutClasse .classRight p').length != 0){
 			db.transaction(function(tx) {
          		tx.executeSql("INSERT INTO Classe(nom) VALUES ('"+$('#inputNomClasse').val()+"')");
-         		$("#ajoutClasse .valider").addClass('navigation');
-			});
+         		tx.executeSql("SELECT MAX(id_classe) AS idClass FROM Classe", [], function(tx, res) {
+         			if(res.rows.length != 0)
+         				idDerniereClass=res.rows.item(0).idClass;
+         		});
+         	});
+         	db.transaction(function(tx){
+         		$('#ajoutClasse .classRight p').each(function(){
+         			tx.executeSql("INSERT INTO Eleve(id_classe, nom) VALUES ('"+idDerniereClass+"', '"+$(this).text()+"')");
+         		});
+			},onDBError);
+			//$("#ajoutClasse .valider").addClass('navigation');
 		}else
 			alert('Veuillez entrer un nom de classe et au moins un élève');
 	});
