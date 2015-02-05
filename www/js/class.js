@@ -160,7 +160,7 @@ $(function(){
 		}
 	});
 
-	$("#modifClasse ajout").on('click', function(){
+	$("#ajouterEleve").on('click', function(){
 		if($('#listeSelectClasse option:selected').val() == 'null')
 			alert("Veuillez d'abord choisir une classe");
 		else{
