@@ -15,6 +15,10 @@
                         {
                             "xml": "<feature name=\"SQLitePlugin\"><param name=\"android-package\" value=\"org.pgsqlite.SQLitePlugin\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Toast\"><param name=\"android-package\" value=\"nl.xservices.plugins.Toast\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -39,6 +43,9 @@
             "PACKAGE_NAME": "com.phonegap.boitavot"
         },
         "com.brodysoft.sqlitePlugin": {
+            "PACKAGE_NAME": "com.phonegap.boitavot"
+        },
+        "nl.x-services.plugins.toast": {
             "PACKAGE_NAME": "com.phonegap.boitavot"
         }
     },

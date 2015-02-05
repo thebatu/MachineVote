@@ -144,7 +144,7 @@ $(function(){
 			if(r == true){
 				db.transaction(function(tx){
 					tx.executeSql("DELETE FROM Classe WHERE id_Classe = "+$('#listeSelectClasse option:selected').val());
-					alert('classe supprimée');
+					window.plugins.toast.show('classe supprimée', 'short', 'center');
 					$('#listeSelectClasse').empty();
 					$('#listeSelectClasse').append("<option value='null'>Sélectionnez une classe</option>");
 					tx.executeSql("SELECT * FROM Classe", [], function(tx,res){
@@ -156,5 +156,10 @@ $(function(){
 				}, onDBError);
 			}
 		}
+	});
+
+	$("#modifClasse ajout").on('click', function(){
+		if($('#listeSelectClasse option:selected').val() == 'null')
+			alert("Veuillez d'abord choisir une classe");
 	});
 });

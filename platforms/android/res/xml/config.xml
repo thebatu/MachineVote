@@ -51,4 +51,7 @@
     <icon gap:platform="android" gap:qualifier="hdpi" src="www/icon.png" />
     <icon gap:platform="android" gap:qualifier="xhdpi" src="www/icon.png" />
     <access origin="*" />
+    <feature name="Toast">
+        <param name="android-package" value="nl.xservices.plugins.Toast" />
+    </feature>
 </widget>
