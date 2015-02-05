@@ -240,33 +240,29 @@ button:active{
             margin-top: 2%;
             font-size: 75%;
         }
-
-
-
 #modifClasse{
 }
     #modifClasse input{
-        width: 70%;
+        width: 75%;
+        margin-bottom: 2%;
     }
     #modifClasse .modif .ajout{
         width:80px;
         height:80px;
     }
-
     #modifClasse .classRight div{
         height: 450px;
     }
 
     select{
-    margin-top: 2%;
-    font-size: 75%;
-    height: 60px;
-    border:1px solid #F5C5C5;
-    border-radius:15px;
-    width:100%;
-    box-shadow:2px 2px 4px #C0C0C0 inset;
+        margin-top: 2%;
+        font-size: 75%;
+        height: 60px;
+        border:1px solid #F5C5C5;
+        border-radius:15px;
+        width:100%;
+        box-shadow:2px 2px 4px #C0C0C0 inset;
     }
-
     .voir{
         font-size: 75%;
     }
@@ -577,8 +573,8 @@ input{
 #progressbar{
     background: linear-gradient( #ff9f77, #ff4f47);
     position: absolute;
-    bottom:11%;
-    margin-left: 5%;
+    bottom:15%;
+    left:10%;
     width: 400px;
 }
 

@@ -57,7 +57,7 @@
             <h2>Ajouter une classe</h2>
             <div class="modif">
                 <input type="text" id='inputNomClasse' placeholder="nom de la classe"></input>
-                <input type="text" id='inputNomEleve' placeholder="ajouter un prénom"></input>
+                <input type="text" id='inputNomEleve' placeholder="ajouter un élève"></input>
                 <button id="buttonAjoutEleve" class="rond ajout">+</button>
             </div>
             <div class="classRight">
@@ -75,13 +75,13 @@
                 <select type="text" id="listeSelectClasse">
                     <option>Classe à modifier</option>
                 </select>
-                <input type="text" placeholder="ajouter élève"></input>
+                <input type="text" placeholder="ajouter un élève"></input>
                 <button class="rond ajout">+</button>
                 <button class='suppr'>Supprimer un élève</button>
                 <button class="suppr" id="supprimerClasse">Supprimer la classe</button>
             </div>
             <div class="classRight">
-                <label>Modifier un élève</label>
+                <label>Liste des élèves</label>
                 <div class="liste"></div>
 
             </div>
@@ -196,10 +196,15 @@
             <div id="affichageResultatsTableau" class='choix3'>
                 
             </div>
-            <button class='navigation retourAccueil' go='confirmationRetour'>Retour à l'accueil</button>
+            <button class='navigation retourAccueil' go='verifResultats'>Vérifier les résultats</button>
             <button class='navigation valider' go='resultats'>&#10143;</button>
         </div>
 
+        <div id='verifResultats' class='content'>
+            <h2>Le sujet gagnant</h2>
+            <button class='navigation retourAccueil' go='resultats'>Non</button>
+            <button class='navigation valider' go='accueil'>Oui</button>
+        </div>
         <div id='confirmationRetour' class='content'>
             <h2>Voulez-vous vraiment retourner à l'écran d'accueil ?</h2>
             <button class='navigation retourAccueil' go='resultats'>Non</button>
@@ -250,18 +255,5 @@
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="js/jquery-ui.min.js"></script>
-
-        <script type="text/javascript">
-            function validate(evt) {
-              var theEvent = evt || window.event;
-              var key = theEvent.keyCode || theEvent.which;
-              key = String.fromCharCode( key );
-              var regex = /[0-9]|\./;
-              if( !regex.test(key) ) {
-                theEvent.returnValue = false;
-                if(theEvent.preventDefault) theEvent.preventDefault();
-                }
-            }
-    </script>
     </body>
 </html>
