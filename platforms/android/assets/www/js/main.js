@@ -133,7 +133,8 @@ $(function(){
 			if(initListeEleve == false)	
 				affichagePrenomsSelection();
 			$('#selectionPrenom .valider').hide();
-		}
+		} else if(key =="modifClasse")
+			initModifClasse();
 	}
 
 	/*
@@ -239,6 +240,8 @@ $(function(){
 			if(nbrVote == (nbrVotant-1))
 				$('.continuer_vote').attr('go', 'fin_vote');
 		} else {
+			$('#listeSelectionPrenom .classSelect').addClass('hasBeenSelected');
+			$('#listeSelectionPrenom button').removeClass('classSelect');
 			tousVote = true;
 			$("#listeSelectionPrenom button").each(function(){
 				if(!($(this).hasClass('hasBeenSelected')))
@@ -272,7 +275,7 @@ $(function(){
 	function affichageClasse(){
 		$('#listeClass').empty();
 		db.transaction(function(tx) {
-         	tx.executeSql("SELECT * FROM Classe", [], function(tx, res) {
+         	tx.executeSql("SELECT nom FROM Classe", [], function(tx, res) {
        			if(res.rows.length != 0){
        				for(var i=0; i<res.rows.length; i++) {
        					$('#listeClass').append('<li>');
@@ -295,6 +298,19 @@ $(function(){
 			});
 			initListeEleve = true;
 		},onDBError);
+	}
+
+	function initModifClasse(){
+		$('#listeSelectClasse').empty();
+		$('#listeSelectClasse').append("<option value='null'>Sélectionnez une classe</option>");
+		db.transaction(function(tx){
+			tx.executeSql("SELECT * FROM Classe", [], function(tx,res){
+				if(res.rows.length != 0){
+					for(var i=0 ; i<res.rows.length ; i++)
+						$('#listeSelectClasse').append("<option value='"+res.rows.item(i).id_Classe+"'>"+res.rows.item(i).nom+"</option>");
+				}
+			});
+		}, onDBError);
 	}
 
 	/*
@@ -346,11 +362,6 @@ $(function(){
 			$('#selectionPrenom .valider').show();
 		}
 	});
-
-	$('#selectionPrenom .valider').on('click', function(){
-		$('#listeSelectionPrenom .classSelect').addClass('hasBeenSelected');
-		$('#listeSelectionPrenom button').removeClass('classSelect');
-	});
 });
 
 /*
@@ -360,5 +371,3 @@ function addBulletinSelect(){
 	$(".bulletin").removeClass("select");
 	$(event.target).addClass("select");
 }
-
-

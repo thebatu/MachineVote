@@ -72,14 +72,16 @@
         <div id="modifClasse" class="content">
             <h2>Modifier <span class="classe">classe</span></h2>
             <div class="modif">
-                <input type="text" placeholder="classe"></input>
+                <select type="text" id="listeSelectClasse">
+                    <option>Sélectionnez une classe</option>
+                </select>
                 <input type="text" placeholder="ajouter un prénom"></input>
                 <button class="rond ajout">+</button>
             </div>
             <div class="classRight">
                 <button class="voir">Voir liste des élèves</button>
                 <button class='suppr'>Supprimer un élève</button>
-                <button class="suppr">Supprimer la classe</button>
+                <button class="suppr" id="supprimerClasse">Supprimer la classe</button>
             </div>
             <button class="valider">Valider</button>
             <button class="navigation retour" go="parametres">&#10143;</button>
@@ -243,6 +245,7 @@
             function onDBError(error){alert("Database Error : "+error.message);}
             function onDBSuccess(tx,results){alert("successfull");}
         </script>
+        <script type="text/javascript" src="js/Toast.js"></script>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/class.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
