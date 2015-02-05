@@ -12,6 +12,9 @@
         },
         "com.brodysoft.sqlitePlugin": {
             "PACKAGE_NAME": "BoitAvot'"
+        },
+        "nl.x-services.plugins.toast": {
+            "PACKAGE_NAME": "BoitAvot'"
         }
     },
     "dependent_plugins": {}

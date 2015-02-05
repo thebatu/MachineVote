@@ -174,7 +174,6 @@ button:active{
         background: linear-gradient( #519802, #9ccf31);
         /*background: linear-gradient( #ffdfb1, #ffdec8);*/
         color:white;
-
     }
     
 
@@ -553,6 +552,10 @@ input{
 }
 
 #progressbar{
+    background: linear-gradient( #ff9f77, #ff4f47);
+    position: absolute;
+    bottom:11%;
+    margin-left: 5%;
     width: 400px;
 }
 

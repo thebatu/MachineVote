@@ -11,7 +11,22 @@ $(function(){
 		nbrVote++;
 		var key = $('.bulletin').filter('.select').attr('id');
 		resultatVote[key] = resultatVote[key]+1;
+		progressBar();
+
+
 	});
+
+/*
+ *	progress bar handler
+ *
+*/
+ 	function progressBar(){
+ 		$('#progressbar').show();
+ 		$('#progressbar').progressbar({value: nbrVote, max:nbrVotant});
+ 		
+ 	}
+
+
 
 	$('.canvaResultat').live("click", function(event){
 		var tmp = $(event.target).parent().find('p').text();
@@ -24,6 +39,8 @@ $(function(){
 	 * Affiche les résultats une fois le vote fini
 	*/
 	function affichageResultats(nbr){
+				$('#progressbar').hide();
+
 		$('#affichageResultats').empty();
 		for(var i=0; i<nbr ; i++){
 			if(resultatVote['bulletin'+i] != 0)
@@ -99,7 +116,6 @@ $(function(){
  		$('#progressBar').progressbar();
  	}
 */
-
 	/*
 	 * Function main
 	 * Redirection sur la div 
@@ -130,7 +146,8 @@ $(function(){
 			if(initListeEleve == false)	
 				affichagePrenomsSelection();
 			$('#selectionPrenom .valider').hide();
-		}
+		} else if(key =="modifClasse")
+			initModifClasse();
 	}
 
 	/*
@@ -314,7 +331,7 @@ function hexc(colorval) {
 	function affichageClasse(){
 		$('#listeClass').empty();
 		db.transaction(function(tx) {
-         	tx.executeSql("SELECT * FROM Classe", [], function(tx, res) {
+         	tx.executeSql("SELECT nom FROM Classe", [], function(tx, res) {
        			if(res.rows.length != 0){
        				for(var i=0; i<res.rows.length; i++) {
        					$('#listeClass').append('<li>');
@@ -337,6 +354,19 @@ function hexc(colorval) {
 			});
 			initListeEleve = true;
 		},onDBError);
+	}
+
+	function initModifClasse(){
+		$('#listeSelectClasse').empty();
+		$('#listeSelectClasse').append("<option value='null'>Sélectionnez une classe</option>");
+		db.transaction(function(tx){
+			tx.executeSql("SELECT * FROM Classe", [], function(tx,res){
+				if(res.rows.length != 0){
+					for(var i=0 ; i<res.rows.length ; i++)
+						$('#listeSelectClasse').append("<option value='"+res.rows.item(i).id_Classe+"'>"+res.rows.item(i).nom+"</option>");
+				}
+			});
+		}, onDBError);
 	}
 
 	/*
