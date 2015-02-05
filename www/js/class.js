@@ -132,8 +132,29 @@ $(function(){
          			tx.executeSql("INSERT INTO Eleve(id_classe, nom) VALUES ('"+idDerniereClass+"', '"+$(this).text()+"')");
          		});
 			},onDBError);
-			//$("#ajoutClasse .valider").addClass('navigation');
 		}else
 			alert('Veuillez entrer un nom de classe et au moins un élève');
+	});
+
+	$("#supprimerClasse").on('click', function(){
+		if($('#listeSelectClasse option:selected').val() == 'null')
+			alert('Veuillez choisir une classe à supprimer');
+		else {
+			var r = confirm("Vouvlez-vous vraiment supprimer la classe : "+$('#listeSelectClasse option:selected').text()+" ?");
+			if(r == true){
+				db.transaction(function(tx){
+					tx.executeSql("DELETE FROM Classe WHERE id_Classe = "+$('#listeSelectClasse option:selected').val());
+					alert('classe supprimée');
+					$('#listeSelectClasse').empty();
+					$('#listeSelectClasse').append("<option value='null'>Sélectionnez une classe</option>");
+					tx.executeSql("SELECT * FROM Classe", [], function(tx,res){
+						if(res.rows.length != 0){
+							for(var i=0 ; i<res.rows.length ; i++)
+								$('#listeSelectClasse').append("<option value='"+res.rows.item(i).id_Classe+"'>"+res.rows.item(i).nom+"</option>");
+						}
+					});
+				}, onDBError);
+			}
+		}
 	});
 });
