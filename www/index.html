@@ -82,7 +82,9 @@
             </div>
             <div class="classRight">
                 <label>Modifier un élève</label>
-                <div class="liste"></div>
+                <div class="liste" id="listeEleveModif">
+
+                </div>
 
             </div>
             <button class="navigation retour" go="parametres">&#10143;</button>
@@ -235,8 +237,8 @@
             //var db = window.sqlitePlugin.openDatabase({name: "Databases"});
             var db = window.openDatabase("Databases", "1.0", "Cordova DB", 200000);
             db.transaction(function(tx) {
-                /*tx.executeSql('DROP TABLE Classe');*/
-                /*tx.executeSql('DROP TABLE Eleve');*/
+                /*tx.executeSql('DROP TABLE Classe');
+                tx.executeSql('DROP TABLE Eleve');*/
                 tx.executeSql('CREATE TABLE IF NOT EXISTS Classe (id_Classe integer primary key AUTOINCREMENT, nom text)');
                 tx.executeSql('CREATE TABLE IF NOT EXISTS Eleve (id_Eleve integer primary key AUTOINCREMENT, id_classe integer, nom text)');
                 //tx.executeSql("ALTER TABLE Eleve ADD CONSTRAINT 'FK_Classe_Eleve' FOREIGN KEY (id_classe) REFERENCES Classe (id) ON DELETE CASCADE ON UPDATE NO ACTION;");

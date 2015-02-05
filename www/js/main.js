@@ -21,9 +21,10 @@ $(function(){
  *
 */
  	function progressBar(){
- 		$('#progressbar').show();
- 		$('#progressbar').progressbar({value: nbrVote, max:nbrVotant});
- 		
+ 		if($("#listeClass button").length == 0){
+ 			$('#progressbar').show();
+ 			$('#progressbar').progressbar({value: nbrVote, max:nbrVotant});
+ 		}
  	}
 
 
@@ -358,6 +359,7 @@ function hexc(colorval) {
 
 	function initModifClasse(){
 		$('#listeSelectClasse').empty();
+		$("#listeEleveModif").empty();
 		$('#listeSelectClasse').append("<option value='null'>Classe à modifier</option>");
 		db.transaction(function(tx){
 			tx.executeSql("SELECT * FROM Classe", [], function(tx,res){

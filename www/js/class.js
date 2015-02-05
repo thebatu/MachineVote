@@ -168,9 +168,28 @@ $(function(){
 				db.transaction(function(tx){
 					tx.executeSql("INSERT INTO Eleve(id_classe, nom) VALUES ("+$('#listeSelectClasse option:selected').val()+",'"+$('#modifClasse .modif input').val()+"')");
 					$('#modifClasse .modif input').val('');
-				}, onDBError, onDBSuccess);
+				}, onDBError);
+				rempliListeModifEleve();
 			} else
 				alert("Veuillez saisir le nom d'un élève");
 		}
 	});
+
+	$("#listeSelectClasse").on('change', function(){
+		rempliListeModifEleve();
+	});
+
+	function rempliListeModifEleve(){
+		$("#listeEleveModif").empty();
+		if($('#listeSelectClasse option:selected').val() != 'null'){
+			db.transaction(function(tx){
+				tx.executeSql("SELECT * FROM Eleve WHERE id_classe = "+$("#listeSelectClasse option:selected").val(), [], function(tx,res){
+					if(res.rows.length != 0){
+						for(var i=0 ; i<res.rows.length ; i++)
+							$('#listeEleveModif').append("<p>"+res.rows.item(i).nom+"</p>");
+					}
+				});
+			}, onDBError);
+		}
+	}
 });
