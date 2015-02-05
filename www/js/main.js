@@ -331,7 +331,7 @@ function hexc(colorval) {
 	function affichageClasse(){
 		$('#listeClass').empty();
 		db.transaction(function(tx) {
-         	tx.executeSql("SELECT nom FROM Classe", [], function(tx, res) {
+         	tx.executeSql("SELECT * FROM Classe", [], function(tx, res) {
        			if(res.rows.length != 0){
        				for(var i=0; i<res.rows.length; i++) {
        					$('#listeClass').append('<li>');

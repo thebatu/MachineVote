@@ -126,12 +126,14 @@ $(function(){
          			if(res.rows.length != 0)
          				idDerniereClass=res.rows.item(0).idClass;
          		});
-         	});
-         	db.transaction(function(tx){
+         	},onDBError);
+         	db.transaction(function(tx) {
          		$('#ajoutClasse .classRight p').each(function(){
          			tx.executeSql("INSERT INTO Eleve(id_classe, nom) VALUES ('"+idDerniereClass+"', '"+$(this).text()+"')");
          		});
-			},onDBError);
+         		$('#inputNomClasse').val('');
+         		$('#ajoutClasse .classRight div').empty();
+         	},onDBError);
 		}else
 			alert('Veuillez entrer un nom de classe et au moins un élève');
 	});
@@ -144,7 +146,7 @@ $(function(){
 			if(r == true){
 				db.transaction(function(tx){
 					tx.executeSql("DELETE FROM Classe WHERE id_Classe = "+$('#listeSelectClasse option:selected').val());
-					window.plugins.toast.show('classe supprimée', 'short', 'center');
+					alert('classe supprimée');
 					$('#listeSelectClasse').empty();
 					$('#listeSelectClasse').append("<option value='null'>Sélectionnez une classe</option>");
 					tx.executeSql("SELECT * FROM Classe", [], function(tx,res){
@@ -161,5 +163,14 @@ $(function(){
 	$("#modifClasse ajout").on('click', function(){
 		if($('#listeSelectClasse option:selected').val() == 'null')
 			alert("Veuillez d'abord choisir une classe");
+		else{
+			if($('#modifClasse .modif input').val() != ''){
+				db.transaction(function(tx){
+					tx.executeSql("INSERT INTO Eleve(id_classe, nom) VALUES ("+$('#listeSelectClasse option:selected').val()+",'"+$('#modifClasse .modif input').val()+"')");
+					$('#modifClasse .modif input').val('');
+				}, onDBError, onDBSuccess);
+			} else
+				alert("Veuillez saisir le nom d'un élève");
+		}
 	});
 });
