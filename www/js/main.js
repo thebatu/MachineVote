@@ -358,7 +358,7 @@ function hexc(colorval) {
 
 	function initModifClasse(){
 		$('#listeSelectClasse').empty();
-		$('#listeSelectClasse').append("<option value='null'>Sélectionnez une classe</option>");
+		$('#listeSelectClasse').append("<option value='null'>Classe à modifier</option>");
 		db.transaction(function(tx){
 			tx.executeSql("SELECT * FROM Classe", [], function(tx,res){
 				if(res.rows.length != 0){
