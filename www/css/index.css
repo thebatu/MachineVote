@@ -221,9 +221,9 @@ button:active{
     .classRight{
         width:45%;
         float:right;
-        margin-top:5%;
     }
     .classRight div{
+        font-size: 55%;
         background-color: white;
         height:200px;
         margin-top:5%;
@@ -237,6 +237,7 @@ button:active{
             transform:rotate(-45deg);
         }
         .classRight label{
+            margin-top: 2%;
             font-size: 75%;
         }
 
@@ -244,6 +245,28 @@ button:active{
 
 #modifClasse{
 }
+    #modifClasse input{
+        width: 70%;
+    }
+    #modifClasse .modif .ajout{
+        width:80px;
+        height:80px;
+    }
+
+    #modifClasse .classRight div{
+        height: 450px;
+    }
+
+    select{
+    margin-top: 2%;
+    font-size: 75%;
+    height: 60px;
+    border:1px solid #F5C5C5;
+    border-radius:15px;
+    width:100%;
+    box-shadow:2px 2px 4px #C0C0C0 inset;
+    }
+
     .voir{
         font-size: 75%;
     }

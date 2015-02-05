@@ -61,7 +61,7 @@
                 <button id="buttonAjoutEleve" class="rond ajout">+</button>
             </div>
             <div class="classRight">
-                <label>Liste des élèves <button class="agrandir">↔</button><!-- Aggrandissement --></label>
+                <label>Liste des élèves</label>
                 
                 <div class="liste"></div>
             </div>
@@ -73,17 +73,18 @@
             <h2>Modifier <span class="classe">classe</span></h2>
             <div class="modif">
                 <select type="text" id="listeSelectClasse">
-                    <option>Sélectionnez une classe</option>
+                    <option>Classe à modifier</option>
                 </select>
-                <input type="text" placeholder="ajouter un prénom"></input>
+                <input type="text" placeholder="ajouter élève"></input>
                 <button class="rond ajout">+</button>
-            </div>
-            <div class="classRight">
-                <button class="voir">Voir liste des élèves</button>
                 <button class='suppr'>Supprimer un élève</button>
                 <button class="suppr" id="supprimerClasse">Supprimer la classe</button>
             </div>
-            <button class="valider">Valider</button>
+            <div class="classRight">
+                <label>Modifier un élève</label>
+                <div class="liste"></div>
+
+            </div>
             <button class="navigation retour" go="parametres">&#10143;</button>
         </div>            
 
@@ -154,7 +155,7 @@
             <div id="listeSelectionPrenom">
 
             </div>
-            <button class="navigation retour" go="fin_vote">Mettre fin au vote</button>
+            <button class="navigation retourAccueil" go="fin_vote">Mettre fin au vote</button>
             <button class="navigation valider" go="vote">&#10143;</button>
         </div>
 
@@ -234,8 +235,8 @@
             //var db = window.sqlitePlugin.openDatabase({name: "Databases"});
             var db = window.openDatabase("Databases", "1.0", "Cordova DB", 200000);
             db.transaction(function(tx) {
-                /*tx.executeSql('DROP TABLE Classe');
-                tx.executeSql('DROP TABLE Eleve');*/
+                /*tx.executeSql('DROP TABLE Classe');*/
+                /*tx.executeSql('DROP TABLE Eleve');*/
                 tx.executeSql('CREATE TABLE IF NOT EXISTS Classe (id_Classe integer primary key AUTOINCREMENT, nom text)');
                 tx.executeSql('CREATE TABLE IF NOT EXISTS Eleve (id_Eleve integer primary key AUTOINCREMENT, id_classe integer, nom text)');
                 //tx.executeSql("ALTER TABLE Eleve ADD CONSTRAINT 'FK_Classe_Eleve' FOREIGN KEY (id_classe) REFERENCES Classe (id) ON DELETE CASCADE ON UPDATE NO ACTION;");

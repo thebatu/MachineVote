@@ -29,8 +29,7 @@ html, body{
 .bigButton, .choixSujet, .suppr{ /* rouge */
 	background: #db2218;
 }
-#ajoutClasse input, #ajoutClasse p,
-#modifClasse input{
-	color:black;
+input, #ajoutClasse p, select, option{
+	color:black !important;
 }
 
