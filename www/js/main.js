@@ -36,7 +36,7 @@ $(function(){
 	});
 
 	/*
-	 * Affiche les résultats une fois le vote finit
+	 * Affiche les résultats une fois le vote fini
 	*/
 	function affichageResultats(nbr){
 				$('#progressbar').hide();
@@ -102,8 +102,20 @@ $(function(){
 	});
 
 
+/*
+ *	progress bar handler
+ *
+ */
+ 	$("#upload").click(function(){
+ 		$('#progressbar').progressbar({value: 37});
+ 		  value: 37
 
+ 	});
 
+ 	/*function progressBar(int_students){
+ 		$('#progressBar').progressbar();
+ 	}
+*/
 	/*
 	 * Function main
 	 * Redirection sur la div 
@@ -195,6 +207,43 @@ $(function(){
 			}
 		}
 	}
+/*Transformation rgb en hexadécimal*/
+function hexc(colorval) {
+    var parts = colorval.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+    delete(parts[0]);
+    for (var i = 1; i <= 3; ++i) {
+        parts[i] = parseInt(parts[i]).toString(16);
+        if (parts[i].length == 1) parts[i] = '0' + parts[i];
+    }
+    return '#' + parts.join('');
+}
+/*
+* Changement de couleur par clic canvas
+* retourne une nouvelle couleur qui n'est pas utilisée
+* courante est la clé de la couleur utilisée
+*/
+			function plusKey(ind){
+				var max = couleursVote.length;
+				//si la couleur arrive au bout du tableau, revenir au debut pour le changement
+				if (ind == max-1){
+					ind = -1;
+				}
+				ind++;
+				//si la couleur est deja présente
+				if (jQuery.inArray(ind, color) != -1){
+					return plusKey(ind);
+				}
+				return ind;
+			}
+	function changeColor(courante, cl){
+		/*alert(color); //tableau d'indices
+		alert(cl); // index de la couleur cliquée
+		alert(color[cl]); //index de la couleur utilisée dans couleursVote
+		alert(couleursVote[color[cl]]); //la couleur*/
+		courante = couleursVote[plusKey(color[cl])];
+		color[cl]=plusKey(color[cl]);
+		return courante;
+	}
 
 	/*
 	 * Initialise le nombre de sujet après que l'utilisateur ai choisi le nombre de sujets
@@ -217,6 +266,12 @@ $(function(){
 				cases2tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[color[i]]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' maxlength='10' /></td>");
 		}
 		creation = true;
+			$(".couleurSujet").click(function(){
+				var index = $(".couleurSujet").index(this);
+				var courante = $(this).css("backgroundColor");
+				courante = hexc(courante);
+				$(this).css("background-color", changeColor(courante, index));
+			});
 	}
 
 	/*
@@ -363,6 +418,7 @@ $(function(){
 			$('#selectionPrenom .valider').show();
 		}
 	});
+
 });
 
 /*
