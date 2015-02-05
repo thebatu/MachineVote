@@ -177,6 +177,10 @@ $(function(){
 
 	$("#listeSelectClasse").on('change', function(){
 		rempliListeModifEleve();
+		if($('#listeSelectClasse option:selected').val() == 'null')
+			$("#supprimerEleve").attr('go', 'modifClasse');
+		else
+			$("#supprimerEleve").attr('go', 'supprEleve');
 	});
 
 	function rempliListeModifEleve(){
@@ -192,4 +196,14 @@ $(function(){
 			}, onDBError);
 		}
 	}
+
+	$("#supprimerEleve").on('click', function(){
+		if($('#listeSelectClasse option:selected').val() == 'null')
+			alert("Veuillez d'abord choisir une classe");
+	});
+
+	$("#supprEleveDyna button").live('click', function(){
+		$("#supprEleveDyna button").removeClass('select');
+		$(event.target).addClass('select');
+	});
 });

@@ -77,7 +77,7 @@
                 </select>
                 <input type="text" placeholder="ajouter élève"></input>
                 <button class="rond ajout" id="ajouterEleve">+</button>
-                <button class='suppr'>Supprimer un élève</button>
+                <button class='navigation suppr' go="modifClasse" id="supprimerEleve">Supprimer un élève</button>
                 <button class="suppr" id="supprimerClasse">Supprimer la classe</button>
             </div>
             <div class="classRight">
@@ -87,7 +87,15 @@
                 </div>
             </div>
             <button class="navigation retour" go="parametres">&#10143;</button>
-        </div>            
+        </div>    
+
+        <div id="supprEleve" class="content">
+            <div id="supprEleveDyna">
+
+            </div>
+            <button class="navigation retour" go="modifClasse">&#10143;</button>
+            <button class="valider">Valider</button>
+        </div>        
 
         <div id="changeCodeParams" class="content">
             <div class="entrerCode">

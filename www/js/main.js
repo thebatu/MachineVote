@@ -12,8 +12,6 @@ $(function(){
 		var key = $('.bulletin').filter('.select').attr('id');
 		resultatVote[key] = resultatVote[key]+1;
 		progressBar();
-
-
 	});
 
 /*
@@ -149,6 +147,8 @@ $(function(){
 			$('#selectionPrenom .valider').hide();
 		} else if(key =="modifClasse")
 			initModifClasse();
+		else if(key == "supprEleve")
+			initSupprEleve();
 	}
 
 	/*
@@ -370,6 +370,30 @@ function hexc(colorval) {
 			});
 		}, onDBError);
 	}
+
+	function initSupprEleve() {
+		$('#supprEleveDyna').empty();
+		$('#supprEleveDyna').append('<h2>Supprimer un élève de la classe : '+$('#listeSelectClasse option:selected').text()+"</h2>");
+		$('#supprEleveDyna').append('<div>');
+		db.transaction(function(tx){
+			tx.executeSql("SELECT * FROM Eleve WHERE id_classe = "+$("#listeSelectClasse option:selected").val(), [], function(tx,res){
+				if(res.rows.length != 0){
+					for(var i=0 ; i<res.rows.length ; i++)
+						$('#supprEleveDyna div').append(" <button value='"+res.rows.item(i).id_Eleve+"'>"+res.rows.item(i).nom+"</button> ");
+				}
+			});
+		}, onDBError);
+	}
+
+	$("#supprEleve .valider").on('click', function(){
+		var r =confirm("Voulez-vous vraiment supprimer l'élève "+$("#supprEleveDyna .select").text()+" ?");
+		if(r == true){
+			db.transaction(function(tx){
+				tx.executeSql("DELETE FROM Eleve WHERE id_Eleve = "+$("#supprEleveDyna .select").val());
+				initSupprEleve();
+			}, onDBError);
+		}
+	});
 
 	/*
 	 * Appuie sur le logo d'accueil
