@@ -148,7 +148,7 @@ $(function(){
 					tx.executeSql("DELETE FROM Classe WHERE id_Classe = "+$('#listeSelectClasse option:selected').val());
 					alert('classe supprimée');
 					$('#listeSelectClasse').empty();
-					$('#listeSelectClasse').append("<option value='null'>Sélectionnez une classe</option>");
+					$('#listeSelectClasse').append("<option value='null'>Classe à modifier</option>");
 					tx.executeSql("SELECT * FROM Classe", [], function(tx,res){
 						if(res.rows.length != 0){
 							for(var i=0 ; i<res.rows.length ; i++)
