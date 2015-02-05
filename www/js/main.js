@@ -11,7 +11,22 @@ $(function(){
 		nbrVote++;
 		var key = $('.bulletin').filter('.select').attr('id');
 		resultatVote[key] = resultatVote[key]+1;
+		progressBar();
+
+
 	});
+
+/*
+ *	progress bar handler
+ *
+*/
+ 	function progressBar(){
+ 		$('#progressbar').show();
+ 		$('#progressbar').progressbar({value: nbrVote, max:nbrVotant});
+ 		
+ 	}
+
+
 
 	$('.canvaResultat').live("click", function(event){
 		var tmp = $(event.target).parent().find('p').text();
@@ -24,6 +39,8 @@ $(function(){
 	 * Affiche les résultats une fois le vote finit
 	*/
 	function affichageResultats(nbr){
+				$('#progressbar').hide();
+
 		$('#affichageResultats').empty();
 		for(var i=0; i<nbr ; i++){
 			if(resultatVote['bulletin'+i] != 0)
@@ -85,22 +102,6 @@ $(function(){
 	});
 
 
-/*
- *	progress bar handler
- *
- */
- 	$("#upload").click(function(){
- 		$('#progressbar').progressbar({value: 37});
- 		  value: 37
-
- 	});
-
- 	/*function progressBar(int_students){
- 		$('#progressBar').progressbar();
-
-
- 	}
-*/
 
 
 	/*

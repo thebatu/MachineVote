@@ -552,6 +552,10 @@ input{
 }
 
 #progressbar{
+    background: linear-gradient( #ff9f77, #ff4f47);
+    position: absolute;
+    bottom:11%;
+    margin-left: 5%;
     width: 400px;
 }
 
