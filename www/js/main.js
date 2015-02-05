@@ -21,9 +21,10 @@ $(function(){
  *
 */
  	function progressBar(){
- 		$('#progressbar').show();
- 		$('#progressbar').progressbar({value: nbrVote, max:nbrVotant});
- 		
+ 		if($("#listeClass button").length == 0){
+ 			$('#progressbar').show();
+ 			$('#progressbar').progressbar({value: nbrVote, max:nbrVotant});
+ 		}
  	}
 
 
@@ -331,7 +332,7 @@ function hexc(colorval) {
 	function affichageClasse(){
 		$('#listeClass').empty();
 		db.transaction(function(tx) {
-         	tx.executeSql("SELECT nom FROM Classe", [], function(tx, res) {
+         	tx.executeSql("SELECT * FROM Classe", [], function(tx, res) {
        			if(res.rows.length != 0){
        				for(var i=0; i<res.rows.length; i++) {
        					$('#listeClass').append('<li>');
@@ -358,6 +359,10 @@ function hexc(colorval) {
 
 	function initModifClasse(){
 		$('#listeSelectClasse').empty();
+<<<<<<< HEAD
+=======
+		$("#listeEleveModif").empty();
+>>>>>>> c96f9463d66dc51dfce34a27339d3d7345fd674d
 		$('#listeSelectClasse').append("<option value='null'>Classe à modifier</option>");
 		db.transaction(function(tx){
 			tx.executeSql("SELECT * FROM Classe", [], function(tx,res){
