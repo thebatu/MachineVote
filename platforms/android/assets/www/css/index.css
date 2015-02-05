@@ -192,7 +192,13 @@ button:active{
             margin: 30px 0px 30px 80%;
         }
 
-
+    #styleSheet{
+    width: auto;
+    padding: 1%;
+    position: absolute;
+    right:10%;
+    bottom: 10%;
+    }
 /*** FIN PARAMS ***/
 /*** GESTION DE CLASSE ***/
 #ajoutClasse{
@@ -222,6 +228,7 @@ button:active{
         background-color: white;
         height:200px;
         margin-top:5%;
+        overflow-y:auto;
     }
         .classRight .agrandir{
             border-radius: 50px;
@@ -234,15 +241,19 @@ button:active{
             font-size: 75%;
         }
 
+
+
 #modifClasse{
 }
-    #modifClasse button{
-        padding:2%;
+    .voir{
         font-size: 75%;
-        margin-top: 4%;
     }
     .suppr{
-        background-color: red;
+        margin-top: 4%;
+        padding:2%;
+        background: linear-gradient( #aa4444, #ff0000);
+        font-size: 75%;
+
     }
 /*** FIN GESTION DE CLASSE ***/
 
@@ -536,6 +547,12 @@ input{
     background-color : white;
 }
 
+.hasBeenSelected {
+    color : black;
+    background-color: red;
+}
+
 #progressbar{
     width: 400px;
 }
+
