@@ -18,8 +18,11 @@ $(function(){
  *	progress bar handler
  *
 */
+var destinationType=navigator.camera.DestinationType;
 
-
+function onFail(message) {
+        alert('Failed because: ' + message);
+    }       
 
 function onPhotoDataSuccess(imageData) {
       // Uncomment to view the base64-encoded image data
@@ -27,16 +30,9 @@ function onPhotoDataSuccess(imageData) {
 
       // Get image handle
       //
-      var smallImage = document.getElementById('smallImage');
-
-      // Unhide image elements
-      //
-      smallImage.style.display = 'block';
-
-      // Show the captured photo
-      // The in-line CSS rules are used to resize the image
-      //
-      smallImage.src = "data:image/jpeg;base64," + imageData;
+         var image = document.getElementById('myImage');
+        image.src ="data:image/jpeg;base64," + imageData;       
+    
     }
 
 var camQualityDefault = ['quality value', 50];
@@ -44,7 +40,14 @@ var camQualityDefault = ['quality value', 50];
 
 	$('#cam').click(function(){
 navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-        destinationType: destinationType.DATA_URL });		
+        destinationType: destinationType.DATA_URL });
+
+
+
+
+
+
+
 	});
 
 
