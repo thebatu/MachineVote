@@ -119,12 +119,20 @@ navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
 
 	function affichageResultatFinal(nbr){
 		$("#verifResultats div").empty();
-		var max = 0;
+		var max = new Array();
+		max.push(0);
 		for(var i=0; i<nbr ; i++){
-			if(resultatVote['bulletin'+i] > max)
-				max = i;
+			if(resultatVote['bulletin'+i] > max[0]){
+				max.length = 0;
+				max[0] = i;
+			}
+			if(resultatVote['bulletin'+i] == max[0])
+				max.push(i);
 		}
-		$("#verifResultats div").append("<button id='bulletin"+[max]+"' class='bulletin' style='background-color:"+couleursVote[color[max]]+"'>"+$('#sujet'+[max]).val()+"</button>");
+		for(var M in max)
+			$("#verifResultats div").append("<button id='bulletin"+[M]+"' class='bulletin' style='background-color:"+couleursVote[color[M]]+"'>"+$('#sujet'+[M]).val()+"</button>");
+		$(".bulletin").css("width", "calc(96%/2)");
+		$(".bulletin").css("height", "200px");
 	}
 
 	// Gestion du clic sur les boutons de choix de chemin //
@@ -350,7 +358,7 @@ navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
 			$(".bulletin:gt(0)").css("float","left");
 		}
 		if (nbr == 5){
-			$("#bulletin3").css("margin-left","calc(94%/5");
+			$("#bulletin3").css("margin-left","calc(94%/5)");
 		}
 		if (nbr == 3 || nbr == 2){
 			$(".bulletin").css("margin-top", "100px");
