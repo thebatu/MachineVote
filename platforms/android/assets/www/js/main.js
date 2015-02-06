@@ -18,33 +18,7 @@ $(function(){
  *	progress bar handler
  *
 */
-//var destinationType=navigator.camera.DestinationType;
-/*
 
-function onFail(message) {
-        alert('Failed because: ' + message);
-    }       
-
-function onPhotoDataSuccess(imageData) {
-      // Uncomment to view the base64-encoded image data
-      // console.log(imageData);
-
-      // Get image handle
-      //
-         var image = document.getElementById('myImage');
-        image.src ="data:image/jpeg;base64," + imageData;       
-    
-    }
-
-var camQualityDefault = ['quality value', 50];
-    var camDestinationTypeDefault = ['FILE_URI', 1];
-
-	$('#cam').click(function(){
-navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-        destinationType: destinationType.DATA_URL });
-	});
-
-*/
  	function progressBar(){
  		if($("#listeClass button").length == 0){
  			$('#progressbar').show();
