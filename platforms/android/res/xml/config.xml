@@ -48,7 +48,6 @@
     <gap:plugin name="org.apache.cordova.media" />
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
-    <gap:plugin name="nl.x-services.plugins.toast" />
     <icon src="www/icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/icon.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="www/icon.png" />
