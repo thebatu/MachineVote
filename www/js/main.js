@@ -39,7 +39,14 @@ var camQualityDefault = ['quality value', 50];
 
 	$('#cam').click(function(){
 navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-        destinationType: Camera.DestinationType.DATA_URL });		
+        destinationType: destinationType.DATA_URL });
+
+
+
+
+
+
+
 	});
 
 
