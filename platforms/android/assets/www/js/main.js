@@ -12,21 +12,43 @@ $(function(){
 		var key = $('.bulletin').filter('.select').attr('id');
 		resultatVote[key] = resultatVote[key]+1;
 		progressBar();
-
-
 	});
 
 /*
  *	progress bar handler
  *
 */
+
+function onFail(message) {
+        alert('Failed because: ' + message);
+    }       
+
+function onPhotoDataSuccess(imageData) {
+      // Uncomment to view the base64-encoded image data
+      // console.log(imageData);
+
+      // Get image handle
+      //
+         var image = document.getElementById('myImage');
+        image.src ="data:image/jpeg;base64," + imageData;       
+    
+    }
+
+var camQualityDefault = ['quality value', 50];
+    var camDestinationTypeDefault = ['FILE_URI', 1];
+
+	$('#cam').click(function(){
+navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
+        destinationType: Camera.DestinationType.DATA_URL });		
+	});
+
+
  	function progressBar(){
- 		$('#progressbar').show();
- 		$('#progressbar').progressbar({value: nbrVote, max:nbrVotant});
- 		
+ 		if($("#listeClass button").length == 0){
+ 			$('#progressbar').show();
+ 			$('#progressbar').progressbar({value: nbrVote, max:nbrVotant});
+ 		}
  	}
-
-
 
 	$('.canvaResultat').live("click", function(event){
 		var tmp = $(event.target).parent().find('p').text();
@@ -36,7 +58,7 @@ $(function(){
 	});
 
 	/*
-	 * Affiche les résultats une fois le vote finit
+	 * Affiche les résultats une fois le vote fini
 	*/
 	function affichageResultats(nbr){
 				$('#progressbar').hide();
@@ -102,8 +124,20 @@ $(function(){
 	});
 
 
+/*
+ *	progress bar handler
+ *
+ */
+ 	$("#upload").click(function(){
+ 		$('#progressbar').progressbar({value: 37});
+ 		  value: 37
 
+ 	});
 
+ 	/*function progressBar(int_students){
+ 		$('#progressBar').progressbar();
+ 	}
+*/
 	/*
 	 * Function main
 	 * Redirection sur la div 
@@ -136,6 +170,8 @@ $(function(){
 			$('#selectionPrenom .valider').hide();
 		} else if(key =="modifClasse")
 			initModifClasse();
+		else if(key == "supprEleve")
+			initSupprEleve();
 	}
 
 	/*
@@ -195,6 +231,47 @@ $(function(){
 			}
 		}
 	}
+/************************************************/
+/********** CHANGEMENT COULEUR CLIC *************/
+/************************************************/
+
+/*Transformation rgb en hexadécimal*/
+	function hexc(colorval) {
+	    var parts = colorval.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+	    delete(parts[0]);
+	    for (var i = 1; i <= 3; ++i) {
+	        parts[i] = parseInt(parts[i]).toString(16);
+	        if (parts[i].length == 1) parts[i] = '0' + parts[i];
+	    }
+	    return '#' + parts.join('');
+	}
+/*
+* Changement de couleur par clic canvas
+* retourne une nouvelle couleur qui n'est pas utilisée
+* courante est la clé de la couleur utilisée
+*/
+	function plusKey(ind){
+		var max = couleursVote.length;
+		//si la couleur arrive au bout du tableau, revenir au debut pour le changement
+		if (ind == max-1){
+			ind = -1;
+		}
+		ind++;
+		//si la couleur est deja présente
+		if (jQuery.inArray(ind, color) != -1){
+			return plusKey(ind);
+		}
+		return ind;
+	}
+	function changeColor(courante, cl){
+		/*alert(color); //tableau d'indices
+		alert(cl); // index de la couleur cliquée
+		alert(color[cl]); //index de la couleur utilisée dans couleursVote
+		alert(couleursVote[color[cl]]); //la couleur*/
+		courante = couleursVote[plusKey(color[cl])];
+		color[cl]=plusKey(color[cl]);
+		return courante;
+	}
 
 	/*
 	 * Initialise le nombre de sujet après que l'utilisateur ai choisi le nombre de sujets
@@ -217,6 +294,12 @@ $(function(){
 				cases2tab.append("<td><canvas class='couleurSujet' style='background-color:"+couleursVote[color[i]]+"'></canvas><input class='intitule_vote' id='sujet"+i+"' type='text' maxlength='10' /></td>");
 		}
 		creation = true;
+			$(".couleurSujet").click(function(){
+				var index = $(".couleurSujet").index(this);
+				var courante = $(this).css("backgroundColor");
+				courante = hexc(courante);
+				$(this).css("background-color", changeColor(courante, index));
+			});
 	}
 
 	/*
@@ -224,19 +307,54 @@ $(function(){
 	*/
 	function initBulletins(nbr){
 		$("#bulletins").empty();
-		for(var i = 0; i < nbr ; i++)
+		for(var i = 0; i < nbr ; i++){
 			$('#bulletins').append("<button onclick='addBulletinSelect();' id='bulletin"+[i]+"' class='bulletin' style='background-color:"+couleursVote[color[i]]+"'>"+$('#sujet'+[i]).val()+"</button>");
-		if (nbr == 4) 
+		}
+		/*if (nbr == 4) {
 			$(".bulletin:nth-child(2)").after("<br/>");
-		else if (nbr > 4) 
+		}
+		else if (nbr > 4) {
 			$(".bulletin:nth-child(3)").after("<br/>");
-		if (nbr == 3 || nbr == 2)
-				$(".bulletin").css("margin-top", "100px");
-		if(nbr ==4 || nbr == 2)
+		}
+		if (nbr == 3 || nbr == 2){
+			$(".bulletin").css("margin-top", "100px");
+		}
+		if (nbr ==4 || nbr == 2){
 			$(".bulletin").css("width", "40%");
-		else
+		}
+		else{
 			$(".bulletin").css("width", "26%");
+		}
+		$(".bulletin").css("height", "200px");*/
+	
+		if (nbr == 4) {
+			$(".bulletin:lt(2)").css("float","left");
+			$(".bulletin:nth-child(3)").css("clear","both");
+			$(".bulletin:gt(0)").css("float","left");
+		}
+		else {
+			$(".bulletin:lt(3)").css("float","left");
+			$(".bulletin:nth-child(4)").css("clear","both");
+			$(".bulletin:gt(0)").css("float","left");
+		}
+		if (nbr == 5){
+			$("#bulletin3").css("margin-left","calc(94%/5");
+		}
+		if (nbr == 3 || nbr == 2){
+			$(".bulletin").css("margin-top", "100px");
+		}
+		if (nbr ==4 || nbr == 2){
+			$(".bulletin").css("width", "calc(96%/2)");
+		}
+		else{
+			$(".bulletin").css("width", "calc(94%/3)");
+		}
+		
 		$(".bulletin").css("height", "200px");
+		$("#bulletins").css("width","100%");
+		$("#vote").css("text-align","center");
+
+
 		if($("#listeClass button").length == 0){
 			if(nbrVote == (nbrVotant-1))
 				$('.continuer_vote').attr('go', 'fin_vote');
@@ -276,7 +394,7 @@ $(function(){
 	function affichageClasse(){
 		$('#listeClass').empty();
 		db.transaction(function(tx) {
-         	tx.executeSql("SELECT nom FROM Classe", [], function(tx, res) {
+         	tx.executeSql("SELECT * FROM Classe", [], function(tx, res) {
        			if(res.rows.length != 0){
        				for(var i=0; i<res.rows.length; i++) {
        					$('#listeClass').append('<li>');
@@ -303,7 +421,8 @@ $(function(){
 
 	function initModifClasse(){
 		$('#listeSelectClasse').empty();
-		$('#listeSelectClasse').append("<option value='null'>Sélectionnez une classe</option>");
+		$("#listeEleveModif").empty();
+		$('#listeSelectClasse').append("<option value='null'>Classe à modifier</option>");
 		db.transaction(function(tx){
 			tx.executeSql("SELECT * FROM Classe", [], function(tx,res){
 				if(res.rows.length != 0){
@@ -313,6 +432,30 @@ $(function(){
 			});
 		}, onDBError);
 	}
+
+	function initSupprEleve() {
+		$('#supprEleveDyna').empty();
+		$('#supprEleveDyna').append('<h2>Supprimer un élève de la classe : '+$('#listeSelectClasse option:selected').text()+"</h2>");
+		$('#supprEleveDyna').append('<div>');
+		db.transaction(function(tx){
+			tx.executeSql("SELECT * FROM Eleve WHERE id_classe = "+$("#listeSelectClasse option:selected").val(), [], function(tx,res){
+				if(res.rows.length != 0){
+					for(var i=0 ; i<res.rows.length ; i++)
+						$('#supprEleveDyna div').append(" <button value='"+res.rows.item(i).id_Eleve+"'>"+res.rows.item(i).nom+"</button> ");
+				}
+			});
+		}, onDBError);
+	}
+
+	$("#supprEleve .valider").on('click', function(){
+		var r =confirm("Voulez-vous vraiment supprimer l'élève "+$("#supprEleveDyna .select").text()+" ?");
+		if(r == true){
+			db.transaction(function(tx){
+				tx.executeSql("DELETE FROM Eleve WHERE id_Eleve = "+$("#supprEleveDyna .select").val());
+				initSupprEleve();
+			}, onDBError);
+		}
+	});
 
 	/*
 	 * Appuie sur le logo d'accueil
@@ -363,6 +506,7 @@ $(function(){
 			$('#selectionPrenom .valider').show();
 		}
 	});
+
 });
 
 /*

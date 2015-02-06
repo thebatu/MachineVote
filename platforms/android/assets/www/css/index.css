@@ -108,8 +108,7 @@ h2{
 }
 
 button{
-        text-shadow: 0px 3px 0px rgba( 0, 0, 0, 0.5);
-
+    text-shadow: 0px 3px 0px rgba( 0, 0, 0, 0.5);
     font-size: 1em;
     background: none repeat scroll 0 0 transparent;
     border:medium none;
@@ -221,9 +220,9 @@ button:active{
     .classRight{
         width:45%;
         float:right;
-        margin-top:5%;
     }
     .classRight div{
+        font-size: 55%;
         background-color: white;
         height:200px;
         margin-top:5%;
@@ -237,17 +236,37 @@ button:active{
             transform:rotate(-45deg);
         }
         .classRight label{
+            margin-top: 2%;
             font-size: 75%;
         }
-
-
-
 #modifClasse{
 }
+    #modifClasse input{
+        width: 75%;
+        margin-bottom: 2%;
+    }
+    #modifClasse .modif .ajout{
+        width:80px;
+        height:80px;
+    }
+    #modifClasse .classRight div{
+        height: 450px;
+    }
+
+    select{
+        margin-top: 5%;
+        font-size: 75%;
+        height: 60px;
+        border:1px solid #F5C5C5;
+        border-radius:15px;
+        width:100%;
+        box-shadow:2px 2px 4px #C0C0C0 inset;
+    }
     .voir{
         font-size: 75%;
     }
     .suppr{
+        width: 100%;
         margin-top: 4%;
         padding:2%;
         background: linear-gradient( #aa4444, #ff0000);
@@ -336,6 +355,7 @@ input{
 /*** VOTE ***/
 #bulletins{
     text-align: center;
+    font-size: 100%;
 }
 
 .bulletin{
@@ -554,8 +574,8 @@ input{
 #progressbar{
     background: linear-gradient( #ff9f77, #ff4f47);
     position: absolute;
-    bottom:11%;
-    margin-left: 5%;
+    bottom:15%;
+    left:10%;
     width: 400px;
 }
 

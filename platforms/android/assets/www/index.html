@@ -13,6 +13,12 @@
         <link rel='stylesheet' type='text/css' href='css/newStyle.css' />
     </head>
     <body>
+
+    <button id="cam"> camera test button </button>
+
+
+
+
         <div id="ecranLogo" class="content">
                 <img id="title" src="./img/title2.png" />
                     <div id="deviceready" class="blink">
@@ -57,11 +63,11 @@
             <h2>Ajouter une classe</h2>
             <div class="modif">
                 <input type="text" id='inputNomClasse' placeholder="nom de la classe"></input>
-                <input type="text" id='inputNomEleve' placeholder="ajouter un prénom"></input>
+                <input type="text" id='inputNomEleve' placeholder="ajouter un élève"></input>
                 <button id="buttonAjoutEleve" class="rond ajout">+</button>
             </div>
             <div class="classRight">
-                <label>Liste des élèves <button class="agrandir">↔</button><!-- Aggrandissement --></label>
+                <label>Liste des élèves</label>
                 
                 <div class="liste"></div>
             </div>
@@ -73,19 +79,29 @@
             <h2>Modifier <span class="classe">classe</span></h2>
             <div class="modif">
                 <select type="text" id="listeSelectClasse">
-                    <option>Sélectionnez une classe</option>
+
                 </select>
-                <input type="text" placeholder="ajouter un prénom"></input>
-                <button class="rond ajout">+</button>
-            </div>
-            <div class="classRight">
-                <button class="voir">Voir liste des élèves</button>
-                <button class='suppr'>Supprimer un élève</button>
+                <input type="text" placeholder="ajouter élève"></input>
+                <button class="rond ajout" id="ajouterEleve">+</button>
+                <button class='navigation suppr' go="modifClasse" id="supprimerEleve">Supprimer un élève</button>
                 <button class="suppr" id="supprimerClasse">Supprimer la classe</button>
             </div>
-            <button class="valider">Valider</button>
+            <div class="classRight">
+                <label>Liste des élèves</label>
+                <div class="liste" id="listeEleveModif">
+
+                </div>
+            </div>
             <button class="navigation retour" go="parametres">&#10143;</button>
-        </div>            
+        </div>    
+
+        <div id="supprEleve" class="content">
+            <div id="supprEleveDyna">
+
+            </div>
+            <button class="navigation retour" go="modifClasse">&#10143;</button>
+            <button class="valider">Valider</button>
+        </div>        
 
         <div id="changeCodeParams" class="content">
             <div class="entrerCode">
@@ -154,7 +170,7 @@
             <div id="listeSelectionPrenom">
 
             </div>
-            <button class="navigation retour" go="fin_vote">Mettre fin au vote</button>
+            <button class="navigation retourAccueil" go="fin_vote">Mettre fin au vote</button>
             <button class="navigation valider" go="vote">&#10143;</button>
         </div>
 
@@ -179,7 +195,7 @@
             <div id="affichageResultats" class="choix2">
 
             </div>
-            <button class='navigation retourAccueil' go='confirmationRetour'>Retour à l'accueil</button>
+            <button class='navigation retourAccueil' go='verifResultats'>Vérifier les résultats</button>
             <button class='navigation valider' go='resultatsChiffres'>&#10143;</button>
         </div>
 
@@ -187,7 +203,7 @@
             <div id="affichageResultatsChiffre" class="choix2">
 
             </div>
-            <button class='navigation retourAccueil' go='confirmationRetour'>Retour à l'accueil</button>
+            <button class='navigation retourAccueil' go='verifResultats'>Vérifier les résultats</button>
             <button class='navigation valider' go='resultatsTableau'>&#10143;</button>
         </div>
 
@@ -195,10 +211,15 @@
             <div id="affichageResultatsTableau" class='choix3'>
                 
             </div>
-            <button class='navigation retourAccueil' go='confirmationRetour'>Retour à l'accueil</button>
+            <button class='navigation retourAccueil' go='verifResultats'>Vérifier les résultats</button>
             <button class='navigation valider' go='resultats'>&#10143;</button>
         </div>
 
+        <div id='verifResultats' class='content'>
+            <h2>Le sujet gagnant</h2>
+            <button class='navigation retourAccueil' go='resultats'>Non</button>
+            <button class='navigation valider' go='accueil'>Oui</button>
+        </div>
         <div id='confirmationRetour' class='content'>
             <h2>Voulez-vous vraiment retourner à l'écran d'accueil ?</h2>
             <button class='navigation retourAccueil' go='resultats'>Non</button>
@@ -244,24 +265,10 @@
             function onDBError(error){alert("Database Error : "+error.message);}
             function onDBSuccess(tx,results){alert("successfull");}
         </script>
-        <script type="text/javascript" src="js/Toast.js"></script>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/class.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="js/jquery-ui.min.js"></script>
-
-        <script type="text/javascript">
-            function validate(evt) {
-              var theEvent = evt || window.event;
-              var key = theEvent.keyCode || theEvent.which;
-              key = String.fromCharCode( key );
-              var regex = /[0-9]|\./;
-              if( !regex.test(key) ) {
-                theEvent.returnValue = false;
-                if(theEvent.preventDefault) theEvent.preventDefault();
-                }
-            }
-    </script>
     </body>
 </html>
