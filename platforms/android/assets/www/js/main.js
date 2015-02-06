@@ -123,6 +123,12 @@ $(function(){
 			$(".bulletin:nth-child(4)").css("clear","both");
 			$(".bulletin:gt(0)").css("float","left");
 		}
+		if (nbGagnants == 1){
+			$("#verifResultats div .bulletin").css("margin-left","calc(100%/3)");
+		}
+		if (nbGagnants == 2){
+			$("#verifResultats div .bulletin:first").css("margin-left","calc(94%/5)");
+		}
 		if (nbGagnants == 5){
 			$("#verifResultats div .bulletin:nth-child(4)").css("margin-left","calc(94%/5)");
 		}
