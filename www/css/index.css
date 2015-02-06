@@ -588,3 +588,8 @@ input{
     width: 400px;
 }
 
+#supprEleveDyna .select{
+    background-color: white;
+    color: black;
+}
+
