@@ -1,5 +1,5 @@
 $(function(){
-	var resultatVote; var color; var nbrVotant; var nbrVote; var creation; var initListeEleve; var tousVote;
+	var resultatVote; var color; var nbrVotant; var nbrVote; var creation; var initListeEleve; var tousVote; var voteBlanc=true;
 	var couleursVote = new Array("#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF", "#FF00FF","#F778A1","#347C17","#7E3817","#8E35EF");
 	$(".content").not(":first").hide();
 	/* Liste des boutons récurrents */
@@ -8,48 +8,16 @@ $(function(){
 	var style = storage.getItem('styleSheet');
 
 	$('.validation_vote').on("click", function(event){
-		nbrVote++;
-		var key = $('.bulletin').filter('.select').attr('id');
-		resultatVote[key] = resultatVote[key]+1;
-		progressBar();
+			nbrVote++;
+			var key = $('.bulletin').filter('.select').attr('id');
+			resultatVote[key] = resultatVote[key]+1;
+			progressBar();
 	});
 
 /*
  *	progress bar handler
  *
 */
-var destinationType=navigator.camera.DestinationType;
-
-function onFail(message) {
-        alert('Failed because: ' + message);
-    }       
-
-function onPhotoDataSuccess(imageData) {
-      // Uncomment to view the base64-encoded image data
-      // console.log(imageData);
-
-      // Get image handle
-      //
-         var image = document.getElementById('myImage');
-        image.src ="data:image/jpeg;base64," + imageData;       
-    
-    }
-
-var camQualityDefault = ['quality value', 50];
-    var camDestinationTypeDefault = ['FILE_URI', 1];
-
-	$('#cam').click(function(){
-navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-        destinationType: destinationType.DATA_URL });
-
-
-
-
-
-
-
-	});
-
 
  	function progressBar(){
  		if($("#listeClass button").length == 0){
@@ -69,16 +37,17 @@ navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
 	 * Affiche les résultats une fois le vote fini
 	*/
 	function affichageResultats(nbr){
-				$('#progressbar').hide();
+		$('#progressbar').hide();
 
 		$('#affichageResultats').empty();
 		for(var i=0; i<nbr ; i++){
-			if(resultatVote['bulletin'+i] != 0)
-				if (nbr > 0)		
-					$('#affichageResultats').append("<div class='ligne1compt'></div>");
-			for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
-				$('#affichageResultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");	
-			}
+			$('#affichageResultats').append("<div class='ligne1compt'></div>");
+			if(resultatVote['bulletin'+i] != 0){	
+				for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
+					$('#affichageResultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
+				}	
+			} else
+				$('#affichageResultats').append("Pas de jeton <canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
 		}
 	}
 
@@ -88,15 +57,15 @@ navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
 	function affichageResultatsChiffres(nbr){
 		$('#affichageResultatsChiffre').empty();
 		for(var i=0; i<nbr ; i++){
+			$('#affichageResultatsChiffre').append("<div class='ligne1compt'></div>");
 			if(resultatVote['bulletin'+i] != 0) {
-				$('#affichageResultatsChiffre').append("<div class='ligne1compt'></div>");
 				for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
 					$('#affichageResultatsChiffre div:last').append(" <canvas class='vote canvaResultat' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
-
 				}
 				$('#affichageResultatsChiffre div:last').append("<p class='span'>0</p>");
 				$("#affichageResultatsChiffre div:last p").css("color",couleursVote[color[i]]);
-			}
+			} else
+				$('#affichageResultatsChiffre').append("Pas de jeton <canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
 		}
 	}
 
@@ -121,8 +90,60 @@ navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
                     	}
                     }
                 }
-            }
+            } else
+				$('#affichageResultatsTableau').append("Pas de jeton <canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
         }
+	}
+
+	function affichageResultatFinal(nbr){
+		$("#verifResultats div").empty();
+		$("#verifResultats div").css("margin-top", "2%");
+		var max = new Array();
+		max.push(0);
+		for(var i=0; i<nbr ; i++){
+			if(resultatVote['bulletin'+i] > max[0])
+				max[0] = i;
+		}
+		for(var i=0; i<nbr ; i++){
+			if( resultatVote['bulletin'+max[0]] == resultatVote['bulletin'+i] && i!=max[0])
+				max.push(i);
+		}
+		for(var M in max)
+			$("#verifResultats div").append("<button id='bulletin"+max[M]+"' class='bulletin' style='background-color:"+couleursVote[color[max[M]]]+"'>"+$('#sujet'+[max[M]]).val()+"</button>");
+		/*mise en forme des gagnants*/
+		var nbGagnants = $("#verifResultats div .bulletin").length;
+
+		if (nbGagnants == 4) {
+			$(".bulletin:lt(2)").css("float","left");
+			$(".bulletin:nth-child(3)").css("clear","both");
+			$(".bulletin:gt(0)").css("float","left");
+		}
+		else {
+			$(".bulletin:lt(3)").css("float","left");
+			$(".bulletin:nth-child(4)").css("clear","both");
+			$(".bulletin:gt(0)").css("float","left");
+		}
+		if (nbGagnants == 1){
+			$("#verifResultats div .bulletin").css("margin-left","calc(100%/3)");
+		}
+		if (nbGagnants == 2){
+			$("#verifResultats div .bulletin:first").css("margin-left","calc(94%/5)");
+		}
+		if (nbGagnants == 5){
+			$("#verifResultats div .bulletin:nth-child(4)").css("margin-left","calc(94%/5)");
+		}
+		if (nbGagnants == 3 || nbr == 2){
+			$(".bulletin").css("margin-top", "100px");
+		}
+		if (nbGagnants ==4 || nbr == 2){
+			$(".bulletin").css("width", "calc(96%/2)");
+		}
+		else{
+			$(".bulletin").css("width", "calc(94%/3)");
+		}
+		$(".bulletin").css("height", "150px");
+		$("#verifResultats div").css("width","100%");
+		$("#verifResultats").css("text-align","center");
 	}
 
 	// Gestion du clic sur les boutons de choix de chemin //
@@ -165,11 +186,8 @@ navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
 		else if(key == "resultatsChiffres")
 			affichageResultatsChiffres(nbrSujet);
 		else if(key == "resultatsTableau")
-			affichageResultatsTableau(nbrSujet);
-		else if(key == "parametres"){
-			$("#changeCodeParams").hide();
-			$("#numericInput").hide();
-		} else if(key == "selectionClass"){
+			affichageResultatsTableau(nbrSujet);			
+		else if(key == "selectionClass"){
 			$('#selectionClass .valider').hide();
 			affichageClasse();
 		} else if(key =="selectionPrenom"){
@@ -180,6 +198,10 @@ navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
 			initModifClasse();
 		else if(key == "supprEleve")
 			initSupprEleve();
+		else if(key == "codeParams" || key == 'changeCodeParams')
+			$("#numericInput").show();
+		else if(key == "verifResultats")
+			affichageResultatFinal(nbrSujet);
 	}
 
 	/*
@@ -204,6 +226,7 @@ navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
 				creation = false;
 				initListeEleve = false;
 				nbrVote = 0;
+				$("#codeParams button:first").addClass('sel');
 				$('#listeClass').empty();
 				$('.continuer_vote').attr('go', 'vote');
 				$("#menuParams").hide();
@@ -213,9 +236,9 @@ navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
 				break;
 			case "initGoDemarrerVote" :
 				if($("#listeClass button").length != 0)
-					$("#demarre_vote .bigButton").attr('go', 'selectionPrenom');
+					$("#demarre_vote .valider").attr('go', 'selectionPrenom');
 				else
-					$("#demarre_vote .bigButton").attr('go', 'vote');
+					$("#demarre_vote .valider").attr('go', 'vote');
 				break;
 		}
 	}
@@ -318,23 +341,7 @@ navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
 		for(var i = 0; i < nbr ; i++){
 			$('#bulletins').append("<button onclick='addBulletinSelect();' id='bulletin"+[i]+"' class='bulletin' style='background-color:"+couleursVote[color[i]]+"'>"+$('#sujet'+[i]).val()+"</button>");
 		}
-		/*if (nbr == 4) {
-			$(".bulletin:nth-child(2)").after("<br/>");
-		}
-		else if (nbr > 4) {
-			$(".bulletin:nth-child(3)").after("<br/>");
-		}
-		if (nbr == 3 || nbr == 2){
-			$(".bulletin").css("margin-top", "100px");
-		}
-		if (nbr ==4 || nbr == 2){
-			$(".bulletin").css("width", "40%");
-		}
-		else{
-			$(".bulletin").css("width", "26%");
-		}
-		$(".bulletin").css("height", "200px");*/
-	
+
 		if (nbr == 4) {
 			$(".bulletin:lt(2)").css("float","left");
 			$(".bulletin:nth-child(3)").css("clear","both");
@@ -346,7 +353,7 @@ navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
 			$(".bulletin:gt(0)").css("float","left");
 		}
 		if (nbr == 5){
-			$("#bulletin3").css("margin-left","calc(94%/5");
+			$("#bulletin3").css("margin-left","calc(94%/5)");
 		}
 		if (nbr == 3 || nbr == 2){
 			$(".bulletin").css("margin-top", "100px");
@@ -389,6 +396,9 @@ navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
 					$(this).css("outline", "10px solid black");
 			}
 		});
+		if (!voteBlanc && !$(".bulletin").hasClass("select")){
+			$(".validation_vote").hide();
+		}
 	}
 
 	function resetBackground(){
@@ -514,7 +524,20 @@ navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
 			$('#selectionPrenom .valider').show();
 		}
 	});
-
+	$("#voteblanc").click(function(){
+		if ($(this).html()=="Autorisé"){
+			$("#voteblanc").html("Interdit");
+			$(this).addClass("interdit");
+			$(this).removeClass("autorise");
+			voteBlanc=false;
+		}
+		else{
+			$("#voteblanc").html("Autorisé");
+			$(this).addClass("autorise");
+			$(this).removeClass("interdit");
+			voteBlanc=true;
+		}
+	});
 });
 
 /*
@@ -523,4 +546,5 @@ navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
 function addBulletinSelect(){
 	$(".bulletin").removeClass("select");
 	$(event.target).addClass("select");
+	$(".validation_vote").show();
 }

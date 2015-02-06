@@ -45,31 +45,27 @@ $(function(){
 	}
 
 	/*
-	*	Virtual Keyboard handler for seurity code 
+	*	Virtual Keyboard handler for security code 
 	*/
-
 	$(".codeParams").click(function(){
-		$("#numericInput").hide();
 		$(".codeParams").removeClass("sel");
 	    $(this).addClass("sel");
-		$("#numericInput").show();
-		});
-	$('.keyCode').click(function(){
-			var tmp = $(this).html();
-			var current = $('.sel');
-			current.html(tmp);
+	});
 
-				if (current.hasClass("lastCode")){
-					current.siblings(".firstCode").addClass("sel");
-				}
-				else{
-					$('.sel').next('.codeParams').addClass("sel");
-				}
-				current.removeClass("sel");
+	$('.keyCode').click(function(){
+		var tmp = $(this).html();
+		var current = $('.sel');
+		current.html(tmp);
+		if (current.hasClass("lastCode")){
+			current.siblings(".firstCode").addClass("sel");
+		}
+		else{
+			$('.sel').next('.codeParams').addClass("sel");
+		}
+		current.removeClass("sel");
 	});
 
 	$("#codeParams .ok").click(function(){
-		$("#numericInput").hide();
 		//verification du code lors de l'appui sur ok
 		var a = $(".codeParams:first").html();
 		var b = $(".codeParams:nth-child(3)").html();
@@ -78,10 +74,9 @@ $(function(){
 		if (verifyCode(a,b,c,d)){
 			$("#codeParams").hide();
 			$("#parametres").show();
-		}else{
+			$("#numericInput").hide();
+		}else
 			$("#codeParams .entrerCode").css("background","linear-gradient( #aa4444, #ff0000)");
-				$(".codeParams").removeClass("sel");
-		}
 	});
 
 	function replaceCode(n1, n2, n3, n4){

@@ -158,7 +158,7 @@ button:active{
                 /*tons roses*/
                 background: linear-gradient(#ff1313, #ff284a, #ff1313);
             }
-        .codeButton{
+    .codeButton{
         position: absolute;
         right:10%;
         bottom: 10%;
@@ -352,6 +352,15 @@ input{
 
 /*** FIN CHOIX DES CLASSES ***/
 
+#voteblanc{
+    width:50%;
+}
+    .autorise{
+        background:linear-gradient( #519802, #9ccf31);
+    }
+    .interdit{
+        background :linear-gradient( #aa4444, #ff0000);
+    }
 /*** VOTE ***/
 #bulletins{
     text-align: center;
