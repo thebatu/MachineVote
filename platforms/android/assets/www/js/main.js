@@ -18,6 +18,7 @@ $(function(){
  *	progress bar handler
  *
 */
+var destinationType=navigator.camera.DestinationType;
 
 function onFail(message) {
         alert('Failed because: ' + message);
@@ -39,7 +40,14 @@ var camQualityDefault = ['quality value', 50];
 
 	$('#cam').click(function(){
 navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-        destinationType: Camera.DestinationType.DATA_URL });		
+        destinationType: destinationType.DATA_URL });
+
+
+
+
+
+
+
 	});
 
 

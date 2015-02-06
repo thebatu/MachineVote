@@ -352,6 +352,15 @@ input{
 
 /*** FIN CHOIX DES CLASSES ***/
 
+#voteblanc{
+    width:50%;
+}
+    .autorise{
+        background:linear-gradient( #519802, #9ccf31);
+    }
+    .interdit{
+        background :linear-gradient( #aa4444, #ff0000);
+    }
 /*** VOTE ***/
 #bulletins{
     text-align: center;
