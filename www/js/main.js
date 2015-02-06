@@ -74,12 +74,13 @@ navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
 
 		$('#affichageResultats').empty();
 		for(var i=0; i<nbr ; i++){
-			if(resultatVote['bulletin'+i] != 0)
-				if (nbr > 0)		
-					$('#affichageResultats').append("<div class='ligne1compt'></div>");
-			for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
-				$('#affichageResultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");	
-			}
+			$('#affichageResultats').append("<div class='ligne1compt'></div>");
+			if(resultatVote['bulletin'+i] != 0){	
+				for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
+					$('#affichageResultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
+				}	
+			} else
+				$('#affichageResultats').append("Pas de jeton <canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
 		}
 	}
 
@@ -89,15 +90,15 @@ navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
 	function affichageResultatsChiffres(nbr){
 		$('#affichageResultatsChiffre').empty();
 		for(var i=0; i<nbr ; i++){
+			$('#affichageResultatsChiffre').append("<div class='ligne1compt'></div>");
 			if(resultatVote['bulletin'+i] != 0) {
-				$('#affichageResultatsChiffre').append("<div class='ligne1compt'></div>");
 				for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
 					$('#affichageResultatsChiffre div:last').append(" <canvas class='vote canvaResultat' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
-
 				}
 				$('#affichageResultatsChiffre div:last').append("<p class='span'>0</p>");
 				$("#affichageResultatsChiffre div:last p").css("color",couleursVote[color[i]]);
-			}
+			} else
+				$('#affichageResultatsChiffre').append("Pas de jeton <canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
 		}
 	}
 
@@ -122,7 +123,8 @@ navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
                     	}
                     }
                 }
-            }
+            } else
+				$('#affichageResultatsTableau').append("Pas de jeton <canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
         }
 	}
 
