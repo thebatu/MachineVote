@@ -20,6 +20,7 @@ $(function(){
 */
 //var destinationType=navigator.camera.DestinationType;
 
+
 function onFail(message) {
         alert('Failed because: ' + message);
     }       
