@@ -92,6 +92,7 @@ $(function(){
 		var c = $(".changecodeParams:nth-child(4)").text();
 		var d = $(".changecodeParams:last").text();
 		replaceCode(a,b,c,d);
+		$("#numericInput").hide();
 	});
 
 	$(".codeButton").click(function(){
