@@ -19,7 +19,9 @@ $(function(){
  *
 */
 
-
+function onFail(message) {
+        alert('Failed because: ' + message);
+    }       
 
 function onPhotoDataSuccess(imageData) {
       // Uncomment to view the base64-encoded image data
