@@ -18,7 +18,7 @@ $(function(){
  *	progress bar handler
  *
 */
-var destinationType=navigator.camera.DestinationType;
+//var destinationType=navigator.camera.DestinationType;
 
 function onFail(message) {
         alert('Failed because: ' + message);
@@ -130,15 +130,15 @@ navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
 		var max = new Array();
 		max.push(0);
 		for(var i=0; i<nbr ; i++){
-			if(resultatVote['bulletin'+i] > max[0]){
-				max.length = 0;
+			if(resultatVote['bulletin'+i] > max[0])
 				max[0] = i;
-			}
-			if(resultatVote['bulletin'+i] == max[0])
+		}
+		for(var i=0; i<nbr ; i++){
+			if( resultatVote['bulletin'+max[0]] == resultatVote['bulletin'+i] && i!=max[0])
 				max.push(i);
 		}
 		for(var M in max)
-			$("#verifResultats div").append("<button id='bulletin"+[M]+"' class='bulletin' style='background-color:"+couleursVote[color[M]]+"'>"+$('#sujet'+[M]).val()+"</button>");
+			$("#verifResultats div").append("<button id='bulletin"+max[M]+"' class='bulletin' style='background-color:"+couleursVote[color[max[M]]]+"'>"+$('#sujet'+[max[M]]).val()+"</button>");
 		$(".bulletin").css("width", "calc(96%/2)");
 		$(".bulletin").css("height", "200px");
 	}
