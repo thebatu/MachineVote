@@ -29,8 +29,9 @@ html, body{
 .bigButton, .choixSujet, .suppr{ /* rouge */
 	background: #db2218;
 }
-#ajoutClasse input, #ajoutClasse p,
-#modifClasse input{
-	color:black;
+input, #ajoutClasse p, #modifClasse p, select, option{
+	color:black !important;
 }
-
+#progressbar{
+	background: #6b1a6a;
+}

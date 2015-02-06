@@ -126,12 +126,14 @@ $(function(){
          			if(res.rows.length != 0)
          				idDerniereClass=res.rows.item(0).idClass;
          		});
-         	});
-         	db.transaction(function(tx){
+         	},onDBError);
+         	db.transaction(function(tx) {
          		$('#ajoutClasse .classRight p').each(function(){
          			tx.executeSql("INSERT INTO Eleve(id_classe, nom) VALUES ('"+idDerniereClass+"', '"+$(this).text()+"')");
          		});
-			},onDBError);
+         		$('#inputNomClasse').val('');
+         		$('#ajoutClasse .classRight div').empty();
+         	},onDBError);
 		}else
 			alert('Veuillez entrer un nom de classe et au moins un élève');
 	});
@@ -144,9 +146,9 @@ $(function(){
 			if(r == true){
 				db.transaction(function(tx){
 					tx.executeSql("DELETE FROM Classe WHERE id_Classe = "+$('#listeSelectClasse option:selected').val());
-					window.plugins.toast.show('classe supprimée', 'short', 'center');
+					alert('classe supprimée');
 					$('#listeSelectClasse').empty();
-					$('#listeSelectClasse').append("<option value='null'>Sélectionnez une classe</option>");
+					$('#listeSelectClasse').append("<option value='null'>Classe à modifier</option>");
 					tx.executeSql("SELECT * FROM Classe", [], function(tx,res){
 						if(res.rows.length != 0){
 							for(var i=0 ; i<res.rows.length ; i++)
@@ -158,8 +160,50 @@ $(function(){
 		}
 	});
 
-	$("#modifClasse ajout").on('click', function(){
+	$("#ajouterEleve").on('click', function(){
 		if($('#listeSelectClasse option:selected').val() == 'null')
 			alert("Veuillez d'abord choisir une classe");
+		else{
+			if($('#modifClasse .modif input').val() != ''){
+				db.transaction(function(tx){
+					tx.executeSql("INSERT INTO Eleve(id_classe, nom) VALUES ("+$('#listeSelectClasse option:selected').val()+",'"+$('#modifClasse .modif input').val()+"')");
+					$('#modifClasse .modif input').val('');
+				}, onDBError);
+				rempliListeModifEleve();
+			} else
+				alert("Veuillez saisir le nom d'un élève");
+		}
+	});
+
+	$("#listeSelectClasse").on('change', function(){
+		rempliListeModifEleve();
+		if($('#listeSelectClasse option:selected').val() == 'null')
+			$("#supprimerEleve").attr('go', 'modifClasse');
+		else
+			$("#supprimerEleve").attr('go', 'supprEleve');
+	});
+
+	function rempliListeModifEleve(){
+		$("#listeEleveModif").empty();
+		if($('#listeSelectClasse option:selected').val() != 'null'){
+			db.transaction(function(tx){
+				tx.executeSql("SELECT * FROM Eleve WHERE id_classe = "+$("#listeSelectClasse option:selected").val(), [], function(tx,res){
+					if(res.rows.length != 0){
+						for(var i=0 ; i<res.rows.length ; i++)
+							$('#listeEleveModif').append("<p>"+res.rows.item(i).nom+"</p>");
+					}
+				});
+			}, onDBError);
+		}
+	}
+
+	$("#supprimerEleve").on('click', function(){
+		if($('#listeSelectClasse option:selected').val() == 'null')
+			alert("Veuillez d'abord choisir une classe");
+	});
+
+	$("#supprEleveDyna button").live('click', function(){
+		$("#supprEleveDyna button").removeClass('select');
+		$(event.target).addClass('select');
 	});
 });
