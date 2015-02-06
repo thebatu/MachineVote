@@ -16,7 +16,7 @@ html, body{
 	background : #ff8900;
 }
 
-.selected, .menuParams, .valider, .entrerCode, .valider:hover, .valider:active{ /*vert */
+.selected, .menuParams, .valider, .entrerCode, .valider:hover, .valider:active, .autorise{ /*vert */
 	background: #769600 !important;
 }
 .retour, .retour:active, .retour:hover, .retourAccueil{/* bordeaux */
@@ -26,7 +26,7 @@ html, body{
 .menuParams:active, .menuParams:hover, .sel{ /*violet */
 	background: #6b1a6a !important;
 }
-.bigButton, .choixSujet, .suppr{ /* rouge */
+.bigButton, .choixSujet, .suppr, .interdit{ /* rouge */
 	background: #db2218;
 }
 input, #ajoutClasse p, #modifClasse p, select, option{

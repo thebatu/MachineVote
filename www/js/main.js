@@ -19,7 +19,7 @@ $(function(){
  *
 */
 //var destinationType=navigator.camera.DestinationType;
-
+/*
 
 function onFail(message) {
         alert('Failed because: ' + message);
@@ -42,16 +42,9 @@ var camQualityDefault = ['quality value', 50];
 	$('#cam').click(function(){
 navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
         destinationType: destinationType.DATA_URL });
-
-
-
-
-
-
-
 	});
 
-
+*/
  	function progressBar(){
  		if($("#listeClass button").length == 0){
  			$('#progressbar').show();
@@ -130,6 +123,7 @@ navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
 
 	function affichageResultatFinal(nbr){
 		$("#verifResultats div").empty();
+		$("#verifResultats div").css("margin-top", "2%");
 		var max = new Array();
 		max.push(0);
 		for(var i=0; i<nbr ; i++){
@@ -142,8 +136,34 @@ navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
 		}
 		for(var M in max)
 			$("#verifResultats div").append("<button id='bulletin"+max[M]+"' class='bulletin' style='background-color:"+couleursVote[color[max[M]]]+"'>"+$('#sujet'+[max[M]]).val()+"</button>");
-		$(".bulletin").css("width", "calc(96%/2)");
-		$(".bulletin").css("height", "200px");
+		/*mise en forme des gagnants*/
+		var nbGagnants = $("#verifResultats div .bulletin").length;
+
+		if (nbGagnants == 4) {
+			$(".bulletin:lt(2)").css("float","left");
+			$(".bulletin:nth-child(3)").css("clear","both");
+			$(".bulletin:gt(0)").css("float","left");
+		}
+		else {
+			$(".bulletin:lt(3)").css("float","left");
+			$(".bulletin:nth-child(4)").css("clear","both");
+			$(".bulletin:gt(0)").css("float","left");
+		}
+		if (nbGagnants == 5){
+			$("#verifResultats div .bulletin:nth-child(4)").css("margin-left","calc(94%/5)");
+		}
+		if (nbGagnants == 3 || nbr == 2){
+			$(".bulletin").css("margin-top", "100px");
+		}
+		if (nbGagnants ==4 || nbr == 2){
+			$(".bulletin").css("width", "calc(96%/2)");
+		}
+		else{
+			$(".bulletin").css("width", "calc(94%/3)");
+		}
+		$(".bulletin").css("height", "150px");
+		$("#verifResultats div").css("width","100%");
+		$("#verifResultats").css("text-align","center");
 	}
 
 	// Gestion du clic sur les boutons de choix de chemin //
@@ -341,23 +361,7 @@ navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
 		for(var i = 0; i < nbr ; i++){
 			$('#bulletins').append("<button onclick='addBulletinSelect();' id='bulletin"+[i]+"' class='bulletin' style='background-color:"+couleursVote[color[i]]+"'>"+$('#sujet'+[i]).val()+"</button>");
 		}
-		/*if (nbr == 4) {
-			$(".bulletin:nth-child(2)").after("<br/>");
-		}
-		else if (nbr > 4) {
-			$(".bulletin:nth-child(3)").after("<br/>");
-		}
-		if (nbr == 3 || nbr == 2){
-			$(".bulletin").css("margin-top", "100px");
-		}
-		if (nbr ==4 || nbr == 2){
-			$(".bulletin").css("width", "40%");
-		}
-		else{
-			$(".bulletin").css("width", "26%");
-		}
-		$(".bulletin").css("height", "200px");*/
-	
+
 		if (nbr == 4) {
 			$(".bulletin:lt(2)").css("float","left");
 			$(".bulletin:nth-child(3)").css("clear","both");
