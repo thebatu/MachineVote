@@ -33,13 +33,13 @@
 
         <div id="codeParams" class="content">
             <div class="entrerCode" >
-            <h3>Entrez le code</h3>
-            <button class="codeParams firstCode">0</button>
-            <button class="codeParams">0</button>
-            <button class="codeParams">0</button>
-            <button class="codeParams lastCode">0</button><br />
-            <button class="ok">OK</button>
-            <button class="navigation retour" go="accueil">&#10143;</button>
+                <h3>Entrez le code</h3>
+                <button class="codeParams firstCode">0</button>
+                <button class="codeParams">0</button>
+                <button class="codeParams">0</button>
+                <button class="codeParams lastCode">0</button><br />
+                <button class="ok">OK</button>
+                <button class="navigation retour" go="accueil">&#10143;</button>
             </div>
         </div>
 
@@ -211,19 +211,13 @@
 
         <div id='verifResultats' class='content'>
             <h2>Le sujet gagnant</h2>
-            <button class='navigation retourAccueil' go='resultats'>Non</button>
-            <button class='navigation valider' go='accueil'>Oui</button>
-        </div>
-        <div id='confirmationRetour' class='content'>
-            <h2>Voulez-vous vraiment retourner à l'écran d'accueil ?</h2>
-            <button class='navigation retourAccueil' go='resultats'>Non</button>
-            <button class='navigation valider' go='accueil'>Oui</button>
+            <div></div>
+            <button class='navigation retourAccueil' go='resultats'>Retourner aux résultats</button>
+            <button class='navigation valider' go='accueil'>Retourner à l'acceuil</button>
         </div>
 
         <!-- Progress bar-->
         <div id="progressbar"></div>
-
-
 
         <div id="numericInput" >
             <table id="keypad" >
@@ -242,9 +236,8 @@
                     <td class="key keyCode">0</td> 
                 </tr>
             </table>    
-                    
-    
         </div>
+
         <script type="text/javascript">
             //var db = window.sqlitePlugin.openDatabase({name: "Databases"});
             var db = window.openDatabase("Databases", "1.0", "Cordova DB", 200000);

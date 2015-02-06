@@ -38,7 +38,7 @@ $(function(){
 	 * Affiche les résultats une fois le vote fini
 	*/
 	function affichageResultats(nbr){
-				$('#progressbar').hide();
+		$('#progressbar').hide();
 
 		$('#affichageResultats').empty();
 		for(var i=0; i<nbr ; i++){
@@ -94,6 +94,16 @@ $(function(){
         }
 	}
 
+	function affichageResultatFinal(nbr){
+		$("#verifResultats div").empty();
+		var max = 0;
+		for(var i=0; i<nbr ; i++){
+			if(resultatVote['bulletin'+i] > max)
+				max = i;
+		}
+		$("#verifResultats div").append("<button id='bulletin"+[max]+"' class='bulletin' style='background-color:"+couleursVote[color[max]]+"'>"+$('#sujet'+[max]).val()+"</button>");
+	}
+
 	// Gestion du clic sur les boutons de choix de chemin //
 	button.click( function() {
 		$(this).closest("div[id]").hide(); //a cause de enterCode, sélection de la div engolbante qui a un id.
@@ -134,11 +144,8 @@ $(function(){
 		else if(key == "resultatsChiffres")
 			affichageResultatsChiffres(nbrSujet);
 		else if(key == "resultatsTableau")
-			affichageResultatsTableau(nbrSujet);
-		else if(key == "parametres"){
-			$("#changeCodeParams").hide();
-			$("#numericInput").hide();
-		} else if(key == "selectionClass"){
+			affichageResultatsTableau(nbrSujet);			
+		else if(key == "selectionClass"){
 			$('#selectionClass .valider').hide();
 			affichageClasse();
 		} else if(key =="selectionPrenom"){
@@ -149,6 +156,10 @@ $(function(){
 			initModifClasse();
 		else if(key == "supprEleve")
 			initSupprEleve();
+		else if(key == "codeParams" || key == 'changeCodeParams')
+			$("#numericInput").show();
+		else if(key == "verifResultats")
+			affichageResultatFinal(nbrSujet);
 	}
 
 	/*
@@ -173,6 +184,7 @@ $(function(){
 				creation = false;
 				initListeEleve = false;
 				nbrVote = 0;
+				$("#codeParams button:first").addClass('sel');
 				$('#listeClass').empty();
 				$('.continuer_vote').attr('go', 'vote');
 				$("#menuParams").hide();
@@ -444,7 +456,6 @@ function hexc(colorval) {
 			$('#selectionPrenom .valider').show();
 		}
 	});
-
 });
 
 /*
