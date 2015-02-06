@@ -1,5 +1,5 @@
 $(function(){
-	var resultatVote; var color; var nbrVotant; var nbrVote; var creation; var initListeEleve; var tousVote;
+	var resultatVote; var color; var nbrVotant; var nbrVote; var creation; var initListeEleve; var tousVote; var voteBlanc=true;
 	var couleursVote = new Array("#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF", "#FF00FF","#F778A1","#347C17","#7E3817","#8E35EF");
 	$(".content").not(":first").hide();
 	/* Liste des boutons récurrents */
@@ -8,10 +8,10 @@ $(function(){
 	var style = storage.getItem('styleSheet');
 
 	$('.validation_vote').on("click", function(event){
-		nbrVote++;
-		var key = $('.bulletin').filter('.select').attr('id');
-		resultatVote[key] = resultatVote[key]+1;
-		progressBar();
+			nbrVote++;
+			var key = $('.bulletin').filter('.select').attr('id');
+			resultatVote[key] = resultatVote[key]+1;
+			progressBar();
 	});
 
 /*
@@ -210,9 +210,9 @@ navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
 				break;
 			case "initGoDemarrerVote" :
 				if($("#listeClass button").length != 0)
-					$("#demarre_vote .bigButton").attr('go', 'selectionPrenom');
+					$("#demarre_vote .valider").attr('go', 'selectionPrenom');
 				else
-					$("#demarre_vote .bigButton").attr('go', 'vote');
+					$("#demarre_vote .valider").attr('go', 'vote');
 				break;
 		}
 	}
@@ -386,6 +386,9 @@ navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
 					$(this).css("outline", "10px solid black");
 			}
 		});
+		if (!voteBlanc && !$(".bulletin").hasClass("select")){
+			$(".validation_vote").hide();
+		}
 	}
 
 	function resetBackground(){
@@ -512,6 +515,23 @@ navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
 		}
 	});
 
+
+	$("#voteblanc").click(function(){
+		if ($(this).html()=="Autorisé"){
+			$("#voteblanc").html("Interdit");
+			$(this).addClass("interdit");
+			$(this).removeClass("autorise");
+			voteBlanc=false;
+		}
+		else{
+			$("#voteblanc").html("Autorisé");
+			$(this).addClass("autorise");
+			$(this).removeClass("interdit");
+			voteBlanc=true;
+		}
+
+	});
+
 });
 
 /*
@@ -520,4 +540,5 @@ navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
 function addBulletinSelect(){
 	$(".bulletin").removeClass("select");
 	$(event.target).addClass("select");
+	$(".validation_vote").show();
 }
