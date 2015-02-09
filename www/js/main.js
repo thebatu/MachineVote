@@ -80,13 +80,13 @@ $(function(){
 		        	$('#affichageResultatsTableau table:last').append("<tr>");
 		        	for(var j=0 ; j<10; j++){
 		        		if(j%2 == 0){
-                    		$('#affichageResultatsTableau table:last tr:last').append("<td>");
-                    		if(j+(k*10) <resultatVote['bulletin'+i])
-                    			$('#affichageResultatsTableau table:last tr:last td:last').append("<canvas class='voteCase' style='background-color:"+couleursVote[color[i]]+"'></canvas>");
-                    	}else {
-                   		 	$('#affichageResultatsTableau table:last tr:first').append("<td>");
+                    		$('#affichageResultatsTableau table:last tr:first').append("<td>");
                     		if(j+(k*10) <resultatVote['bulletin'+i])
                     			$('#affichageResultatsTableau table:last tr:first td:last').append("<canvas class='voteCase' style='background-color:"+couleursVote[color[i]]+"'></canvas>");
+                    	}else {
+                   		 	$('#affichageResultatsTableau table:last tr:last').append("<td>");
+                    		if(j+(k*10) <resultatVote['bulletin'+i])
+                    			$('#affichageResultatsTableau table:last tr:last td:last').append("<canvas class='voteCase' style='background-color:"+couleursVote[color[i]]+"'></canvas>");
                     	}
                     }
                 }
@@ -198,10 +198,18 @@ $(function(){
 			initModifClasse();
 		else if(key == "supprEleve")
 			initSupprEleve();
-		else if(key == "codeParams" || key == 'changeCodeParams')
+		else if(key == "codeParams" || key == 'changeCodeParams'){
 			$("#numericInput").show();
-		else if(key == "verifResultats")
+			$(".firstCode").addClass('sel');
+		} else if(key == "verifResultats")
 			affichageResultatFinal(nbrSujet);
+		else if(key == "parametres"){
+			$(".codeParams").removeClass("sel");
+			$("#numericInput").hide();
+			$('#modifClasse .modif input').val('');
+			$('#ajoutClasse .modif input').val('');
+			$("#ajoutClasse .liste").empty();
+		}
 	}
 
 	/*
@@ -226,7 +234,6 @@ $(function(){
 				creation = false;
 				initListeEleve = false;
 				nbrVote = 0;
-				$("#codeParams button:first").addClass('sel');
 				$('#listeClass').empty();
 				$('.continuer_vote').attr('go', 'vote');
 				$("#menuParams").hide();

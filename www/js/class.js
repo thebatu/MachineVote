@@ -93,6 +93,10 @@ $(function(){
 		var d = $(".changecodeParams:last").text();
 		replaceCode(a,b,c,d);
 		$("#numericInput").hide();
+		$("#changeCodeParams").hide();
+		$("#parametres").show();
+		$(".codeParams").removeClass("sel");
+		$(".codeParams").text("0");
 	});
 
 	$(".codeButton").click(function(){
