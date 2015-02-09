@@ -75,8 +75,10 @@ $(function(){
 			$("#codeParams").hide();
 			$("#parametres").show();
 			$("#numericInput").hide();
+			$("#codeParams .entrerCode").removeClass("wrong");
 		}else
-			$("#codeParams .entrerCode").css("background","linear-gradient( #aa4444, #ff0000)");
+			$("#codeParams .entrerCode").addClass("wrong");
+
 	});
 
 	function replaceCode(n1, n2, n3, n4){
@@ -110,6 +112,13 @@ $(function(){
 		styliser();
 	});
 
+		$('input').keyup(function(event) {
+            var textBox = event.target;
+            var start = textBox.selectionStart;
+            var end = textBox.selectionEnd;
+            textBox.value = textBox.value.charAt(0).toUpperCase() + textBox.value.slice(1);
+            textBox.setSelectionRange(start, end);
+        });	
 	$('#ajoutClasse #buttonAjoutEleve').click(function(){
 		if($('#inputNomEleve').val() != ''){
 			$('.classRight div').append('<p>'+$('#inputNomEleve').val()+'</p>');

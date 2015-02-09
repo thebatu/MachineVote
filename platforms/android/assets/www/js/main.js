@@ -16,7 +16,6 @@ $(function(){
 
 /*
  *	progress bar handler
- *
 */
 
  	function progressBar(){
@@ -26,6 +25,18 @@ $(function(){
  		}
  	}
 
+ 	$("#upload").click(function(){
+ 		$('#progressbar').progressbar({value: 37});
+ 		  value: 37
+
+ 	});
+
+ 	/*function progressBar(int_students){
+ 		$('#progressBar').progressbar();
+ 	}
+/*
+ *	décompte des votes (affichage 2)
+*/
 	$('.canvaResultat').live("click", function(event){
 		var tmp = $(event.target).parent().find('p').text();
 		$(event.target).parent().find('p').html(parseInt(tmp)+1);
@@ -33,9 +44,9 @@ $(function(){
 		$(event.target).css('background-color', 'gray');
 	});
 
-	/*
-	 * Affiche les résultats une fois le vote fini
-	*/
+/*
+ * Affiche les résultats une fois le vote fini
+*/
 	function affichageResultats(nbr){
 		$('#progressbar').hide();
 
@@ -51,9 +62,9 @@ $(function(){
 		}
 	}
 
-	/*
-	 * Affiche les résultats chiffrés
-	*/
+/*
+ * Affiche les résultats chiffrés
+*/
 	function affichageResultatsChiffres(nbr){
 		$('#affichageResultatsChiffre').empty();
 		for(var i=0; i<nbr ; i++){
@@ -68,7 +79,9 @@ $(function(){
 				$('#affichageResultatsChiffre').append("Pas de jeton <canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
 		}
 	}
-
+/*
+ *	Affiche les résultats en tableau
+*/
 	function affichageResultatsTableau(nbr){
 		$('#affichageResultatsTableau').empty();
 		for(var i=0; i<nbr ; i++){
@@ -94,7 +107,9 @@ $(function(){
 				$('#affichageResultatsTableau').append("Pas de jeton <canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
         }
 	}
-
+/*
+ *	Résultats gagnants
+*/
 	function affichageResultatFinal(nbr){
 		$("#verifResultats div").empty();
 		$("#verifResultats div").css("margin-top", "2%");
@@ -146,31 +161,19 @@ $(function(){
 		$("#verifResultats").css("text-align","center");
 	}
 
-	// Gestion du clic sur les boutons de choix de chemin //
+/*
+ *	Gestion du clic sur les boutons de choix de chemin
+ *
+*/	
 	button.click( function() {
 		$(this).closest("div[id]").hide(); //a cause de enterCode, sélection de la div engolbante qui a un id.
 		gotoSection($(this).attr("go"));
 	});
 
-
 /*
- *	progress bar handler
- *
- */
- 	$("#upload").click(function(){
- 		$('#progressbar').progressbar({value: 37});
- 		  value: 37
-
- 	});
-
- 	/*function progressBar(int_students){
- 		$('#progressBar').progressbar();
- 	}
-*/
-	/*
-	 * Function main
-	 * Redirection sur la div 
-	*/ 
+ * Function main
+ * Redirection sur la div 
+*/ 
 	function gotoSection(key) {
 		gererAction(getAction(key));
 		$("#"+key).show();

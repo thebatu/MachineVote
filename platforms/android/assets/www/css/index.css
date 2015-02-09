@@ -165,14 +165,15 @@ button:active{
         padding: 10px;
     }
 
-    .entrerCode{
+    .entrerCode{ /*vert*/
         padding-top: 2%;
         text-align: center;
         border-radius: 25px;
-        /*ton vert*/
         background: linear-gradient( #519802, #9ccf31);
-        /*background: linear-gradient( #ffdfb1, #ffdec8);*/
         color:white;
+    }
+    .wrong{
+        background:linear-gradient( #aa4444, #ff0000) !important;
     }
     
 
@@ -207,14 +208,19 @@ button:active{
         width:45%;
         text-align: right;
     }
+        #inputNomClasse{
+            width:100% ;
+        }
         .modif input{
-            width:100%;
+            width:75%;
             margin-top:10%;
+            margin-bottom: 2%;
+
         }
         .modif .ajout{
             background-color: #519802; /* vert */
-            width:100px;
-            height:100px;
+            width:80px;
+            height:80px;
             border-radius: 50px;
         }
     .classRight{
@@ -228,27 +234,13 @@ button:active{
         margin-top:5%;
         overflow-y:auto;
     }
-        .classRight .agrandir{
-            border-radius: 50px;
-            display: inline-block;
-            background-color: lightgray;
-            color: black;
-            transform:rotate(-45deg);
-        }
         .classRight label{
             margin-top: 2%;
             font-size: 75%;
         }
 #modifClasse{
 }
-    #modifClasse input{
-        width: 75%;
-        margin-bottom: 2%;
-    }
-    #modifClasse .modif .ajout{
-        width:80px;
-        height:80px;
-    }
+
     #modifClasse .classRight div{
         height: 450px;
     }
@@ -523,8 +515,8 @@ input{
 }
 
 #keypad{
-    width:400px;
-    height:200px; 
+    width:500px;
+    height:230px; 
 }
 
 .key{
@@ -563,5 +555,10 @@ input{
     bottom:15%;
     left:10%;
     width: 400px;
+}
+
+#supprEleveDyna .select{
+    background-color: white;
+    color: black;
 }
 

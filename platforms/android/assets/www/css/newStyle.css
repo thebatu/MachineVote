@@ -26,8 +26,11 @@ html, body{
 .menuParams:active, .menuParams:hover, .sel{ /*violet */
 	background: #6b1a6a !important;
 }
-.bigButton, .choixSujet, .suppr, .interdit{ /* rouge */
+.bigButton, .choixSujet, .suppr, .interdit, .wrong{ /* rouge */
 	background: #db2218;
+}
+.wrong{ /* rouge */
+	background: #db2218 !important;
 }
 input, #ajoutClasse p, #modifClasse p, select, option{
 	color:black !important;
