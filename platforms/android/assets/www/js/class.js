@@ -92,6 +92,7 @@ $(function(){
 		var c = $(".changecodeParams:nth-child(4)").text();
 		var d = $(".changecodeParams:last").text();
 		replaceCode(a,b,c,d);
+		$("#numericInput").hide();
 	});
 
 	$(".codeButton").click(function(){
@@ -143,6 +144,7 @@ $(function(){
 					tx.executeSql("DELETE FROM Classe WHERE id_Classe = "+$('#listeSelectClasse option:selected').val());
 					alert('classe supprimée');
 					$('#listeSelectClasse').empty();
+					$("#listeEleveModif").empty();
 					$('#listeSelectClasse').append("<option value='null'>Classe à modifier</option>");
 					tx.executeSql("SELECT * FROM Classe", [], function(tx,res){
 						if(res.rows.length != 0){

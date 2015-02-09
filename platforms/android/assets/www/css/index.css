@@ -523,8 +523,8 @@ input{
 }
 
 #keypad{
-    width:400px;
-    height:200px; 
+    width:500px;
+    height:230px; 
 }
 
 .key{
@@ -563,5 +563,10 @@ input{
     bottom:15%;
     left:10%;
     width: 400px;
+}
+
+#supprEleveDyna .select{
+    background-color: white;
+    color: black;
 }
 
