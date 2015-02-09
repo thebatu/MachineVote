@@ -508,7 +508,7 @@ input{
 */
 #numericInput{
     position:relative;
-    left: 50%;
+    left: 50%;      
     bottom:15%;
     width:15%;
     display:none;       
@@ -522,17 +522,17 @@ input{
 .key{
     border:solid 1px black;
     vertical-align: middle;
-    background-color:white;
+    background: linear-gradient( #ffdfb1, #ffdec8);
     text-align:center;
     font-weight:bold;
-    font-size: 240%;
+    font-size: 300%;
     color:black;
 }
 .key:hover{
-    background-color:LightBlue;
+    background: lightgray;
 }
 .key:active{
-    background-color:white;
+    background-color:red;
 }
 
 .sel{
