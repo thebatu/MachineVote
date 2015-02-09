@@ -60,8 +60,8 @@
         <div id="ajoutClasse" class="content">
             <h2>Ajouter une classe</h2>
             <div class="modif">
-                <input type="text" id='inputNomClasse' placeholder="nom de la classe"></input>
-                <input type="text" id='inputNomEleve' placeholder="ajouter un élève"></input>
+                <input type="text" id='inputNomClasse' placeholder="nom de la classe" onkeyup="validate(this)"></input>
+                <input type="text" id='inputNomEleve' placeholder="ajouter un élève" onkeyup="validate(this)"></input>
                 <button id="buttonAjoutEleve" class="rond ajout">+</button>
             </div>
             <div class="classRight">
@@ -79,7 +79,7 @@
                 <select type="text" id="listeSelectClasse">
 
                 </select>
-                <input type="text" placeholder="ajouter élève"></input>
+                <input type="text" placeholder="ajouter élève" onkeyup="validate(this)"></input>
                 <button class="rond ajout" id="ajouterEleve">+</button>
                 <button class='navigation suppr' go="modifClasse" id="supprimerEleve">Supprimer un élève</button>
                 <button class="suppr" id="supprimerClasse">Supprimer la classe</button>
@@ -262,5 +262,10 @@
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+        <script type="text/javascript">
+            function validate(obj) {
+                obj.value=obj.value.replace(/[~#'{[\-|`_\\^@())\]°}=+$£¤¨ù%*µ!§:/;\.,\?<>\'']/ig, '');
+            }
+</script>
     </body>
 </html>
