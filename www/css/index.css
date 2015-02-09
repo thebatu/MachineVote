@@ -516,7 +516,7 @@ input{
 */
 #numericInput{
     position:relative;
-    left: 50%;
+    left: 50%;      
     bottom:15%;
     width:15%;
     display:none;       
@@ -533,7 +533,7 @@ input{
     background-color:white;
     text-align:center;
     font-weight:bold;
-    font-size: 240%;
+    font-size: 300%;
     color:black;
 }
 .key:hover{
