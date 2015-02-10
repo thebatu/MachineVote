@@ -1,6 +1,6 @@
 
 /** Contre la selection de texte **/
-*{
+*:not(input){
     -webkit-user-select: none;  /* Chrome all / Safari all */
     -webkit-touch-callout: none;
     -moz-user-select: none;     /* Firefox all */
@@ -8,14 +8,6 @@
 
   /* No support for these yet, use at own risk */
     user-select: none;          
-}
-
-input {
-    -webkit-touch-callout: default;
-    -webkit-user-select: default;
-     user-select: default;
-    -moz-user-select: default;     /* Firefox all */
-    -ms-user-select: default;      /* IE 10+ */      
 }
 
 ::-webkit-scrollbar{
