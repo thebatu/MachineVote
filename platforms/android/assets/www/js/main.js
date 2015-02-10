@@ -24,18 +24,7 @@ $(function(){
  		}
  	}
 
- 	$("#upload").click(function(){
- 		$('#progressbar').progressbar({value: 37});
- 		  value: 37
 
- 	});
-
- 	/*function progressBar(int_students){
- 		$('#progressBar').progressbar();
- 	}
-/*
- *	décompte des votes (affichage 2)
-*/
 	$('.canvaResultat').live("click", function(event){
 		var tmp = $(event.target).parent().find('p').text();
 		$(event.target).parent().find('p').html(parseInt(tmp)+1);
@@ -396,7 +385,7 @@ $(function(){
 				$('.continuer_vote').attr('go', 'fin_vote');
 		}
 			
-		$(".bulletin").click(function(){
+		$(".bulletin").mousedown(function(){
 			resetBackground();
 			if ($(this).hasClass("select")){
 				if (style == 1)
