@@ -5,7 +5,7 @@ $(function(){
 	/* Liste des boutons récurrents */
 	var button = $(".content .navigation"); 
 	var storage = window.localStorage;
-	var style = storage.getItem('styleSheet');
+	var stylei = storage.getItem('styleSheet');
 
 	$('.validation_vote').on("click", function(event){
 			nbrVote++;
@@ -23,14 +23,6 @@ $(function(){
  			$('#progressbar').progressbar({value: nbrVote, max:nbrVotant});
  		}
  	}
-
-
-	$('.canvaResultat').live("click", function(event){
-		var tmp = $(event.target).parent().find('p').text();
-		$(event.target).parent().find('p').html(parseInt(tmp)+1);
-		$(event.target).removeClass('canvaResultat');
-		$(event.target).css('background-color', 'gray');
-	});
 
 /*
  * Affiche les résultats une fois le vote fini
@@ -104,7 +96,7 @@ $(function(){
 		var max = new Array();
 		max.push(0);
 		for(var i=0; i<nbr ; i++){
-			if(resultatVote['bulletin'+i] > max[0])
+			if(resultatVote['bulletin'+i] > resultatVote['bulletin'+max[0]])
 				max[0] = i;
 		}
 		for(var i=0; i<nbr ; i++){
@@ -114,7 +106,7 @@ $(function(){
 		for(var M in max)
 			$("#verifResultats div").append("<button id='bulletin"+max[M]+"' class='bulletin' style='background-color:"+couleursVote[color[max[M]]]+"'>"+$('#sujet'+[max[M]]).val()+"</button>");
 		/*mise en forme des gagnants*/
-		var nbGagnants = $("#verifResultats div .bulletin").length;
+		var nbGagnants = max.length;
 
 		if (nbGagnants == 4) {
 			$(".bulletin:lt(2)").css("float","left");
@@ -398,11 +390,11 @@ $(function(){
 		$(".bulletin").mousedown(function(){
 			resetBackground();
 			if ($(this).hasClass("select")){
-				if (style == 1){
+				if (stylei == 1){
 					$(this).css("background", "radial-gradient(white,"+couleursVote[color[$(this).attr('id').replace("bulletin","")]]+")");
 					$(this).css("background", "-webkit-radial-gradient(white,"+couleursVote[color[$(this).attr('id').replace("bulletin","")]]+")");
 				}
-				else if (style == 2)
+				else if (stylei == 2)
 					$(this).css("outline", "10px solid black");
 			}
 		});
@@ -493,55 +485,13 @@ $(function(){
 		gotoSection("accueil");
 	});
 
-	/*
-	 * ajoute la classe selected au nombre de sujets choisi
-	*/
-	$(".choixSujet").on("click", function(event){
-		$(".choixSujet").removeClass("selected");
-		$(event.target).addClass("selected");
-	});
-
-	/*
-	 * Appuie sur le bouton + lors du choix du nombre de votant
-	*/
-	$('#plusVot').on("click", function(event){
-		var tmp = $("#numVot").html();
-		if (tmp < 400){
-			$('#numVot').html(parseInt(tmp)+1);
-		}
-	});
-
-	/*
-	 * Appuie sur le bouton - lors du choix du nombre de votant
-	*/
-	$('#moinsVot').on("click", function(event){
-		var tmp = $("#numVot").html();
-		if (tmp > 0){
-			$('#numVot').html(parseInt(tmp)-1);			
-		}
-	});
-
-	$('#listeClass button').live('click', function(){
-		$('#listeClass button').removeClass('classSelect');
-  		$(event.target).addClass('classSelect');
-  		$('#selectionClass .valider').show();
-	});	
-
-	$('#listeSelectionPrenom button').live('click',function(){
-		if(!($(event.target).hasClass('hasBeenSelected'))){
-			$('#listeSelectionPrenom button').removeClass('classSelect');
-			$(event.target).addClass('classSelect');
-			$('#selectionPrenom .valider').show();
-		}
-	});
 	$("#voteblanc").click(function(){
 		if ($(this).html()=="Autorisé"){
 			$("#voteblanc").html("Interdit");
 			$(this).addClass("interdit");
 			$(this).removeClass("autorise");
 			voteBlanc=false;
-		}
-		else{
+		} else{
 			$("#voteblanc").html("Autorisé");
 			$(this).addClass("autorise");
 			$(this).removeClass("interdit");

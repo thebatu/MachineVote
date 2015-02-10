@@ -8,20 +8,20 @@ $(function(){
 
 	if(!('styleSheet' in storage))
 		storage.setItem('styleSheet', "1");
-	var style = new Array();
-	style = storage.getItem('styleSheet');
-	styliser();
+	var stylei = new Array();
+	stylei = storage.getItem('styleSheet');
 
 	function styliser(){
-		if(style==1){
+		if(stylei==1){
 			$("head").append("<link rel='stylesheet' type='text/css' href='css/newStyle.css' />");
 			storage.styleSheet=2;
 		}
-		else if (style == 2){
+		else if (stylei == 2){
 			$("link[href='css/newStyle.css']").remove();	
 			storage.styleSheet=1;
 		}
-		style=storage.getItem('styleSheet');
+		stylei=storage.getItem('styleSheet');
+
 	}
 
 	function increaseNumber(nbr){
