@@ -84,7 +84,7 @@ $(function(){
                     }
                 }
             } else
-				$('#affichageResultatsTableau').append("Pas de jeton <canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
+				$('#affichageResultatsTableau').append("<br>Pas de jeton <canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
         }
 	}
 /*
