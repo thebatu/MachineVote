@@ -138,22 +138,28 @@ $(function(){
 			$(".bulletin:gt(0)").css("float","left");
 		}
 		if (nbGagnants == 1){
-			$("#verifResultats div .bulletin").css("margin-left","calc(100%/3)");
+			//$("#verifResultats div .bulletin").css("margin-left","calc(100%/3)");
+			$("#verifResultats div .bulletin").css("margin-left","33.33333%");
 		}
 		if (nbGagnants == 2){
-			$("#verifResultats div .bulletin:first").css("margin-left","calc(94%/5)");
+			//$("#verifResultats div .bulletin:first").css("margin-left","calc(94%/5)");
+			$("#verifResultats div .bulletin:first").css("margin-left","18.8%)");
 		}
 		if (nbGagnants == 5){
-			$("#verifResultats div .bulletin:nth-child(4)").css("margin-left","calc(94%/5)");
+			//$("#verifResultats div .bulletin:nth-child(4)").css("margin-left","calc(94%/5)");
+			$("#verifResultats div .bulletin:nth-child(4)").css("margin-left","18.8%)");
 		}
 		if (nbGagnants == 3 || nbr == 2){
 			$(".bulletin").css("margin-top", "100px");
 		}
 		if (nbGagnants ==4 || nbr == 2){
-			$(".bulletin").css("width", "calc(96%/2)");
+			//$(".bulletin").css("width", "calc(96%/2)");
+			$(".bulletin").css("width", "48%");
 		}
 		else{
-			$(".bulletin").css("width", "calc(94%/3)");
+			//$(".bulletin").css("width", "calc(94%/3)");
+			$(".bulletin").css("width", "31.33333%");
+
 		}
 		$(".bulletin").css("height", "150px");
 		$("#verifResultats div").css("width","100%");
@@ -242,6 +248,7 @@ $(function(){
 				$(".codeParams").text("0");
 				$("#numericInput").hide();
 				$(".entrerCode").css("background", "linear-gradient( #519802, #9ccf31)");
+				$(".entrerCode").css("background", "-webkit-linear-gradient(#519802, #9ccf31)");
 				break;
 			case "initGoDemarrerVote" :
 				if($("#listeClass button").length != 0)
@@ -362,16 +369,19 @@ $(function(){
 			$(".bulletin:gt(0)").css("float","left");
 		}
 		if (nbr == 5){
-			$("#bulletin3").css("margin-left","calc(94%/5)");
+			//$("#bulletin3").css("margin-left","calc(94%/5)");
+			$("#bulletin3").css("margin-left","18.8%)");
 		}
 		if (nbr == 3 || nbr == 2){
 			$(".bulletin").css("margin-top", "100px");
 		}
 		if (nbr ==4 || nbr == 2){
-			$(".bulletin").css("width", "calc(96%/2)");
+			//$(".bulletin").css("width", "calc(96%/2)");
+			$(".bulletin").css("width", "48%");
 		}
 		else{
-			$(".bulletin").css("width", "calc(94%/3)");
+			//$(".bulletin").css("width", "calc(94%/3)");
+			$(".bulletin").css("width", "31.33333%");
 		}
 		
 		$(".bulletin").css("height", "200px");
@@ -399,8 +409,10 @@ $(function(){
 		$(".bulletin").click(function(){
 			resetBackground();
 			if ($(this).hasClass("select")){
-				if (style == 1)
+				if (style == 1){
 					$(this).css("background", "radial-gradient(white,"+couleursVote[color[$(this).attr('id').replace("bulletin","")]]+")");
+					$(this).css("background", "-webkit-radial-gradient(white,"+couleursVote[color[$(this).attr('id').replace("bulletin","")]]+")");
+				}
 				else if (style == 2)
 					$(this).css("outline", "10px solid black");
 			}
