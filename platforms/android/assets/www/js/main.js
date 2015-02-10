@@ -17,7 +17,6 @@ $(function(){
 /*
  *	progress bar handler
 */
-
  	function progressBar(){
  		if($("#listeClass button").length == 0){
  			$('#progressbar').show();
