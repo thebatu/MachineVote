@@ -6,17 +6,22 @@ $(function(){
 	code = storage.getItem('password');
 	var current;
 
-	if(!('styleSheet' in storage))
+	if(!('styleSheet' in storage)){
+		$("head").append("<link rel='stylesheet' type='text/css' href='css/index.css' />");
 		storage.setItem('styleSheet', "1");
-	var stylei = new Array();
-	stylei = storage.getItem('styleSheet');
-
+	}
+	var stylei = storage.getItem('styleSheet');
+	if(stylei == 2)
+		$("head").append("<link rel='stylesheet' type='text/css' href='css/newStyle.css' />");
+		
+	
 	function styliser(){
 		if(stylei==1){
 			$("head").append("<link rel='stylesheet' type='text/css' href='css/newStyle.css' />");
 			storage.styleSheet=2;
 		}
 		else if (stylei == 2){
+			$("head").append("<link rel='stylesheet' type='text/css' href='css/index.css' />");
 			$("link[href='css/newStyle.css']").remove();	
 			storage.styleSheet=1;
 		}
