@@ -217,7 +217,7 @@ $(function(){
 	}
 
 	/*
-	 * Gère les actions qui ont été récupérés
+	 * Gère les actions qui ont été récupérées
 	*/
 	function gererAction(actionName) {
 		switch (actionName) {
@@ -344,7 +344,7 @@ $(function(){
 	function initBulletins(nbr){
 		$("#bulletins").empty();
 		for(var i = 0; i < nbr ; i++){
-			$('#bulletins').append("<button onclick='addBulletinSelect();' id='bulletin"+[i]+"' class='bulletin' style='background-color:"+couleursVote[color[i]]+"'> "+$('#sujet'+[i]).val()+"</button>");
+			$('#bulletins').append("<button onmousedown='addBulletinSelect();' id='bulletin"+[i]+"' class='bulletin' style='background-color:"+couleursVote[color[i]]+"'> "+$('#sujet'+[i]).val()+"</button>");
 		}
 
 		if (nbr == 4) {
@@ -410,7 +410,7 @@ $(function(){
 			$(".validation_vote").hide();
 		}
 	}
-
+	//remettre les bulletins dans leur couleur d'origine quand un autre bulletin est sélectionné
 	function resetBackground(){
 		var identifiant = $('.bulletin').filter('.select').attr('id');
 		$('.bulletin').each(function(){
