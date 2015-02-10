@@ -12,5 +12,5 @@
         </activity>
         <activity android:label="@string/app_name" android:name="org.pgsqlite.SQLitePlugin" />
     </application>
-    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="16" />
+    <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="16" />
 </manifest>

@@ -1,20 +1,21 @@
 
 /** Contre la selection de texte **/
-*{
+*:not(input){
   -webkit-user-select: none;  /* Chrome all / Safari all */
   -webkit-touch-callout: none;
   -moz-user-select: none;     /* Firefox all */
   -ms-user-select: none;      /* IE 10+ */
 
   /* No support for these yet, use at own risk */
-  -o-user-select: none;
-  user-select: none;          
+  -webkit-user-select: none;
+          user-select: none;          
 }
 
 ::-webkit-scrollbar{
     width: 25px;
 }
 ::-webkit-scrollbar-thumb {     
+    background: -webkit-linear-gradient(#519802, #142d0b);     
     background: linear-gradient( #519802, #142d0b);
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
@@ -140,8 +141,7 @@ button:active{
         width: 100%;
         margin-top: 5%;
     }
-    #accueil button.valider{
-    }
+
 
 /*** FIN ACCUEIL ***/
 
@@ -150,12 +150,14 @@ button:active{
     text-align: center;
 }
         .menuParams{
+            background: -webkit-linear-gradient(#9ccf31, #519802, #519802, #9ccf31);
             background: linear-gradient( #9ccf31, #519802, #519802, #9ccf31);
             width:90%;
             margin-top: 2%;
         }
             .menuParams:active, .menuParams:hover{
                 /*tons roses*/
+                background: -webkit-linear-gradient(#ff1313, #ff284a, #ff1313);
                 background: linear-gradient(#ff1313, #ff284a, #ff1313);
             }
     .codeButton{
@@ -169,16 +171,19 @@ button:active{
         padding-top: 2%;
         text-align: center;
         border-radius: 25px;
+        background: -webkit-linear-gradient(#519802, #9ccf31);
         background: linear-gradient( #519802, #9ccf31);
         color:white;
     }
     .wrong{
+        background:-webkit-linear-gradient(#aa4444, #ff0000) !important;
         background:linear-gradient( #aa4444, #ff0000) !important;
     }
     
 
     .codeParams{ /* boutons de code*/
         /*tons beiges*/
+        background: -webkit-linear-gradient(#ffdfb1, #ffdec8);
         background: linear-gradient( #ffdfb1, #ffdec8);
         /*background-color: #aeadac;*/
         width: 200px;
@@ -261,6 +266,7 @@ button:active{
         width: 100%;
         margin-top: 4%;
         padding:2%;
+        background: -webkit-linear-gradient(#aa4444, #ff0000);
         background: linear-gradient( #aa4444, #ff0000);
         font-size: 75%;
 
@@ -273,10 +279,10 @@ button:active{
 }
 
 .choixSujet{
+    background: -webkit-linear-gradient(#ff1313, #ff284a, #ff1313);
     background: linear-gradient(#ff1313, #ff284a, #ff1313);
-    /*background-color: #ff284a; /* rose */*/
-	border : 3px #ff284a ridge;
-	padding: 2% 4% 2% 4%;
+    border : 3px #ff284a ridge;
+    padding: 2% 4% 2% 4%;
 }
 
 #boutons{
@@ -348,9 +354,11 @@ input{
     width:50%;
 }
     .autorise{
+        background:-webkit-linear-gradient(#519802, #9ccf31);
         background:linear-gradient( #519802, #9ccf31);
     }
     .interdit{
+        background :-webkit-linear-gradient(#aa4444, #ff0000);
         background :linear-gradient( #aa4444, #ff0000);
     }
 /*** VOTE ***/
@@ -430,9 +438,9 @@ input{
 		 	padding-top: 4px;
 		}
 /*** FIN SELECTION DE PRESENTATION DE RESULTATS***/
-
 .selected {
     border : 3px #519802 groove;
+    background: -webkit-linear-gradient(#9ccf31, #519802, #519802, #9ccf31);
     background: linear-gradient( #9ccf31, #519802, #519802, #9ccf31);
     /*background-color:#519802;*/
 }
@@ -453,10 +461,12 @@ input{
     /*padding: 10px;*/
 }
 .valider, .valider:active{
+    background: -webkit-linear-gradient(#519802, #9ccf31);
     background: linear-gradient( #519802, #9ccf31);
 }
 
 .valider:hover{
+    background: -webkit-linear-gradient(#519802, #142d0b);
     background: linear-gradient( #519802, #142d0b);
 }
 
@@ -465,15 +475,19 @@ input{
     /*background-color: lightgray;*/
     background-color: #ff9f77;
     left:10%;
-    transform: scale(-1, 1);
+    -webkit-transform: scale(-1, 1);
+        -ms-transform: scale(-1, 1);
+            transform: scale(-1, 1);
 }
 .retour, .retour:active{
     /*background: linear-gradient( lightgray, #666666);*/
+    background: -webkit-linear-gradient(#ff9f77, #ff4f47);
     background: linear-gradient( #ff9f77, #ff4f47);
 }
 
 .retour:hover{
     /*background: linear-gradient( lightgray, #ffffff);*/
+    background: -webkit-linear-gradient(#ff9f77, #fe773c);
     background: linear-gradient( #ff9f77, #fe773c);
 }
 .retourAccueil{
@@ -495,12 +509,12 @@ input{
 }
 
 .bigButton {
+    background: -webkit-linear-gradient(#ff284a, #ff1313, #ff284a);
     background: linear-gradient( #ff284a, #ff1313, #ff284a);
     background-color: #ff284a;
     padding : 5%;
     margin-top: 5%;
 }
-
 
 /*
 *   Numeic input for keypad
@@ -508,7 +522,7 @@ input{
 */
 #numericInput{
     position:relative;
-    left: 50%;
+    left: 50%;      
     bottom:15%;
     width:15%;
     display:none;       
@@ -522,23 +536,24 @@ input{
 .key{
     border:solid 1px black;
     vertical-align: middle;
-    background-color:white;
+    background: -webkit-linear-gradient(#ffdfb1, #ffdec8);
+    background: linear-gradient( #ffdfb1, #ffdec8);
     text-align:center;
     font-weight:bold;
-    font-size: 240%;
+    font-size: 300%;
     color:black;
 }
 .key:hover{
-    background-color:LightBlue;
+    background: lightgray;
 }
 .key:active{
-    background-color:white;
+    background-color:red;
 }
 
 .sel{
+    background: -webkit-linear-gradient(#ff9f77, #ff4f47);
     background: linear-gradient( #ff9f77, #ff4f47);
 }
-
 .classSelect {
     color : black;
     background-color : white;
@@ -550,6 +565,7 @@ input{
 }
 
 #progressbar{
+    background: -webkit-linear-gradient(#ff9f77, #ff4f47);
     background: linear-gradient( #ff9f77, #ff4f47);
     position: absolute;
     bottom:15%;
