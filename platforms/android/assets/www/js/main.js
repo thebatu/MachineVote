@@ -487,7 +487,7 @@ $(function(){
 	/*
 	 * Appuie sur le logo d'accueil
 	*/
-	$("#ecranLogo").on( "taphold", function(event){
+	$("#ecranLogo").mousedown( "click", function(event){
 		$("#ecranLogo").hide();
 		gotoSection("accueil");
 	});
