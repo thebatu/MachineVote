@@ -96,7 +96,7 @@ $(function(){
 		var max = new Array();
 		max.push(0);
 		for(var i=0; i<nbr ; i++){
-			if(resultatVote['bulletin'+i] > max[0])
+			if(resultatVote['bulletin'+i] > resultatVote['bulletin'+max[0]])
 				max[0] = i;
 		}
 		for(var i=0; i<nbr ; i++){
@@ -106,7 +106,7 @@ $(function(){
 		for(var M in max)
 			$("#verifResultats div").append("<button id='bulletin"+max[M]+"' class='bulletin' style='background-color:"+couleursVote[color[max[M]]]+"'>"+$('#sujet'+[max[M]]).val()+"</button>");
 		/*mise en forme des gagnants*/
-		var nbGagnants = $("#verifResultats div .bulletin").length;
+		var nbGagnants = max.length;
 
 		if (nbGagnants == 4) {
 			$(".bulletin:lt(2)").css("float","left");
