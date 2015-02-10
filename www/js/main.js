@@ -5,7 +5,7 @@ $(function(){
 	/* Liste des boutons récurrents */
 	var button = $(".content .navigation"); 
 	var storage = window.localStorage;
-	var style = storage.getItem('styleSheet');
+	var stylei = storage.getItem('styleSheet');
 
 	$('.validation_vote').on("click", function(event){
 			nbrVote++;
@@ -390,11 +390,11 @@ $(function(){
 		$(".bulletin").mousedown(function(){
 			resetBackground();
 			if ($(this).hasClass("select")){
-				if (style == 1){
+				if (stylei == 1){
 					$(this).css("background", "radial-gradient(white,"+couleursVote[color[$(this).attr('id').replace("bulletin","")]]+")");
 					$(this).css("background", "-webkit-radial-gradient(white,"+couleursVote[color[$(this).attr('id').replace("bulletin","")]]+")");
 				}
-				else if (style == 2)
+				else if (stylei == 2)
 					$(this).css("outline", "10px solid black");
 			}
 		});
