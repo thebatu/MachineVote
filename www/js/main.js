@@ -24,14 +24,6 @@ $(function(){
  		}
  	}
 
-
-	$('.canvaResultat').live("click", function(event){
-		var tmp = $(event.target).parent().find('p').text();
-		$(event.target).parent().find('p').html(parseInt(tmp)+1);
-		$(event.target).removeClass('canvaResultat');
-		$(event.target).css('background-color', 'gray');
-	});
-
 /*
  * Affiche les résultats une fois le vote fini
 */
@@ -493,55 +485,13 @@ $(function(){
 		gotoSection("accueil");
 	});
 
-	/*
-	 * ajoute la classe selected au nombre de sujets choisi
-	*/
-	$(".choixSujet").on("click", function(event){
-		$(".choixSujet").removeClass("selected");
-		$(event.target).addClass("selected");
-	});
-
-	/*
-	 * Appuie sur le bouton + lors du choix du nombre de votant
-	*/
-	$('#plusVot').on("click", function(event){
-		var tmp = $("#numVot").html();
-		if (tmp < 400){
-			$('#numVot').html(parseInt(tmp)+1);
-		}
-	});
-
-	/*
-	 * Appuie sur le bouton - lors du choix du nombre de votant
-	*/
-	$('#moinsVot').on("click", function(event){
-		var tmp = $("#numVot").html();
-		if (tmp > 0){
-			$('#numVot').html(parseInt(tmp)-1);			
-		}
-	});
-
-	$('#listeClass button').live('click', function(){
-		$('#listeClass button').removeClass('classSelect');
-  		$(event.target).addClass('classSelect');
-  		$('#selectionClass .valider').show();
-	});	
-
-	$('#listeSelectionPrenom button').live('click',function(){
-		if(!($(event.target).hasClass('hasBeenSelected'))){
-			$('#listeSelectionPrenom button').removeClass('classSelect');
-			$(event.target).addClass('classSelect');
-			$('#selectionPrenom .valider').show();
-		}
-	});
 	$("#voteblanc").click(function(){
 		if ($(this).html()=="Autorisé"){
 			$("#voteblanc").html("Interdit");
 			$(this).addClass("interdit");
 			$(this).removeClass("autorise");
 			voteBlanc=false;
-		}
-		else{
+		} else{
 			$("#voteblanc").html("Autorisé");
 			$(this).addClass("autorise");
 			$(this).removeClass("interdit");
