@@ -24,18 +24,7 @@ $(function(){
  		}
  	}
 
- 	$("#upload").click(function(){
- 		$('#progressbar').progressbar({value: 37});
- 		  value: 37
 
- 	});
-
- 	/*function progressBar(int_students){
- 		$('#progressBar').progressbar();
- 	}
-/*
- *	décompte des votes (affichage 2)
-*/
 	$('.canvaResultat').live("click", function(event){
 		var tmp = $(event.target).parent().find('p').text();
 		$(event.target).parent().find('p').html(parseInt(tmp)+1);
@@ -355,7 +344,7 @@ $(function(){
 	function initBulletins(nbr){
 		$("#bulletins").empty();
 		for(var i = 0; i < nbr ; i++){
-			$('#bulletins').append("<button onclick='addBulletinSelect();' id='bulletin"+[i]+"' class='bulletin' style='background-color:"+couleursVote[color[i]]+"'>"+$('#sujet'+[i]).val()+"</button>");
+			$('#bulletins').append("<button onclick='addBulletinSelect();' id='bulletin"+[i]+"' class='bulletin' style='background-color:"+couleursVote[color[i]]+"'> "+$('#sujet'+[i]).val()+"</button>");
 		}
 
 		if (nbr == 4) {
@@ -406,7 +395,7 @@ $(function(){
 				$('.continuer_vote').attr('go', 'fin_vote');
 		}
 			
-		$(".bulletin").click(function(){
+		$(".bulletin").mousedown(function(){
 			resetBackground();
 			if ($(this).hasClass("select")){
 				if (style == 1){
@@ -499,7 +488,7 @@ $(function(){
 	/*
 	 * Appuie sur le logo d'accueil
 	*/
-	$("#ecranLogo").on( "taphold", function(event){
+	$("#ecranLogo").mousedown( "click", function(event){
 		$("#ecranLogo").hide();
 		gotoSection("accueil");
 	});
