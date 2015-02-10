@@ -217,7 +217,7 @@ $(function(){
 	}
 
 	/*
-	 * Gère les actions qui ont été récupérés
+	 * Gère les actions qui ont été récupérées
 	*/
 	function gererAction(actionName) {
 		switch (actionName) {
@@ -410,7 +410,7 @@ $(function(){
 			$(".validation_vote").hide();
 		}
 	}
-
+	//remettre les bulletins dans leur couleur d'origine quand un autre bulletin est sélectionné
 	function resetBackground(){
 		var identifiant = $('.bulletin').filter('.select').attr('id');
 		$('.bulletin').each(function(){
