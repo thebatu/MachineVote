@@ -15,7 +15,7 @@ $(function(){
 	});
 
 /*
- *	progress bar handler
+ *	Barre d'indication du nombre de votants restant avec jquery UI
 */
  	function progressBar(){
  		if($("#listeClass button").length == 0){
@@ -32,7 +32,8 @@ $(function(){
 
 		$('#affichageResultats').empty();
 		for(var i=0; i<nbr ; i++){
-			$('#affichageResultats').append("<div class='ligne1compt'></div>");
+			//$('#affichageResultats').append("<div class='ligne1compt'></div>");
+			$('#affichageResultatsChiffre').append("</br>");
 			if(resultatVote['bulletin'+i] != 0){	
 				for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
 					$('#affichageResultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
@@ -84,11 +85,11 @@ $(function(){
                     }
                 }
             } else
-				$('#affichageResultatsTableau').append("<br>Pas de jeton <canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
+				$('#affichageResultatsTableau').append("</br>Pas de jeton <canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
         }
 	}
 /*
- *	Résultats gagnants
+ *	Affichage des résultats gagnants
 */
 	function affichageResultatFinal(nbr){
 		$("#verifResultats div").empty();
@@ -149,7 +150,6 @@ $(function(){
 
 /*
  *	Gestion du clic sur les boutons de choix de chemin
- *
 */	
 	button.click( function() {
 		$(this).closest("div[id]").hide(); //a cause de enterCode, sélection de la div engolbante qui a un id.
@@ -201,16 +201,16 @@ $(function(){
 		}
 	}
 
-	/*
-	 * Récupère une action dans une div
-	*/
+/*
+ * Récupère une action dans une div
+*/
 	function getAction(key) {
 		return $("#" + key + " action").attr("name");
 	}
 
-	/*
-	 * Gère les actions qui ont été récupérées
-	*/
+/*
+ * Gère les actions qui ont été récupérées
+*/
 	function gererAction(actionName) {
 		switch (actionName) {
 			case "vider_couleursSujets" :
@@ -241,7 +241,7 @@ $(function(){
 	}
 
 /*
-*	change colors of the interface Couleurs des sujets
+* Génère une couleur aléatoire pour les sujets
 */
 	function randomColorGenerator(nbr){
 		while(color.length < nbr){
@@ -259,9 +259,10 @@ $(function(){
 			}
 		}
 	}
-/************************************************/
-/********** CHANGEMENT COULEUR CLIC *************/
-/************************************************/
+
+/***********************************************/
+/********** CHANGEMENT COULEUR CLIC ************/
+/***********************************************/
 
 /*Transformation rgb en hexadécimal*/
 	function hexc(colorval) {
@@ -291,6 +292,7 @@ $(function(){
 		}
 		return ind;
 	}
+
 	function changeColor(courante, cl){
 		/*alert(color); //tableau d'indices
 		alert(cl); // index de la couleur cliquée
@@ -330,9 +332,9 @@ $(function(){
 			});
 	}
 
-	/*
-	 * Initialise les bulletins de vote, en fonction des couleurs et du nombre de sujes proposés
-	*/
+/*
+ * Initialise les bulletins de vote, en fonction des couleurs et du nombre de sujes proposés
+*/
 	function initBulletins(nbr){
 		$("#bulletins").empty();
 		for(var i = 0; i < nbr ; i++){
@@ -402,7 +404,9 @@ $(function(){
 			$(".validation_vote").hide();
 		}
 	}
-	//remettre les bulletins dans leur couleur d'origine quand un autre bulletin est sélectionné
+/*
+* Remet les bulletins dans leur couleur d'origine quand un autre bulletin est sélectionné
+*/	
 	function resetBackground(){
 		var identifiant = $('.bulletin').filter('.select').attr('id');
 		$('.bulletin').each(function(){
@@ -479,9 +483,9 @@ $(function(){
 		}
 	});
 
-	/*
-	 * Appuie sur le logo d'accueil
-	*/
+/*
+ * Appuie sur le logo d'accueil
+*/
 	$("#ecranLogo").mousedown( "click", function(event){
 		$("#ecranLogo").hide();
 		gotoSection("accueil");

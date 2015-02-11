@@ -1,11 +1,13 @@
 $(function(){
 	var storage = window.localStorage;
+
+	//stockage du mot de passe
 	if(!('password' in storage))
 		storage.setItem('password', "0000");
 	var code = new Array();
 	code = storage.getItem('password');
-	var current;
 
+	//stockage du style de l'application (flat VS dégradés)
 	if(!('styleSheet' in storage)){
 		$("head").append("<link rel='stylesheet' type='text/css' href='css/index.css' />");
 		storage.setItem('styleSheet', "1");
@@ -14,7 +16,7 @@ $(function(){
 	if(stylei == 2)
 		$("head").append("<link rel='stylesheet' type='text/css' href='css/newStyle.css' />");
 		
-	
+	//Changer le style de l'application	
 	function styliser(){
 		if(stylei==1){
 			$("head").append("<link rel='stylesheet' type='text/css' href='css/newStyle.css' />");
@@ -29,14 +31,7 @@ $(function(){
 
 	}
 
-	function increaseNumber(nbr){
-		var tot = parseInt(nbr) + 1;
-		if (tot == 10){
-			tot = 0;
-		}
-		return tot;
-	}
-
+	//vérifie si le code est bon pour accéder aux paramètres
 	function verifyCode(n1, n2, n3, n4){
 		if (n1 == code[0] && n2 == code[1] && n3 == code[2] && n4 == code[3]){
 			return true;
@@ -44,19 +39,17 @@ $(function(){
 		return false;
 	}
 
-
-	function nextSelection(next){
-		next.next().addClass("sel");
-	}
-
 	/*
-	*	Virtual Keyboard handler for security code 
+	*	Sécurité/ergonomie si on appuie sur un bouton de modification de code.
 	*/
 	$(".codeParams").click(function(){
 		$(".codeParams").removeClass("sel");
 	    $(this).addClass("sel");
 	});
 
+	/*
+	* Pavé numérique
+	*/
 	$('.keyCode').click(function(){
 		var tmp = $(this).html();
 		var current = $('.sel');
@@ -70,6 +63,9 @@ $(function(){
 		current.removeClass("sel");
 	});
 
+	/*
+	* Validation du code
+	*/
 	$("#codeParams .ok").click(function(){
 		//verification du code lors de l'appui sur ok
 		var a = $(".codeParams:first").html();
@@ -83,14 +79,17 @@ $(function(){
 			$("#codeParams .entrerCode").removeClass("wrong");
 		}else
 			$("#codeParams .entrerCode").addClass("wrong");
-
 	});
 
+	//Stocker le nouveau code
 	function replaceCode(n1, n2, n3, n4){
 		storage.password=n1+n2+n3+n4;
 		code=storage.getItem('password');
 	}
 
+	/*
+	* Validation du nouveau code
+	*/
 	$("#changeCodeParams .ok").click(function(){
 		$("#numericInput").hide();
 		//verification du code lors de l'appui sur ok
@@ -106,24 +105,21 @@ $(function(){
 		$(".codeParams").text("0");
 	});
 
-	$(".codeButton").click(function(){
-		$(this).parent().hide();
-		$("#changeCodeParams").show();
-	});
-
-/*changer le design de l'application */
-
+	/*
+	* Changer le design de l'application 
+	*/
 	$("#styleSheet").click(function(){
 		styliser();
 	});
 
-		$('input').keyup(function(event) {
-            var textBox = event.target;
-            var start = textBox.selectionStart;
-            var end = textBox.selectionEnd;
-            textBox.value = textBox.value.charAt(0).toUpperCase() + textBox.value.slice(1);
-            textBox.setSelectionRange(start, end);
-        });	
+	$('input').keyup(function(event) {
+        var textBox = event.target;
+        var start = textBox.selectionStart;
+        var end = textBox.selectionEnd;
+        textBox.value = textBox.value.charAt(0).toUpperCase() + textBox.value.slice(1);
+        textBox.setSelectionRange(start, end);
+    });	
+    
 	$('#ajoutClasse #buttonAjoutEleve').click(function(){
 		if($('#inputNomEleve').val() != ''){
 			$('.classRight div').append('<p>'+$('#inputNomEleve').val()+'</p>');
