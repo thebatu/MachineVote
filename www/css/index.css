@@ -406,8 +406,8 @@ input{
 		display:table-row;
 	}
 	.vote{
-	 	height: 60px;
-	 	width: 30px;
+	 	height: 80px;
+	 	width: 50px;
 	 	border-radius: 45px;
         margin-bottom: 1%;
 	}
