@@ -376,21 +376,12 @@ input{
 /*** FIN VOTE***/
 
 /*** SELECTION DE PRESENTATION DE RESULTATS***/
-.choixResult{
-    display:none;
-}
-
-    #canvasChoix1{
-        display:none;
-        text-align: left;
-    }
     .choix{
         height:400px;
-        overflow-y : auto;
         margin-bottom: 1%;
         text-align: left;
-        display:table;
         width:100%;
+        overflow: auto;
     }
 	    .choix .ligne1compt{
             display:table-row;
@@ -399,12 +390,6 @@ input{
         	display:table-cell;
         	padding-left: 20px;
 	    }
-	.canvasCompt{
-		display: table-row;
-	}
-    #ligne2compt{
-		display:table-row;
-	}
 	.vote{
 	 	height: 80px;
 	 	width: 50px;

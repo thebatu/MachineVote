@@ -35,16 +35,19 @@ $(function(){
 			$('#affichageResultats').append("<div class='ligne1compt'></div>");
 			if(resultatVote['bulletin'+i] != 0){	
 				for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
-					$('#affichageResultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
+					$('#affichageResultats div:last').append("<canvas class='vote'></canvas>&nbsp;");
+					$('#affichageResultats div:last canvas:last').css("background-color",couleursVote[color[i]]);
+
 				}
-				$('#affichageResultats div:last').append("<p></p>");	
-			} else
-				$('#affichageResultats').append("Pas de jeton <canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
+			} else{
+				$('#affichageResultats div:last').append("Pas de jeton <canvas class='vote'></canvas>");
+				$('#affichageResultats div:last canvas:last').css("background-color",couleursVote[color[i]]);
+			}
 		}
 	}
 
 /*
- * Affiche les résultats chiffrés
+ * Affiche les résultats à dénombrer
 */
 	function affichageResultatsChiffres(nbr){
 		$('#affichageResultatsChiffre').empty();
@@ -56,8 +59,10 @@ $(function(){
 				}
 				$('#affichageResultatsChiffre div:last').append("<p class='span'>0</p>");
 				$("#affichageResultatsChiffre div:last p").css("color",couleursVote[color[i]]);
-			} else
-				$('#affichageResultatsChiffre').append("Pas de jeton <canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
+			} else{
+				$('#affichageResultatsChiffre div:last').append("Pas de jeton <canvas class='vote'></canvas>");
+				$('#affichageResultatsChiffre div:last canvas:last').css("background-color",couleursVote[color[i]]);
+			}
 		}
 	}
 /*
@@ -85,7 +90,7 @@ $(function(){
                     }
                 }
             } else
-				$('#affichageResultatsTableau').append("</br>Pas de jeton <canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
+				$('#affichageResultatsTableau').append("</br>Pas de jeton <canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>");
         }
 	}
 /*
