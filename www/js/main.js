@@ -418,7 +418,7 @@ $(function(){
 	function affichageClasse(){
 		$('#listeClass').empty();
 		db.transaction(function(tx) {
-         	tx.executeSql("SELECT * FROM Classe", [], function(tx, res) {
+         	tx.executeSql("SELECT DISTINCT classe.nom FROM classe INNER JOIN eleve ON classe.id_classe = eleve.id_classe WHERE classe.id_classe = eleve.id_classe", [], function(tx, res) {
        			if(res.rows.length != 0){
        				for(var i=0; i<res.rows.length; i++) {
        					$('#listeClass').append('<li>');
