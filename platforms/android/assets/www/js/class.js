@@ -114,10 +114,10 @@ $(function(){
 
 	$('input').keyup(function(event) {
         var textBox = event.target;
-        var start = textBox.selectionStart;
-        var end = textBox.selectionEnd;
+        //var start = textBox.selectionStart;
+        //var end = textBox.selectionEnd;
         textBox.value = textBox.value.charAt(0).toUpperCase() + textBox.value.slice(1);
-        textBox.setSelectionRange(start, end);
+        //textBox.setSelectionRange(start, end);
     });	
     
 	$('#ajoutClasse #buttonAjoutEleve').click(function(){
@@ -216,5 +216,6 @@ $(function(){
 	$("#supprEleveDyna button").live('click', function(){
 		$("#supprEleveDyna button").removeClass('select');
 		$(event.target).addClass('select');
+		$("#supprEleve .valider").show();
 	});
 });

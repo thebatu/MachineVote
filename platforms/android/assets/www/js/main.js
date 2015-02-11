@@ -32,8 +32,7 @@ $(function(){
 
 		$('#affichageResultats').empty();
 		for(var i=0; i<nbr ; i++){
-			//$('#affichageResultats').append("<div class='ligne1compt'></div>");
-			$('#affichageResultatsChiffre').append("</br>");
+			$('#affichageResultats').append("<div class='ligne1compt'></div>");
 			if(resultatVote['bulletin'+i] != 0){	
 				for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
 					$('#affichageResultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
@@ -459,6 +458,7 @@ $(function(){
 
 	function initSupprEleve() {
 		$('#supprEleveDyna').empty();
+		$("#supprEleve .valider").hide();
 		$('#supprEleveDyna').append('<h2>Supprimer un élève de la classe : '+$('#listeSelectClasse option:selected').text()+"</h2>");
 		$('#supprEleveDyna').append('<div>');
 		db.transaction(function(tx){
@@ -466,7 +466,8 @@ $(function(){
 				if(res.rows.length != 0){
 					for(var i=0 ; i<res.rows.length ; i++)
 						$('#supprEleveDyna div').append(" <button value='"+res.rows.item(i).id_Eleve+"'>"+res.rows.item(i).nom+"</button> ");
-				}
+				} else
+					$('#supprEleveDyna div').append("<p>Il n'y a pas d'élèves dans cette classe");
 			});
 		}, onDBError);
 	}
