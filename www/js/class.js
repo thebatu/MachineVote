@@ -127,7 +127,7 @@ $(function(){
 		if($('#listeSelectClasse option:selected').val() == 'null')
 			alert('Veuillez choisir une classe à supprimer');
 		else {
-			var r = confirm("Vouvlez-vous vraiment supprimer la classe : "+$('#listeSelectClasse option:selected').text()+" ?");
+			var r = confirm("Voulez-vous vraiment supprimer la classe : "+$('#listeSelectClasse option:selected').text()+" ?");
 			if(r == true){
 				db.transaction(function(tx){
 					tx.executeSql("DELETE FROM Classe WHERE id_Classe = "+$('#listeSelectClasse option:selected').val());

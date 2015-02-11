@@ -489,13 +489,16 @@ $(function(){
 	});
 
 /*
- * Appuie sur le logo d'accueil
+ * Appui sur le logo d'accueil
 */
 	$("#ecranLogo").mousedown( "click", function(event){
 		$("#ecranLogo").hide();
 		gotoSection("accueil");
 	});
 
+/*
+* Gestion du vote blanc
+*/
 	$("#voteblanc").click(function(){
 		if ($(this).html()=="Autorisé"){
 			$("#voteblanc").html("Interdit");
@@ -512,7 +515,7 @@ $(function(){
 });
 
 /*
- * Ajout la classe selected au bulletin de vote choisi
+ * Ajout de la classe selected au bulletin de vote choisi
 */
 function addBulletinSelect(){
 	$(".bulletin").removeClass("select");
