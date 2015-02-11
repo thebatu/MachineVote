@@ -40,30 +40,6 @@ $(function(){
 	}
 
 	/*
-	*	Sécurité/ergonomie si on appuie sur un bouton de modification de code.
-	*/
-	$(".codeParams").click(function(){
-		$(".codeParams").removeClass("sel");
-	    $(this).addClass("sel");
-	});
-
-	/*
-	* Pavé numérique
-	*/
-	$('.keyCode').click(function(){
-		var tmp = $(this).html();
-		var current = $('.sel');
-		current.html(tmp);
-		if (current.hasClass("lastCode")){
-			current.siblings(".firstCode").addClass("sel");
-		}
-		else{
-			$('.sel').next('.codeParams').addClass("sel");
-		}
-		current.removeClass("sel");
-	});
-
-	/*
 	* Validation du code
 	*/
 	$("#codeParams .ok").click(function(){
@@ -119,14 +95,10 @@ $(function(){
         textBox.value = textBox.value.charAt(0).toUpperCase() + textBox.value.slice(1);
         //textBox.setSelectionRange(start, end);
     });	
-    
-	$('#ajoutClasse #buttonAjoutEleve').click(function(){
-		if($('#inputNomEleve').val() != ''){
-			$('.classRight div').append('<p>'+$('#inputNomEleve').val()+'</p>');
-			$('#inputNomEleve').val('');
-		}
-	});
 
+    /*
+	 * Ajout de la classe lors de l'appui sur le bouton valider
+	*/
 	$("#ajoutClasse .valider").click(function(){
 		var idDerniereClass;
 		if($('#inputNomClasse').val() != '' && $('#ajoutClasse .classRight p').length != 0){
@@ -148,6 +120,9 @@ $(function(){
 			alert('Veuillez entrer un nom de classe et au moins un élève');
 	});
 
+	/*
+	 * Suppression de la classe lors de l'appui sur le bouton
+	*/
 	$("#supprimerClasse").on('click', function(){
 		if($('#listeSelectClasse option:selected').val() == 'null')
 			alert('Veuillez choisir une classe à supprimer');
@@ -170,7 +145,10 @@ $(function(){
 			}
 		}
 	});
-
+    
+    /*
+     * Ajout d'un élève
+    */
 	$("#ajouterEleve").on('click', function(){
 		if($('#listeSelectClasse option:selected').val() == 'null')
 			alert("Veuillez d'abord choisir une classe");
@@ -186,6 +164,9 @@ $(function(){
 		}
 	});
 
+	/*
+	 * met à jour l'affichage de la page lors de la selection d'une classe
+	*/
 	$("#listeSelectClasse").on('change', function(){
 		rempliListeModifEleve();
 		if($('#listeSelectClasse option:selected').val() == 'null')
@@ -194,6 +175,9 @@ $(function(){
 			$("#supprimerEleve").attr('go', 'supprEleve');
 	});
 
+	/*
+	 * function qui remplit la liste des élèves de la classe choisie afin de les supprimer 
+	*/
 	function rempliListeModifEleve(){
 		$("#listeEleveModif").empty();
 		if($('#listeSelectClasse option:selected').val() != 'null'){
@@ -207,15 +191,4 @@ $(function(){
 			}, onDBError);
 		}
 	}
-
-	$("#supprimerEleve").on('click', function(){
-		if($('#listeSelectClasse option:selected').val() == 'null')
-			alert("Veuillez d'abord choisir une classe");
-	});
-
-	$("#supprEleveDyna button").live('click', function(){
-		$("#supprEleveDyna button").removeClass('select');
-		$(event.target).addClass('select');
-		$("#supprEleve .valider").show();
-	});
 });

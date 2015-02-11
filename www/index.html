@@ -164,8 +164,14 @@
             <div id="listeSelectionPrenom">
 
             </div>
-            <button class="navigation retourAccueil" go="fin_vote">Mettre fin au vote</button>
+            <button class="navigation retourAccueil" go="confirmationFinVote">Mettre fin au vote</button>
             <button class="navigation valider" go="vote">&#10143;</button>
+        </div>
+
+        <div id="confirmationFinVote" class="content">
+            <h2> Voulvez-vous vraiment mettre fin au vote ?
+            <button class="navigation retourAccueil" go="selectionPrenom">Non</button>
+            <button class="navigation valider" go="fin_vote">Oui</button>
         </div>
 
         <div id="vote" class="content">
