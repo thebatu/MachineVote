@@ -32,7 +32,8 @@ $(function(){
 
 		$('#affichageResultats').empty();
 		for(var i=0; i<nbr ; i++){
-			$('#affichageResultats').append("<div class='ligne1compt'></div>");
+			//$('#affichageResultats').append("<div class='ligne1compt'></div>");
+			$('#affichageResultatsChiffre').append("</br>");
 			if(resultatVote['bulletin'+i] != 0){	
 				for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
 					$('#affichageResultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
@@ -48,8 +49,7 @@ $(function(){
 	function affichageResultatsChiffres(nbr){
 		$('#affichageResultatsChiffre').empty();
 		for(var i=0; i<nbr ; i++){
-			//$('#affichageResultatsChiffre').append("<div class='ligne1compt'></div>");
-			$('#affichageResultatsChiffre').append("</br>");
+			$('#affichageResultatsChiffre').append("<div class='ligne1compt'></div>");
 			if(resultatVote['bulletin'+i] != 0) {
 				for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
 					$('#affichageResultatsChiffre div:last').append(" <canvas class='vote canvaResultat' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
