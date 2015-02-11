@@ -32,8 +32,7 @@ $(function(){
 
 		$('#affichageResultats').empty();
 		for(var i=0; i<nbr ; i++){
-			//$('#affichageResultats').append("<div class='ligne1compt'></div>");
-			$('#affichageResultatsChiffre').append("</br>");
+			$('#affichageResultats').append("<div class='ligne1compt'></div>");
 			if(resultatVote['bulletin'+i] != 0){	
 				for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
 					$('#affichageResultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
