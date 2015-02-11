@@ -455,6 +455,7 @@ $(function(){
 
 	function initSupprEleve() {
 		$('#supprEleveDyna').empty();
+		$("#supprEleve .valider").hide();
 		$('#supprEleveDyna').append('<h2>Supprimer un élève de la classe : '+$('#listeSelectClasse option:selected').text()+"</h2>");
 		$('#supprEleveDyna').append('<div>');
 		db.transaction(function(tx){
@@ -462,7 +463,8 @@ $(function(){
 				if(res.rows.length != 0){
 					for(var i=0 ; i<res.rows.length ; i++)
 						$('#supprEleveDyna div').append(" <button value='"+res.rows.item(i).id_Eleve+"'>"+res.rows.item(i).nom+"</button> ");
-				}
+				} else
+					$('#supprEleveDyna div').append("<p>Il n'y a pas d'élèves dans cette classe");
 			});
 		}, onDBError);
 	}

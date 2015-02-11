@@ -220,5 +220,6 @@ $(function(){
 	$("#supprEleveDyna button").live('click', function(){
 		$("#supprEleveDyna button").removeClass('select');
 		$(event.target).addClass('select');
+		$("#supprEleve .valider").show();
 	});
 });
