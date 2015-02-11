@@ -36,7 +36,8 @@ $(function(){
 			if(resultatVote['bulletin'+i] != 0){	
 				for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
 					$('#affichageResultats').append("<canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
-				}	
+				}
+				$('#affichageResultats div:last').append("<p></p>");	
 			} else
 				$('#affichageResultats').append("Pas de jeton <canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
 		}
