@@ -48,7 +48,8 @@ $(function(){
 	function affichageResultatsChiffres(nbr){
 		$('#affichageResultatsChiffre').empty();
 		for(var i=0; i<nbr ; i++){
-			$('#affichageResultatsChiffre').append("<div class='ligne1compt'></div>");
+			//$('#affichageResultatsChiffre').append("<div class='ligne1compt'></div>");
+			$('#affichageResultatsChiffre').append("</br>");
 			if(resultatVote['bulletin'+i] != 0) {
 				for(var j=0 ; j<resultatVote['bulletin'+i]; j++){
 					$('#affichageResultatsChiffre div:last').append(" <canvas class='vote canvaResultat' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
@@ -84,7 +85,7 @@ $(function(){
                     }
                 }
             } else
-				$('#affichageResultatsTableau').append("<br>Pas de jeton <canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
+				$('#affichageResultatsTableau').append("</br>Pas de jeton <canvas class='vote' style='background-color:"+couleursVote[color[i]]+"'></canvas>&nbsp;");
         }
 	}
 /*

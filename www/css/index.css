@@ -384,7 +384,7 @@ input{
         display:none;
         text-align: left;
     }
-    .choix2{
+    .choix{
         height:400px;
         overflow-y : auto;
         margin-bottom: 1%;
@@ -392,10 +392,10 @@ input{
         display:table;
         width:100%;
     }
-	    .choix2 .ligne1compt{
+	    .choix .ligne1compt{
             display:table-row;
         }
-        .choix2 .span{
+        .choix .span{
         	display:table-cell;
         	padding-left: 20px;
 	    }
