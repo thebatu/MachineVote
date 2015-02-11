@@ -147,9 +147,9 @@ $(function(){
 		$("#verifResultats").css("text-align","center");
 	}
 
-/*
- *	Gestion du clic sur les boutons de choix de chemin
-*/	
+	/*
+	 *	Gestion du clic sur les boutons de choix de chemin
+	*/	
 	button.click( function() {
 		$(this).closest("div[id]").hide(); //a cause de enterCode, sélection de la div engolbante qui a un id.
 		gotoSection($(this).attr("go"));
@@ -417,7 +417,7 @@ $(function(){
 	function affichageClasse(){
 		$('#listeClass').empty();
 		db.transaction(function(tx) {
-         	tx.executeSql("SELECT * FROM Classe", [], function(tx, res) {
+         	tx.executeSql("SELECT DISTINCT classe.nom, classe.id_classe FROM classe INNER JOIN eleve ON classe.id_classe = eleve.id_classe WHERE classe.id_classe = eleve.id_classe", [], function(tx, res) {
        			if(res.rows.length != 0){
        				for(var i=0; i<res.rows.length; i++) {
        					$('#listeClass').append('<li>');
