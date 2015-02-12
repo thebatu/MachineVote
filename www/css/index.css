@@ -376,8 +376,12 @@ input{
 /*** FIN VOTE***/
 
 /*** SELECTION DE PRESENTATION DE RESULTATS***/
+#resultats, #resultatsChiffres, #resultatsTableau{
+    height:65%;
+}
     .choix{
-        height:400px;
+        height:80%;
+        /*height:400px;*/
         margin-bottom: 1%;
         text-align: left;
         width:100%;
