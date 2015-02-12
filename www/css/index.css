@@ -394,9 +394,6 @@ input{
         	display:table-cell;
         	padding-left: 20px;
 	    }
-    .choix3{
-        height:80%;
-    }
 	.vote{
 	 	height: 80px;
 	 	width: 50px;
@@ -410,7 +407,8 @@ input{
 	}
 
 	#affichageResultatsTableau{
-        height: 400px;
+        height:80%;
+        /*height: 400px;*/
         overflow-y:auto;
         margin-bottom: 1%;	
     }
